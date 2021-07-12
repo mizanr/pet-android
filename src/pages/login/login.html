@@ -1,0 +1,79 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header> -->
+  <!-- <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar> -->
+<!-- </ion-header> -->
+
+<ion-content no-padding>
+
+          <div class="block block_1">
+            <img src="../../assets/imgs/logo.png" alt=""/>
+            <div text-center class="login_text">
+
+              <h3>{{'LOGIN' | lang}}</h3>
+              <p>{{'GOAHEAD' | lang}}</p>
+
+            </div>
+            <ion-row>
+              <ion-col col-12 no-padding>
+                <ion-item no-lines>
+                  <ion-input type="email" placeholder="{{'LOGIN' | lang}}" 
+                  (keyup)="key_event($event)"
+                  [(ngModel)]="data.email"></ion-input>
+                  <img item-start src="assets/imgs/login/envelop.png" style="width: 20px;margin: 0;">
+                </ion-item>
+              </ion-col>
+
+              <ion-col col-12 no-padding>
+                <ion-item no-lines>
+                  <ion-input type="password" placeholder="{{'PASSWORD' | lang}}"  
+                  (keyup)="key_event($event)"
+                  [(ngModel)]="data.password"></ion-input>
+                  <img item-start src="assets/imgs/login/lock.png" style="width: 20px;margin: 0;">
+                </ion-item>
+              </ion-col>
+
+              <ion-col col-12 no-padding>
+                <button ion-button full no-margin (click)="generateToken()">
+                  {{'LOGIN' | lang}}
+                </button>
+              </ion-col>
+
+
+              <!-- <ion-col col-6 (click)="signup()">
+                <button ion-button full clear >
+                  Not Registered Yet
+                </button>
+              </ion-col> -->
+
+             
+
+            </ion-row>
+
+            <ion-row margin-top>
+              <ion-col col-12 no-padding text-center>
+                <p (click)="forgot()" style="font-size: 16px;">
+                 <b>{{'FORGOTPASS'| lang}}?</b>
+                </p>
+              </ion-col>
+            </ion-row>
+          </div>
+
+    <!-- <ion-row class="foot">
+      <ion-col text-center no-padding>
+        <img src="../../assets/imgs/footer_image.png" alt=""/>
+      </ion-col>
+    </ion-row> -->
+    <ion-fab left bottom (click)="back()" *ngIf="!keyboard.isVisible">
+      <button ion-fab color="primary">
+        <img src="assets/imgs/new/icons8-backt-page-50.png">
+      </button>
+    </ion-fab>
+
+</ion-content>

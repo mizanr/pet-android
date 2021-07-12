@@ -1,0 +1,55 @@
+<ion-content padding>
+  <div class="pet_details">
+  <div class="login_form">
+
+      <button ion-button icon-only (click)="closemodal()" small clear class="btn_close">
+        <ion-icon name="close"></ion-icon>
+      </button>
+
+
+      <ion-searchbar (ionInput)="search($event)" placeholder="Select Color"></ion-searchbar>
+
+        <ion-list radio-group [(ngModel)]="color">
+          <div>
+            <ion-item style="padding: 0 5px;" no-lines *ngFor="let r of colors">
+              <img src="assets/imgs/new/icons8-pets-100.png" item-start class="img_left">
+              <ion-label>{{r.color_name}}</ion-label>
+              <ion-radio [value]="r" (ionSelect)="color_chagne()"></ion-radio>
+            </ion-item>
+          </div>
+          
+
+          <!-- <ion-item style="padding: 0 5px;" no-lines>
+            <img src="assets/imgs/new/icons8-pets-100.png" item-start class="img_left">
+            <ion-label>Dog</ion-label>
+            <ion-radio value="dog"></ion-radio>
+          </ion-item>
+
+          <ion-item style="padding: 0 5px;" no-lines>
+            <img src="assets/imgs/new/icons8-pets-100.png" item-start class="img_left">
+            <ion-label>Duck</ion-label>
+            <ion-radio value="duck"></ion-radio>
+          </ion-item>
+
+          <ion-item style="padding: 0 5px;" no-lines>
+            <img src="assets/imgs/new/icons8-pets-100.png" item-start class="img_left">
+            <ion-label>Goat</ion-label>
+            <ion-radio value="goat"></ion-radio>
+          </ion-item>
+
+          <ion-item style="padding: 0 5px;" no-lines>
+            <img src="assets/imgs/new/icons8-pets-100.png" item-start class="img_left">
+            <ion-label>Giraff</ion-label>
+            <ion-radio value="giraff"></ion-radio>
+          </ion-item> -->
+
+
+          </ion-list>
+              <div class="noDatadiv2" *ngIf="colors.length==0">
+                <ion-icon name="ios-search-outline"></ion-icon>
+                <p>{{'NORECORDFOUND' | lang}}</p>
+              </div>
+
+  </div>
+</div>
+  </ion-content>

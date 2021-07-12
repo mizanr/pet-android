@@ -1,0 +1,25 @@
+page-about {
+    ion-content {
+       // background-image: url(../../assets/imgs/footer_image.png);
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: contain;
+    }
+    .toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    .block.block_1 {
+        h2 {
+            font-size: 17px;
+        }
+        p {
+            font-size: 12px;
+            text-align: justify;
+            color: #575757;
+            line-height: 18px;
+        }
+    }
+    
+    
+}

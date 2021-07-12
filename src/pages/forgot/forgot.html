@@ -1,0 +1,57 @@
+<!--
+  Generated template for the ForgotPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'FORGOTPASS' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="block block_1">
+    <ion-row>
+
+      <ion-col col-12 text-center>
+        <img src="../../assets/imgs/logo.png" alt="" style="width: 310px; margin-bottom: 30px;" />
+      </ion-col>
+
+      <div text-center class="login_text">
+
+        <h3>{{'FORGOTPASS' | lang}}</h3>
+        <p>{{'ENTEREMAILADD' | lang}}</p>
+
+      </div>
+<!--
+      <h2 style="font-size: 18px; text-align: center;width: 100%; color: #a64686;" padding>Forgot Password</h2> -->
+
+      <ion-col col-12 text-center>
+        <!-- <ion-item no-lines>
+          <ion-input type="text" [(ngModel)]="data.email" placeholder="Enter Your Email Address" ></ion-input>
+         </ion-item> -->
+         <ion-item no-lines>
+            <ion-input type="text" placeholder="{{'ENTEREMAILADD' | lang}}" [(ngModel)]="data.email"></ion-input>
+            <img item-start src="assets/imgs/login/envelop.png" style="width: 20px;margin: 0;">
+          </ion-item>
+      </ion-col>
+
+      <ion-col col-12 no-padding>
+        <button ion-button full no-margin (click)="submit()">
+          {{'SEND' | lang}}
+        </button>
+      </ion-col>
+
+
+      <!-- <ion-col col-12 text-center (click)="submit()">
+        <button ion-button small round >
+         Send
+        </button>
+      </ion-col> -->
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,38 @@
+page-preview {
+    .img{
+        width: 100%;
+    }
+.toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+
+    .img_upload {
+    max-width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0 !important;
+    width: 100% !important;
+    border-radius: 10px;
+    position: relative;
+
+	}
+
+	ion-col {
+	    // border: 1px solid #ececec;
+		// border-radius: 15px;
+		// margin: 10px 0 !important;
+	}
+
+	p{
+		    float: right;
+    		margin: 0;
+	}
+
+    .img_pr{
+            height: 200px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    }
+}

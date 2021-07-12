@@ -1,0 +1,21 @@
+page-modalpage {
+    .content {
+        background: #0000;
+    }
+    .popup {
+        position: absolute;
+        width: 100%;
+        bottom: 0px;
+        padding: 10px;
+        background: #fff;
+    }
+    .circle {
+        text-align: center;
+        .icon{
+            color: #81007f;
+        }
+    }
+    .item-inner {
+        border: none !important;
+    }
+}

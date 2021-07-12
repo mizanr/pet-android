@@ -1,0 +1,102 @@
+<!--
+  Generated template for the EditvendorPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Edit Vendor Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-row class="user-img">
+    <ion-col text-center col-4>
+      <img [src]="image" alt="" class="user"/>
+      <img src="../../assets/imgs/profile/edit.png" alt="" class="edit" (click)="get_image()"/>
+    </ion-col>
+    <ion-col col-8>
+      <ion-col col-12>
+        <h2 style="font-size: 16px;">Edit Profile Image</h2>
+      </ion-col>
+    </ion-col>
+  </ion-row>
+
+  <div class="block block_1">
+  <ion-row class="row_in"> 
+    
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Company Name</h2>
+          
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Company Name" [(ngModel)]="c_name"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Phone number</h2>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="number" placeholder="+21 201245841" [(ngModel)]="phone"></ion-input>
+      </ion-item>
+    </ion-col>
+
+
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Website</h2>
+          
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="website url" [(ngModel)]="website"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Contact</h2>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Contact" [(ngModel)]="poc_name"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    
+
+    <!-- <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Country</h2>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="lorem"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">City</h2>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="lorem ipsum"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">State</h2>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="lorem ipsum"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Postal Code</h2>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="452001"></ion-input>
+      </ion-item>
+    </ion-col> -->
+    
+    
+    <ion-col col-12 no-padding>
+      <button ion-button full round (click)="update()">
+       Save
+      </button>
+    </ion-col>
+  </ion-row>
+  </div>
+
+  <br>
+
+</ion-content>

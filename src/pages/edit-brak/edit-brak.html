@@ -1,0 +1,155 @@
+<!--
+  Generated template for the EditBrakPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+  	<ion-buttons end (click)="close()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Edit Bark</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid style="padding: 5px 25px 0px 25px;" *ngIf="ownerInfo">
+    <ion-row class="feed_content">
+      <ion-col col-2 text-center>
+        
+        <div class="circle" [ngClass]="active">
+          <img  [src]="ownerInfo?.profile" width="50">
+        </div>
+
+      </ion-col>
+      <ion-col col-10>
+          <div class="bx">
+            <span>{{ownerInfo.name}}</span>
+            <!-- <p>Lorem ipsum dolar sit amet....</p> -->
+             </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="block">
+      <ion-col padding>
+        <!-- <ion-textarea placeholder="Bark something  with {{ownerInfo.name}}" 
+      name="note" rows="7" 
+      [(ngModel)]="desc"></ion-textarea> -->
+
+      <textarea rows="7" [(ngModel)]="desc" 
+        placeholder="Bark something  with {{ownerInfo.name}}" >
+       </textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button icon-only clear color="primary" (click)="getImage()">
+          <img src="../../assets/imgs/home/camera.png" style="margin-right: 10px; width: 20px;">
+          <b>Post Photo</b>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button icon-only clear color="primary" (click)="new_video_thamb()">
+          <img src="../../assets/imgs/home/video.png" style="margin-right: 10px; width: 20px;">
+          <b>Post Video</b>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="feedImage">
+      <ion-col col-6 style="position: relative;" class="feed-img">
+        <button ion-button clear icon-only color="danger" (click)="deletefile()">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+        <img [src]="feedImage" alt="" width="100" height="100">
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row *ngIf="upload_video == 1"(click)="previewVideo(new_video)">
+      <ion-col col-6 style="position: relative;" class="feed-vid">
+        <img [src]="new_video.thumb.preview" alt=""> 
+        <ion-icon ios="ios-play" md="md-play"></ion-icon>
+        
+      </ion-col>
+      <ion-col col-6 align-items-center>
+        <ion-buttons>
+          <button ion-button clear icon-only color="danger" (click)="deletefile()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row *ngIf="blob_feedvideo_name">
+      <ion-col col-10 style="position: relative;" class="feed-vid">        
+        <h4>{{blob_feedvideo_name}}</h4>        
+      </ion-col>
+      <ion-col col-2>
+        <ion-buttons>
+          <button ion-button clear icon-only color="danger" (click)="deletefile()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-grid padding *ngIf="info.is_shared == 1" 
+      style="border: 1px solid #e8e5e5;margin-bottom: 16px;
+    border-radius: 10px;">
+
+    <ion-item no-padding class="bx2" *ngIf="info.is_shared == 1">
+      <ion-avatar item-start *ngIf="info.shared_feed_data.type == 1">
+        <div class="circle" [ngClass]="active">
+        <img [src]="info?.shared_feed_data?.user_data?.profile">
+        </div>
+      </ion-avatar>
+      <h2 *ngIf="info.shared_feed_data.type == 1">{{info.shared_feed_data.user_data.first_name}} {{info.shared_feed_data.user_data.last_name}}</h2>
+
+      <ion-avatar item-start *ngIf="info.shared_feed_data.type == 2">
+        <div class="circle" [ngClass]="active">
+        <img [src]="info?.shared_feed_data?.users?.profile">
+        </div>
+      </ion-avatar>
+      <h2 *ngIf="info.shared_feed_data.type == 2">{{info.shared_feed_data.users.name}}</h2>
+
+      <p>{{info.shared_feed_data.create_date}}</p>
+      
+    </ion-item>
+
+    <ion-col col-12 *ngIf="info.is_shared == 1">
+      <p style="margin: 5px 0;">{{info.shared_feed_data.description}}</p>
+    </ion-col>
+
+    <ion-row class="block" *ngIf="info.is_shared == 1" margin-bottom>
+        <img class="img" [src]="info.shared_feed_data.image" alt="" imageViewer  
+        *ngIf="info.shared_feed_data.file_type == 'Image'"/>
+
+        <video controls class="vid" autoplay *ngIf="info.shared_feed_data.file_type == 'Video'">
+            <source [src]="info.shared_feed_data.image" type="video/mp4">
+        </video>
+    </ion-row>
+</ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button full round (click)="update()">
+          Update
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button full round color="secondary" (click)="close()">
+          Cancel
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

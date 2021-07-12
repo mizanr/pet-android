@@ -1,0 +1,100 @@
+page-social-login {
+  .dog.row{
+      background-image: url(../../assets/imgs/login/back.png);
+      background-color: black;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  }
+.block {
+      width: 100%;
+      padding-top: 35px;
+      background-color: white;
+      height: calc(102vw - 25px);
+      -webkit-box-shadow: 1px 0px #f7f7f7;
+      position: relative;
+      //top: -60px;
+      border-top-left-radius: 35px;
+      border-top-right-radius: 35px;
+
+      .item-ios {
+          border-radius: 30px;
+          box-shadow: 1px 1px 15px #ebebeb;
+          margin: 8px 0;
+      }
+
+      .item-md {
+          border-radius: 20px;
+          border: 1px solid #f3ebeb;
+          box-shadow: 1px 1px 15px #ebebeb;
+      }
+  }
+
+  .dog{
+      .img_rigth {
+          position: absolute;
+          right: 40px;
+          z-index: +1;
+          bottom: 45px;
+          height: 120px;
+      }
+  }
+
+  .foot{
+      img {
+          top: 4px;
+          position: relative;
+      }
+  }
+  .text-input {
+      padding-left: 10px;
+  }
+  .block.block_1 {
+      //@at-root: relative;
+      padding: 35% 35px 0px 35px;
+      text-align: center;
+
+     .logo {
+          width: 310px;
+          margin-bottom: 30px;
+      }
+  }
+  .foot.row {
+      position: fixed;
+      bottom: 0;
+  }
+  .bottom_text {
+     width: 100%;
+     position: absolute;
+     left: 0;
+     bottom: 0;
+     text-align: center;
+ }
+ .login_text_1 {
+     h3{
+      padding-left: 16px;
+      font-size: 15px;
+      font-family: 'Helvetica' !important;
+      letter-spacing: 1.8px;
+      font-weight: normal !important;
+     }
+ }
+ .login_text {
+  width: 100%;
+  margin-bottom: 20px;
+  p{
+      margin: 0;
+  }
+}
+
+.login_text_1.login_text_1_apple {
+background: #231f20;
+color: #fff;
+border: 1px solid #231f20;
+}
+.login_text_1.login_text_1_facebook  {
+background: #0095da;
+color: #fff;
+border: 1px solid #0095da;
+}
+}

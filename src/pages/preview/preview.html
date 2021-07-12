@@ -1,0 +1,139 @@
+<!--
+  Generated template for the PreviewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+  	<!-- <ion-buttons start>
+  		<button ion-button clear icon-only (click)="close()">
+  			<ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+  		</button>
+  	</ion-buttons> -->
+    <ion-title>Campaign Preview</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid no-padding>
+    <!-- <ion-row>
+      <ion-col col-12 text-justify padding>
+        Title : <p>{{info.title}}</p>
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Description : <p>{{info.desc}}</p>
+      </ion-col>
+
+      <ion-col col-12 text-center >
+            <img [src]="info?.img" alt="" class="img_upload img_pr">
+        
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Campaign URL :<p>{{info.url}}</p>
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Campaign Duration (Days) : <p>{{info.duration}} Day's</p>
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Campaign Budget (Cost Per Day USD) : <p>${{info.buget}}</p>
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Start Date : <p>{{info.date | date:"MM-dd-yyyy"}}</p>
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Campaign Total Project Exposure : <p>{{info.p_exposure | number:'1.2-2'}}</p>
+      </ion-col>
+
+      <ion-col col-12 text-justify padding>
+        Project Total Cost of this Campaign : <p>${{info.cost}}</p>
+      </ion-col>
+
+    </ion-row> -->
+
+
+
+    <ion-item no-padding class="bx" no-lines>
+        <ion-avatar item-start>
+          <div class="circle">
+          <img [src]="auth?.getUserDetails()?.company_logo">
+          </div>
+        </ion-avatar>
+        <h2>{{auth.getUserDetails().company_name}}</h2>
+        <p style="float: inherit;">Sponsored Advertising</p>
+      </ion-item>
+      <ion-row class="block">
+        <ion-col col-12  text-capitalize style="padding:10px 0px 0px 0px;">
+          <h2>{{info.title}}</h2>
+        </ion-col>
+
+       <ion-col col-12 text-left style="padding:10px 0px">
+         {{info.desc}}
+       </ion-col>
+
+       <img class="img" [src]="info.img" alt="" />                    
+
+      </ion-row>
+
+      <ion-row padding align-items-center>
+        <ion-col col-4 text-left>
+          <strong>Licks: 0</strong>  
+        </ion-col>
+        <ion-col col-4 text-center>
+          <strong>Barks:  0</strong> 
+        </ion-col>
+        <ion-col col-4 text-center *ngIf="info.url">
+          <button ion-button small round (click)="go_url()">Visit Now</button>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-row class="block"  style="padding: 10px;">
+          <ion-col col-6>
+              Campaign Days :
+          </ion-col>
+          <ion-col col-6 text-center style="font-weight: bolder;">
+              {{info.duration}} Day
+          </ion-col> 
+          
+      </ion-row>
+
+      <ion-row class="block"  style="padding: 0px 12px 5px 10px;">
+          <ion-col col-6>
+              Projected Total Cost of this Campaign :
+          </ion-col>
+          <ion-col col-6 text-center style="font-weight: bolder;">
+              ${{info.cost}}
+          </ion-col> 
+      </ion-row>
+
+      <ion-row class="block"  style="padding: 0px 12px 5px 10px;">
+          <ion-col col-6>
+              Campaign Total Projected Exposure :
+          </ion-col>
+          <ion-col col-6 text-center style="font-weight: bolder;">
+              {{info.p_exposure | number:'1.2-2'}}
+          </ion-col> 
+      </ion-row>
+
+      <ion-row class="block"  style="padding: 0px 12px 5px 10px;">
+          <ion-col col-6>
+              Start Date :
+          </ion-col>
+          <ion-col col-6 text-center style="font-weight: bolder;">
+              {{info.date}}
+          </ion-col> 
+      </ion-row> -->
+
+      <!-- <ion-row>
+          <ion-col col-12 text-right style="font-weight: bolder;">
+              <button ion-button full round (click)="go_url()">Visit Now</button>
+          </ion-col>
+      </ion-row> -->
+  </ion-grid>
+</ion-content>

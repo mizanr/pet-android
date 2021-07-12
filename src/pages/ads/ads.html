@@ -1,0 +1,49 @@
+<!--
+  Generated template for the AdsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Ads List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid no-padding>
+
+    <ion-item no-lines no-padding>
+      <h2 style="font-size: 16px;font-weight: 500;">Ads List</h2>
+      <button ion-button round small item-end color="light" class="btn_add" (click)="addads()">+ Add Ads</button>
+    </ion-item>
+
+    <ion-row margin-top class="listing" *ngFor="let l of lists">
+        <ion-item >
+          <ion-thumbnail item-start class="avtar_item" (click)="detail(l)">
+            <img [src]="l.image">
+          </ion-thumbnail>
+          <h2 style="" (click)="detail(l)" text-wrap>{{l.title}}</h2>
+          <h2 style="font-size: 12px;" (click)="detail(l)" text-wrap>Campaign Exposure :- {{l.projected_exposure}}</h2>
+          <h2 style="font-size: 12px;" (click)="detail(l)" text-wrap>Campaign Cost :-  ${{l.projected_cost}}</h2>
+          <h2 style="font-size: 14px;color: red;" *ngIf="l.status==0">Pending</h2>
+          <h2 style="font-size: 14px;color: green;" *ngIf="l.status==1">Running</h2>
+          <p style="font-size: 10px;" text-wrap>{{l.start_date | date: 'MM-dd-yyyy'}}</p>
+          <!-- <div item-end>
+            <div><button ion-button icon-only clear  (click)="edit(l)"><ion-icon name="md-create" 
+            class="btn-list"></ion-icon></button></div>
+            <div><button ion-button icon-only clear   color="danger" class="btn-list"
+          (click)="delete(l)"><ion-icon name="md-trash"></ion-icon></button></div>
+          </div> -->
+          <button ion-button icon-only clear   color="dark" class="btn-list" item-end
+          (click)="action(l)"><ion-icon name="md-more"></ion-icon></button>
+          
+        </ion-item>
+    </ion-row>
+    <ion-row *ngIf="lists.length == 0" margin-top>
+      <ion-col col-12 text-center>
+        No ads here..
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,188 @@
+<!-- <ion-nav [root]="rootPage"></ion-nav> -->
+<!-- <div *ngIf="type==1"> -->
+    <ion-menu [content]="nav" type="overlay" persistent="true" swipeEnabled="false">
+
+        <ion-content>
+    
+            <!-- <div class="header_menu">
+                <div class="list_img">
+                    <ion-item>
+                        <ion-avatar item-start class="avtar_item">
+                          <img [src]="currentUser.profile">
+                        </ion-avatar>
+                        <h2 style="font-size: 15px;text-transform: capitalize;">{{currentUser.first_name}}
+                        {{currentUser.last_name}}</h2>
+                      </ion-item>
+                </div>
+            </div> -->
+    
+            <ion-list class="menu_list" *ngIf="currentUser.user_type==1">
+    
+                <button ion-item (click)="home()" menuClose no-lines>
+                    <img src="assets/imgs/menu/home2.png">
+                    {{'NEWSFEED' | lang}}
+                </button>
+    
+                <!-- <button ion-item (click)="addpet()" menuClose no-lines>
+                    <img src="assets/imgs/menu/pet.png">
+                    Add Pets
+                </button> -->
+    
+                <button ion-item menuClose no-lines (click)="ownerprofile()">
+                    <img src="assets/imgs/menu/person.png">
+                    <!-- My Profile -->
+                    {{'MYACCOUNT' | lang}}
+                </button>
+    
+                <!-- <button ion-item menuClose no-lines (click)="profile()">
+                    <img src="assets/imgs/menu/pet.png">
+                    Pet Profile
+                </button> -->
+    
+                <button ion-item menuClose no-lines  (click)="changepass()">
+                    <img src="assets/imgs/menu/key1.png">
+                    {{'CHANGEPASS' | lang}}
+                </button>
+    
+                <button ion-item menuClose no-lines  (click)="search_business()">
+                    <img src="assets/imgs/new/icons8-product-45.png">
+                   {{'SEARCHBUSI' | lang}}
+                </button>
+    
+                <button ion-item menuClose no-lines  (click)="visit_store()">
+                    <img src="assets/imgs/menu/home.png">
+                   {{'VISITESTORE' | lang}}
+                </button>
+    
+                <button ion-item menuClose no-lines  (click)="invite_friend()">
+                    <img src="assets/imgs/new/invite.png">
+                  {{'INVITEFRIEND' | lang}}
+                </button>
+    
+    
+                <button ion-item menuClose no-lines (click)="about()">
+                    <img src="assets/imgs/menu/i.png">
+                    {{'ABOUTUS' | lang}}
+                </button>
+    
+                <button ion-item menuClose no-lines (click)="contact()">
+                    <img src="assets/imgs/menu/phone.png">
+                    {{'CONTACTUS' | lang}}
+                </button>
+    
+                <!-- <button ion-item menuClose no-lines>
+                    <img src="assets/imgs/menu/globe.png">
+                    Visit Store
+                </button> -->
+    
+                <button ion-item menuClose no-lines (click)="logout()">
+                    <img src="assets/imgs/menu/logout2.png">
+                    {{'LOGOUT' | lang}}
+                </button>
+    
+            </ion-list>
+    
+    
+          <ion-list class="menu_list" *ngIf="currentUser.user_type==2">
+    
+            <button ion-item menuClose no-lines>
+                <img src="assets/imgs/menu/home2.png">
+               {{'NEWSFEED' | lang}}
+            </button>
+    
+                    <button ion-item menuClose no-lines (click)="profilevend()">
+                        <img src="assets/imgs/menu/profile.png">
+                        {{'PROFILE' | lang}}
+                    </button>
+    
+                    <button ion-item menuClose no-lines  (click)="changepass()">
+                        <img src="assets/imgs/menu/key.png">
+                        {{'CHANGEPASS' | lang}}
+                    </button>
+    
+                    <button ion-item menuClose no-lines  (click)="products()">
+                        <img src="assets/imgs/new/icons8-product-100.png">
+                        {{'PRODUCT' | lang}}
+                    </button>
+                    <button ion-item menuClose no-lines  (click)="services()">
+                        <img src="assets/imgs/new/icons8-services-100.png">
+                        {{'SERVICES' | lang}}
+                    </button>
+                    <button ion-item menuClose no-lines  (click)="comp()">
+                        <img src="assets/imgs/new/icons8-adds-50.png">
+                        {{'ADVERTISING' | lang}}
+                    </button>
+                    <button ion-item menuClose no-lines  (click)="alet()">
+                        <img src="assets/imgs/new/icons8-payment-50.png">
+                        {{'PAYMENTMET' | lang}}
+                    </button>
+                    <button ion-item menuClose no-lines  (click)="alet()">
+                        <img src="assets/imgs/new/icons8-bank-50.png">
+                        {{'BANKATRAN' | lang}}
+                    </button>
+                    <button ion-item menuClose no-lines  (click)="alet()">
+                        <img src="assets/imgs/new/icons8-subscription-50.png">
+                        {{'SUBSCRIPTION'| lang}}
+                    </button>
+    
+                    <button ion-item menuClose no-lines (click)="about()">
+                        <img src="assets/imgs/menu/info.png">
+                       {{'ABOUTUS' | lang}}
+                    </button>
+    
+                    <button ion-item menuClose no-lines (click)="contact()">
+                        <img src="assets/imgs/menu/contact.png">
+                        {{'CONTACTUS' | lang}}
+                    </button>
+    
+                    <!-- <button ion-item menuClose no-lines>
+                        <img src="assets/imgs/menu/globe.png">
+                        Visit Store
+                    </button> -->
+    
+                    <button ion-item menuClose no-lines (click)="logout()">
+                        <img src="assets/imgs/menu/logout.png">
+                        {{'LOGOUT' | lang}}
+                    </button>
+    
+            </ion-list>
+    
+        </ion-content>
+    </ion-menu>
+    <ion-nav [root]="rootPage" #nav id="nav"></ion-nav>
+    <div class="network" *ngIf="is_page">
+        <ion-row class="top1">
+            <ion-col col-12 text-center>
+                <p>You have not internet connectivity, connect to the Internet and try again!</p>
+            </ion-col>
+            <ion-col col-12 text-center>
+                <button ion-button block small (click)="retry()">Retry</button>
+            </ion-col>
+        </ion-row>
+    </div>
+    <!-- </div>
+    
+    <div *ngIf="type==0">
+        <ion-menu [content]="nav" type="overlay" persistent="true">
+    
+            <ion-content>
+    
+                <div class="header_menu">
+                    <div class="list_img">
+                        <ion-item>
+                            <ion-avatar item-start class="avtar_item">
+                              <img src="../../assets/imgs/user.png">
+                            </ion-avatar>
+                            <h2 style="font-size: 15px;">Settings</h2>
+                          </ion-item>
+                    </div>
+                </div>
+    
+    
+    
+    
+            </ion-content>
+        </ion-menu>
+        <ion-nav [root]="rootPage" #nav id="nav"></ion-nav>
+    </div> -->
+    

@@ -1,0 +1,77 @@
+<!--
+  Generated template for the UserAccountPersonalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'PERSONAL' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+        <img src="../../assets/imgs/details-image.jpg" alt="" *ngIf="!current_user?.wall_image">
+        <img [src]="current_user?.wall_image" alt="" *ngIf="current_user?.wall_image">
+      </ion-col>
+
+      <ion-col text-center col-12 (click)="getProfileImage()" text-center class="user-img">
+        <img *ngIf="!current_user?.profile" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+        <img *ngIf="current_user?.profile" [src]="current_user?.profile" alt="" class="user" >
+    </ion-col>
+  </ion-row>
+<!--
+  <ion-row >
+
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+
+    <h3 text-capitalize>{{current_user.nic_name}}</h3>
+    <p style="font-size: 14px !important;" *ngIf="current_user.city">{{current_user.city}}</p>
+    <p  *ngIf="!current_user.city">{{'NOLOCTION' | lang}}</p>
+
+  </div>
+
+  <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-gary-the-snail-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="{{'NICKNAME' | lang}}" [(ngModel)]="current_user.nic_name">
+  </ion-item>
+
+  <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-male-user-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="{{'FULLNAME' | lang}}"
+    [(ngModel)]="current_user.first_name1">
+  </ion-item>
+
+  <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-birth-date-100.png" class="img_left">
+    <!-- <input item-end class="input_pet" type="text" placeholder="mm / dd/ yyyy" readonly [(ngModel)]="current_user.dob"> -->
+    <ion-datetime item-end placeholder="{{'DOB' | lang}}" class="input_pet" [max]="Max"
+    [(ngModel)]="current_user.dob1"></ion-datetime>
+  </ion-item>
+
+  <ion-item no-lines>
+    <ion-label style="font-size: 15px;color: #231f20;letter-spacing: 0;">{{'USERMYREALNAMEINPOST' | lang}}</ion-label>
+    <ion-toggle color="primary" [(ngModel)]="current_user.isshow"></ion-toggle>
+  </ion-item>
+
+
+</div>
+<div>
+  <ion-fab right top>
+    <button ion-fab color="vibrant" (click)="update_account()">
+      <img src="assets/imgs/new/icons8-ok-100.png">
+    </button>
+  </ion-fab>
+</div>
+
+</ion-content>

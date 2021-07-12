@@ -1,0 +1,74 @@
+<!--
+  Generated template for the FriendListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'FRIENDS' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-12>
+        <div no-padding>
+          <ion-segment [(ngModel)]="select_type">
+            <ion-segment-button value="mybuddies">
+              {{'MYBUDDI' | lang}}
+            </ion-segment-button>
+            <ion-segment-button value="inbuddies">
+              {{'INCOMBUDD' | lang}}
+            </ion-segment-button>
+          </ion-segment>
+      </div>
+
+<div [ngSwitch]="select_type">
+  <ion-list *ngSwitchCase="'mybuddies'">
+    <ion-item-sliding *ngFor="let b of buddies;let i = index">
+    <ion-item (click)="detail(b)">
+      <ion-avatar item-start>
+        <img [src]="b.profile">
+      </ion-avatar>
+      <h2 style="text-transform: capitalize;">{{b.first_name}} {{b.last_name}}</h2>
+      <p>{{b.dob}}</p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="remove_buddies(b)">
+        <ion-icon name="trash"></ion-icon>
+        {{'REMOVE' | lang}}
+      </button>
+      <button ion-button color="primary" (click)="chat(b)">
+        <ion-icon name="chatboxes"></ion-icon>
+        {{'CHAT' | lang}}
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-row *ngIf="buddies.length == 0" margin-top>
+    <ion-col col-12 text-center><span>{{'NOBUDDEHERE'| lang}}</span></ion-col>
+  </ion-row>
+
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'inbuddies'">
+      <ion-item *ngFor="let f of incomingFriends">
+      <ion-avatar item-start>
+      <img [src]="f.profile">
+      </ion-avatar>
+    <h2>{{f.nic_name}} {{f.last_name}}</h2>
+    <p>{{f.dob}}</p>
+    <button ion-button  item-end (click)="in_accept(f)">Accept</button>
+    <button ion-button  item-end color="danger" (click)="in_reject(f)">Reject</button>
+  </ion-item>
+  <ion-row *ngIf="incomingFriends.length == 0" margin-top>
+    <ion-col col-12 text-center><span>{{'NOFRIENDREQ'| lang}}</span></ion-col>
+  </ion-row>
+  </ion-list>
+  </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

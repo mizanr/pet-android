@@ -1,0 +1,34 @@
+<ion-header> 
+  <ion-navbar color="primary">
+    <ion-buttons start (click)="close()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="ios-arrow-dropleft-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Select Photo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-item no-lines>
+    <button clear ion-button icon-only item-end color="dark" (click)="ImagebyCamera()">
+      <ion-icon name="md-camera"></ion-icon>
+    </button>
+    <!-- <button ion-button small item-end color="vibrant" (click)="backtopost()"
+    [disabled]="!sel_value">
+      Done
+    </button>  -->
+  </ion-item>
+
+  <ion-grid margin-top>
+    <ion-row align-items-center>
+      <ion-col col-4 *ngFor="let val of all_data;let i=index" class="main-col" (click)="select_img_video(val,i)">
+        <img [src]="val?.thumb" *ngIf="val?.type=='Image'" class="img-css">
+        <img [src]="val?.thumb" *ngIf="val?.type=='Video'" class="img-css">
+        <!-- <img src="https://www.friendmypet.com/img/thumbnail.png" class="img-css"> -->
+        <img src="../../assets/imgs/check.png" class="checked-img" *ngIf="val?.isChecked">
+        <ion-icon ios="ios-play" md="md-play" class="play-btn" *ngIf="val?.type=='Video'"></ion-icon>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

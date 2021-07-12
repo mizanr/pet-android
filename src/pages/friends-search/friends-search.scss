@@ -1,0 +1,82 @@
+page-friends-search {
+    .toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    .block {
+    //     width: 100%;
+    //     padding-top: 20px;
+    //     background-color: white;
+    //     border-radius: 25px;
+    //     box-shadow: 1px 1px 7px #e3e3e3;
+            width: 100%;
+            background-color: white;
+            border-radius: 0;
+            box-shadow: 0px 4px 0 #f1f1f1;
+            padding: 10px;
+
+        .text-input-ios {
+            margin: 13px 8px 11px 15px !important;
+        }
+
+        .text-input-md {
+            margin: 13px 8px 11px 15px !important;
+        }
+    }
+
+    .listing {
+        ion-item {
+            // width: 100%;
+            // background-color: white;
+            // height: 80px;
+            // border-radius: 15px;
+            // -webkit-box-shadow: 1px 1px 10px #f7f7f7;
+            // box-shadow: 1px 1px 7px #e3e3e3;
+            width: 100%;
+            background-color: white;
+            height: auto;
+            border-bottom: 2px solid #f1f1f1;
+            border-radius: 0;
+        }
+
+        .item-inner{
+            border-bottom: 0 !important;
+        }
+    }
+    .avtar_item{
+        img {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border: 1px solid #a64686;
+            padding: 1px;
+        }
+    }
+
+    .new_search.item.item-block.item-ios.item-input {
+        margin: 0;
+        border-radius: 30px !important;
+        border: 1px solid #bcbdc0 !important;
+        box-shadow: none !important;
+    }
+
+    .new_search{
+        button{
+            border-radius: 30px;
+            background: #e7e7e8;
+            height: 36px;
+            width: 36px;
+            padding: 0;
+            margin: 0 !important;
+        }
+    }
+
+    button.btn_view {
+        // height: 38px !important;
+        // width: 90px;
+        // font-size: 18px !important;
+        // border: 1px solid #bcbdc0;
+    }
+}

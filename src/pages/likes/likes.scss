@@ -1,0 +1,14 @@
+page-likes {
+    h2{
+        text-transform: capitalize;
+    }
+
+    .image-cnt {
+        padding-left:8px !important;
+        img {
+            width: 55px !important;
+            height: 55px !important;
+            object-fit: cover !important;
+        }
+    }
+}

@@ -1,0 +1,92 @@
+<!--
+  Generated template for the AdCampaignPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Vendor (Ads Campaign)</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding>
+        <!-- <img src="../../assets/imgs/details-image.jpg" alt="">
+        <img [src]="wallImage" alt="" *ngIf="wallImage">
+      <img src="../../assets/imgs/profile/add.png" alt="" class="edit2"/> -->
+      </ion-col>
+
+      <ion-col text-center col-12 (click)="getProfileImage()" text-center class="user-img">
+      <!-- <img src="../../assets/imgs/pet-profile.png" alt="" > -->
+      <img [src]="auth?.getUserDetails()?.company_logo" class="user" >
+
+    </ion-col>
+  </ion-row>
+<!--
+  <ion-row >
+
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+    <h3>{{auth.getUserDetails().company_name}}</h3>
+  <p *ngIf="auth.getUserDetails().address">{{auth.getUserDetails().address}}</p>
+  <p *ngIf="!auth.getUserDetails().address">{{'NOLOCTION' | lang}}</p>
+  </div>
+
+<div *ngFor="let l of lists" class="main-div" padding-vertical 
+(click)="details(l);$event.stopPropagation();">
+  <img [src]="l?.image" class="banner-img">
+  <button ion-button clear color="light" (click)="action(l);$event.stopPropagation();">
+    <ion-icon name="more"></ion-icon>
+  </button>
+<br>
+<br>
+   <ion-row padding-horizontal>
+     <ion-col col-6 no-padding>
+       <p>Duration:<span class="text-right">{{l.duration}}</span></p>
+     </ion-col>
+     <ion-col col-6 no-padding>
+      <p>No of Click(s):<span class="text-right">{{l.click_count}}</span></p>
+    </ion-col>
+   </ion-row>
+
+   <ion-row padding-horizontal>
+    <ion-col col-6 no-padding>
+      <p>Cost Per Click:<span class="text-right">{{l.cost_per_click}}</span></p>
+    </ion-col>
+    <ion-col col-6 no-padding>
+     <p>Days Left:<span class="text-right">{{l.day_left}}</span></p>
+   </ion-col>
+  </ion-row>
+
+  <ion-row padding-horizontal>
+    <ion-col col-6 no-padding>
+      <p>Amount Spent:<span class="text-right">{{l.projected_cost}}</span></p>
+    </ion-col>
+    <ion-col col-6 no-padding>
+     <p>Audience Reach:<span class="text-right">{{l.reach_count}}</span></p>
+   </ion-col>
+  </ion-row>
+
+</div>
+<div class="noDatadiv2" *ngIf="lists.length==0">
+  <ion-icon name="ios-search-outline"></ion-icon>
+  <p>No data found!</p>
+</div>
+</div>
+
+<ion-fab right top>
+  <button ion-fab color="vibrant" (click)="create()">
+    <img src="assets/imgs/new/plus.png" style="width: 30px;">
+  </button>
+</ion-fab>
+
+</ion-content>

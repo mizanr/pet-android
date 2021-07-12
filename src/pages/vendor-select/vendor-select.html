@@ -1,0 +1,120 @@
+<!--
+  Generated template for the VendorSelectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-padding>
+  <ion-grid no-padding  class="img-content">
+    <ion-row class="logo">
+      <ion-col text-center>
+        <img src="../../assets/imgs/logo.png">
+      </ion-col>
+    </ion-row>
+
+    <div class="top">
+      <ion-row class="t1">
+        <ion-col text-center class="headings">
+         <h3>{{'YOURAREVENDOR'| lang}}</h3>
+          <p>{{'WHATKINDOFVENDOR' | lang}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row justify-content-center>
+        <ion-col text-center col-4 (click)="vender_type('Groomer')">
+            <div class="block">
+              <div class="round">
+                 <img src="../../assets/imgs/new/pet1.png" />
+              </div>
+                  <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+                    {{'GROOMER' | lang}}
+                </button>
+            </div>
+        </ion-col>
+
+        <ion-col col-4 (click)="vender_type('Vet')">
+          <div class="block">
+            <div class="round">
+              <img src="../../assets/imgs/new/pet2.png" />
+           </div>
+              <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+              {{'VET'|lang}} 
+            </button>
+          </div>
+        </ion-col>
+
+        <ion-col text-center col-4 (click)="vender_type('Sitter')">
+            <div class="block">
+              <div class="round">
+                <img src="../../assets/imgs/new/pet3.png" />
+             </div>
+                <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+                {{'SITTER' | lang}} 
+              </button>
+            </div>
+        </ion-col>
+
+        <ion-col text-center col-4 (click)="vender_type('Shelter')">
+          <div class="block">
+            <div class="round">
+              <img src="../../assets/imgs/new/pet4.png" />
+           </div>
+              <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+              {{'SHELTER' | lang}} 
+            </button>
+          </div>
+      </ion-col>
+
+      <ion-col text-center col-4 (click)="vender_type('Retail')">
+        <div class="block">
+          <div class="round">
+             <img src="../../assets/imgs/new/pet5.png" />
+          </div>
+              <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+                {{'RETAIL' | lang}}
+            </button>
+        </div>
+    </ion-col>
+
+    <ion-col col-4 (click)="vender_type('Walker')">
+      <div class="block">
+        <div class="round">
+          <img src="../../assets/imgs/new/pet6.png" />
+       </div>
+          <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+          {{'WALKER'| lang}} 
+        </button>
+      </div>
+    </ion-col>
+
+    <ion-col text-center col-4 (click)="vender_type('Other')">
+      <div class="block">
+        <div class="round">
+          <img src="../../assets/imgs/new/pet7.png" />
+       </div>
+          <button ion-button icon-only clear color="primary" class="btn_pet_vendor">
+          {{'OTHER'| lang}} 
+        </button>
+      </div>
+  </ion-col>
+
+    </ion-row>
+
+    </div>
+
+  </ion-grid>
+
+        <ion-fab left bottom *ngIf="!keyboard.isVisible">
+          <button ion-fab color="primary" (click)="back()">
+            <img src="assets/imgs/new/icons8-backt-page-50.png">
+          </button>
+        </ion-fab>
+
+        <ion-fab right bottom *ngIf="!keyboard.isVisible">
+          <button ion-fab color="primary"  (click)="next()">
+            <img src="assets/imgs/new/icons8-next-page-50.png">
+          </button>
+        </ion-fab>
+
+
+</ion-content>

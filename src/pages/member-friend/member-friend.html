@@ -1,0 +1,46 @@
+<!--
+  Generated template for the MemberFriendPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'MEMBERPROFILFRIEND' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-item no-lines padding-horizontal align-items-center>
+    <ion-avatar item-start>
+      <img [src]="User?.profile">
+    </ion-avatar>
+    <div text-center class="login_text">
+      <h3>{{User.first_name}}</h3>
+    <p *ngIf="User.address">{{User.address}}</p>
+    <p *ngIf="!User.address">{{'NOLOCTION'| lang}}</p>
+    </div>
+  </ion-item>
+    <p class="heading">
+      {{buddies.length}} {{'FRIENDCOMMON'| lang}}
+    </p>
+
+
+    <ion-item no-lines class="item_edit" *ngFor="let p of buddies;let i=index" (click)="userinfo(p)">
+      <img item-start [src]="p.profile" class="img_left">
+      <h3 text-capitalize>{{p.first_name}}</h3>
+      <!-- <p text-capitalize><span *ngIf="p.gender">{{p.gender}}</span></p> -->
+
+      <p *ngIf="p.address">{{p.address}}</p>
+      <p *ngIf="!p.address">{{'NOLOCTION' | lang}}</p>
+      <p *ngIf="p.gender">{{p.gender}}</p>
+
+
+        <!-- <span  *ngIf="p.gender&&p.breed">,</span> {{p.breed}}</p> -->
+    </ion-item>
+  
+    <div class="noDatadiv2" *ngIf="buddies.length==0">
+      <ion-icon name="ios-search-outline"></ion-icon>
+      <p>{{'NOFREIENDHERE' | lang}}</p>
+    </div>
+</ion-content>

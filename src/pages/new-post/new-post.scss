@@ -1,0 +1,183 @@
+page-new-post {   
+
+    .col{
+        padding: 0 !important;
+    }
+
+    textarea{
+        width: 100%;
+        border:none;
+        // height: 85px !important;
+    }
+
+    .co{
+       margin-left:16px;
+       margin-top:8px;
+       position:relative;
+       height:70px;
+       width:60px;
+       border-radius:8px;
+       overflow: hidden;
+       img{
+           height:100%;
+           width:100%;
+           object-fit: cover;
+       }
+   }
+
+	.toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    ion-content {
+       font-size: 14pt;
+    }
+    .bx{
+        background-color: transparent !important;
+        padding: 0 !important;
+    }
+    .bx p {
+        margin: 0;
+        font-size: 12px;
+        color: #575757;
+        white-space: normal;
+    }
+    .bx span {
+        font-size: unset !important;
+        // color: #1e1e1e !important;
+        // font-weight: 500;
+    }
+    .bx h3{
+        text-transform: capitalize;
+    }
+    .bx button {
+      //  color: white !important;
+    }
+    .feed_content.row {
+        display: flex;
+        align-items: center;
+    }
+    .circle {
+        height: 50px !important;
+        width: 50px !important;
+        border-radius: 50%;
+        display: inline-block;
+        overflow: hidden;
+        // -webkit-box-shadow: 0px 0px 10px #ccc;
+        // box-shadow: 0 1px 16px #5e5e5e99;
+        border: 1px solid #a64686;
+        padding: 1px;
+       // margin-bottom: 5px;
+        &.active {
+            border: 3px solid color($colors, primary);
+            position: relative;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover !important;
+        }
+    }
+    .feed_content{
+        img {
+            // height: 100%;
+            // width: 100%;
+            object-fit: contain;
+            object-position: center;
+            vertical-align: middle;
+            border-radius: 50%;
+
+        }
+
+        span{
+            //font-size: 20px;
+        }
+    }
+
+    .block {
+        width: 100%;
+        background-color: white;
+        border-radius: 10px;
+        //box-shadow: 1px 1px 7px #e3e3e3;
+        margin: 20px 0 10px;
+       // border: 1px solid #e4e4e4;
+        padding: 1px;
+    }
+
+    .feed-img {
+        button{
+            position: absolute;
+            float: right;
+            top: -15px;
+            right: -16px;
+            font-size: larger;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .feed-vid{
+        h4{
+            position: absolute;
+            top: 20px;
+        }
+        .play-btn{
+                position: absolute;
+                top: 50%;
+                left: 40%;
+                transform: translate( -50%, -50% );
+                z-index: 5;
+                color: white;
+                font-size: xx-large;
+                transform: translateY(-50%);
+        }
+        .close-btn{
+            position: absolute;
+            float: right;
+            top: -17px;
+            right: -23px;
+            font-size: x-large;
+        }
+        // button{
+        //     position: absolute;
+        //     left: 60px;
+        //     top: -5px;
+        // }
+        .image{
+           height:100%;
+           width:100%;
+           object-fit: cover;
+       }
+    }
+    .feed-vid{
+        h4{
+            position: absolute;
+            top: 20px;
+        }
+        ion-icon{
+                position: absolute;
+                top: 50%;
+                left: 75px;
+                color: white;
+                font-size: xx-large;
+                transform: translateY(-50%);
+        }
+    }
+
+    .vid{
+        width: 100%;
+    }
+    .bx2 {
+        //padding-left: 8px;
+        .item-inner {
+            border-bottom: none !important;
+            padding: 0 !important;
+        }
+    }
+    .img {
+        width: 100%;
+    }
+}

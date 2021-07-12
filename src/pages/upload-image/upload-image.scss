@@ -1,0 +1,25 @@
+page-upload-image {
+    .border_bx {
+        position: absolute;
+        height: 90%;
+        width: 95%;
+        top: 4.5%;
+        left: 2.5%;
+        background: transparent;
+        border: 2px dashed #fff;
+        border-radius: 10px;
+    }
+    .photo-upload {
+        position: relative;
+    }
+     .content {
+        background-color: #231f20 !important;
+    }
+    .img_upload img {
+        height: 70px;
+        width: auto;
+        object-fit: cover;
+    }
+
+
+}

@@ -1,0 +1,189 @@
+page-chatdetails {
+
+    .toolbar-title-ios {
+        text-align: initial !important;
+    }
+
+    .toolbar-title-md {
+        text-align: initial !important;
+    }
+
+    .after_1{
+        //float: right !important;
+
+        .item-inner{
+               // background: #ebebeb !important;
+        }
+    }
+
+    .toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    .item {
+        position: relative;
+        padding: 0px;
+       // min-height: 70px;
+        box-shadow: 1px 1px 7px #e3e3e3 !important;
+        border-radius: 18px;
+    }
+    .user_img img {
+        height: auto;
+        width: 45px;
+        border-radius: 50%;
+    }
+    .user_img {
+            text-align: center;
+            border-radius: 50%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+    }
+
+    .user_img_send {
+            text-align: center;
+            border-radius: 50% !important;
+            -o-object-fit: cover;
+            object-fit: cover;
+            width: 50px;
+            height: 40px;
+            object-fit: cover;
+    }
+
+
+    .user .row {
+        align-items: center;
+        justify-content: center;
+        padding: 10px 10px 0;
+    }
+    .heading_int {
+        font-size: 17px !important;
+    }
+    .user .item-inner {
+        padding: 0 2px !important;
+        margin: 0px 0 0;
+       // background: #fff;
+        border-radius: 10px;
+
+    }
+    .dat {
+        overflow: inherit;
+        font-size: 16px !important;
+        line-height: 24px;
+        text-overflow: inherit;
+        color: #000; 
+        margin: 0px 0 0px;
+    }
+    .rate p {
+        color: #81007f;
+    }
+    .label {
+        text-overflow: unset;
+        white-space: normal;
+        margin: 0px !important;
+    }
+    .rate {
+        position: absolute !important;
+        right: 25px !important;
+        bottom: 4px;
+    }
+    .rate p {
+        font-size: 10px;
+    }
+    .message input {
+        background: #e7e7e8;
+        min-height: 55px;
+        padding: 0 20px;
+        margin: 0;
+        width: 100%;
+        font-size: 16px;
+    }
+    .message .item {
+        border-radius: 50px;
+        min-height: 40px;
+        border: none;
+        background: #e7e7e8;
+        box-shadow: none !important;
+    }
+    .message {
+        //position: fixed;
+        border: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 50px;
+        overflow: hidden;
+        margin: 3px 0;
+        padding: 8px !important;
+
+        .item-inner {
+            padding-right: 0 !important;
+            border-bottom: 0.55px solid #c8c7cc;
+            border-radius: 50px;
+        }
+
+        textarea {
+          border: unset;
+          padding: 15px 8px 15px 25px !important;
+          background: #e7e7e8;
+          width: 95%;
+          min-height: 40px;
+          max-height: 180px;
+          margin-left: 10px;
+      }
+    }
+
+    .btn_plus {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+    }
+
+    .message img {
+        position: relative;
+        right: 10px;
+        bottom: -2px;
+        margin: 0;
+        width: 40px;
+        height: auto;
+    }
+    .toolbar-ios ion-title {
+        //@warn: auto;
+        text-transform: capitalize;
+    }
+    ion-item.after_1.item.item-block.item-ios {
+        text-align: right;
+        padding: 8px;
+        background: #e7e7e8;
+    }
+    .item h3 {
+        font-weight: 600 !important;
+        font-size: 20px !important;
+        font-family: 'Roboto' !important;
+    }
+    ion-item.after_2.item.item-block.item-ios {
+        background: #f494be;
+        padding: 10px;
+    }
+    .ng-valid.ng-dirty.ng-touched {
+      padding: 15px 5px 15px 25px !important;
+      width: 99%;
+      min-height: 40px;
+      max-height: 180px;
+  }
+
+  .fotr-btn {
+      bottom: 0 !important;
+  }
+
+  .setmargin{
+
+    .scroll-content{
+        margin-bottom:100px !important;
+    }
+    .fixed-content{
+        margin-bottom:100px !important;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+<!--
+  Generated template for the SignUpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Sign Up</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-grid class="block block_1">
+    <ion-row>
+
+      <ion-col col-12 text-center>
+        <img src="../../assets/imgs/logo.png" alt="" >
+      </ion-col>
+
+      <div text-center class="login_text">
+
+        <h3>{{'SOYOUAREPETLOVER' | lang}}</h3>
+        <p>{{'WEAREDONE' | lang}}</p>
+      
+      </div>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="{{'FNAME' | lang}}" [(ngModel)]="data.fname" ></ion-input>
+         </ion-item>
+      </ion-col>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="{{'LNAME' | lang}}"  [(ngModel)]="data.lname"></ion-input>
+         </ion-item>
+      </ion-col>
+
+      <ion-col col-12 text-center *ngIf="login_type==1">
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="{{'NICKNAME' | lang}}"  [(ngModel)]="data.nick_name"></ion-input>
+         </ion-item>
+      </ion-col>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="emil" placeholder="{{'EMAIL' | lang}}"  [(ngModel)]="data.email"></ion-input>
+         </ion-item>
+      </ion-col>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="password" placeholder="{{'PASSWORD' | lang}}"  [(ngModel)]="data.password"></ion-input>
+         </ion-item>
+      </ion-col>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="password" placeholder="{{'CPASSWORD' | lang}}" [(ngModel)]="data.cpassword" ></ion-input>
+         </ion-item>
+      </ion-col>
+      <ion-col col-12 text-center (click)="signup()">
+        <button ion-button full round >
+         {{'SIGNUP' | lang}}
+        </button>
+      </ion-col>
+
+      <ion-col col-12 text-center (click)="loging()">
+        <button ion-button full clear style="font-size:14px;">
+          {{'DOYOUALREADY' | lang}}
+        </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab right bottom *ngIf="!keyboard.isVisible">
+    <button ion-fab color="vibrant">
+      <img src="assets/imgs/new/icons8-ok-100.png">
+    </button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,140 @@
+<!--
+  Generated template for the AddpetsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Add Pet</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+        <img src="../../assets/imgs/details-image.jpg" alt="" *ngIf="wallImage == ''">
+        <img [src]="wallImage" alt="" *ngIf="wallImage">     
+
+      <!-- <img src="../../assets/imgs/profile/add.png" alt="" class="edit2"/> -->
+      </ion-col>
+
+      <ion-col text-center col-12 (click)="getProfileImage()" text-center class="user-img">
+      <img src="../../assets/imgs/pet-profile.png" alt="" class="user" *ngIf="petImage == ''"/>
+      <img [src]="petImage" alt="" class="user" *ngIf="petImage"/>
+      <!-- <img src="../../assets/imgs/profile/add.png" alt="" class="edit"/> -->
+    </ion-col>
+  </ion-row>
+<!-- 
+  <ion-row >
+    
+
+  </ion-row> -->
+
+  <div class="block block_1">
+  <ion-row class="row_in"> 
+          
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" [(ngModel)]="name"  placeholder="Full name"></ion-input>
+      </ion-item>
+    </ion-col>
+    
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-select  interface="action-sheet" [(ngModel)]="gender"
+        placeholder="Gender">
+          <ion-option value="Male">Male</ion-option>
+          <ion-option value="Female">Female</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-datetime  placeholder="Date of birth (Optional)" [(ngModel)]="dob" [max]="date_1"></ion-datetime>
+        <button ion-button clear icon-only color="primary" item-end 
+        (click)="remove_dob()" *ngIf="dob">
+            <ion-icon name="close-circle"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-col>
+    
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-select  interface="action-sheet" placeholder="Race" 
+        (ionChange)="mergeup(raceid,'race')"
+        [(ngModel)]="raceid">
+          <ion-option [value]="r.id" *ngFor="let r of race">{{r.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding *ngIf="breed.length>0">
+      <ion-item no-lines>
+        <ion-select  interface="action-sheet" [(ngModel)]="breedid"
+        placeholder="Breed">
+          <ion-option [value]="b.id" *ngFor="let b of breed">{{b.breed_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-select  interface="action-sheet" 
+        (ionChange)="mergeup(coatid,'coat')"   
+        [(ngModel)]="coatid"
+        placeholder="Coat">
+          <ion-option [value]="c.id" *ngFor="let c of coat">{{c.coat_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding *ngIf="color.length>0">
+      <ion-item no-lines>
+        <ion-select  interface="action-sheet" 
+        [(ngModel)]="colorid"        
+        placeholder="Color">
+          <ion-option [value]="c.id" *ngFor="let c of color">{{c.color_name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-select  interface="action-sheet"
+        [(ngModel)]="bihaviorid"
+        placeholder="Behavior">
+          <ion-option [value]="b.id" *ngFor="let b of bihavior">{{b.behaviour}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-select interface="action-sheet"
+        [(ngModel)]="sizeid"        
+        placeholder="Size">
+          <ion-option [value]="s.id" *ngFor="let s of size">{{s.size}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="number" [(ngModel)]="weight" 
+        placeholder="Weight (Optional)"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <button ion-button full round (click)="addPet()">
+       Save
+      </button>
+    </ion-col>
+  </ion-row>
+  </div>
+
+</ion-content>

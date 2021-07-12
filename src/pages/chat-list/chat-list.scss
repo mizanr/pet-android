@@ -1,0 +1,218 @@
+page-chat-list {
+
+    .scroll-content {
+        margin-bottom: 0px !important;
+    }
+
+    .badges-content {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+    // .img-loaded + ion-spinner {
+    //     display:none;
+    // }
+
+    // .toolbar-ios-primary .toolbar-background-ios {
+    //     background: #81007f;
+    //     border-radius: 0px 0px 12px 12px;
+    // }
+
+    // .user_img img , ionic-image-cache{
+    //     height: 45px;
+    //     width: 45px;
+    //     border-radius: 50%;
+    // }
+    // .user_img {
+    //     text-align: center;
+    // }
+    // .user .row {
+    //     align-items: center;
+    //     justify-content: center;
+    //     padding: 10px 10px 0;
+    // }
+    // .heading_int {
+    //     font-size: 17px !important;
+    //     text-transform: capitalize;
+    // }
+    // .user .item-inner {
+    //     padding: 0 5px !important;
+    //     border-bottom: 0.8px solid #ececec !important;
+    //     height: 55px;
+    //     margin: 0px 0 0;
+    // }
+    // .rate {
+    //     position: absolute !important;
+    //     top: 10px !important;
+    //     right: 16px !important;
+    // }
+    // .rate p {
+    //     font-size: 10px;
+    // }
+    // .searchbar {
+    //     background: transparent;
+    //     border: none;
+    //     padding: 20px 20px 0;
+    //     min-height: 50px;
+    // }
+    // .searchbar-input {
+    //     background: #fcf7f7 !important;
+    //     height: 35px !important;
+    // }
+    // .searchbar-search-icon {
+    //     top: 11px !important;
+    // }
+    // .list {
+    //     margin: 8px;
+    // }
+    // .searchbar {
+    //     background: transparent;
+    //     border: none;
+    //     padding: 20px 20px 0;
+    //     min-height: 50px;
+    //    // margin-top: 40px;
+    // }
+
+
+    // .listing {
+    //     ion-item {
+    //         // width: 100%;
+    //         // background-color: white;
+    //         // height: 80px;
+    //         // border-radius: 15px;
+    //         // -webkit-box-shadow: 1px 1px 10px #f7f7f7;
+    //         // box-shadow: 1px 1px 7px #e3e3e3;
+    //         width: 100%;
+    //         background-color: white;
+    //         height: auto;
+    //         border-bottom: 2px solid #f1f1f1;
+    //         border-radius: 0;
+    //     }
+
+    //     .item-inner{
+    //         border-bottom: 0 !important;
+    //     }
+    // }
+    // .avtar_item{
+    //     img {
+    //         border-radius: 50%;
+    //         overflow: hidden;
+    //         width: 50px;
+    //         height: 50px;
+    //         object-fit: cover;
+    //         border: 1px solid #bcbdc0;
+    //     }
+    // }
+
+    // .new_search.item.item-block.item-ios.item-input {
+    //     margin: 0;
+    //     border-radius: 30px !important;
+    //     border: 1px solid #bcbdc0 !important;
+    //     box-shadow: none !important;
+    // }
+
+    // .new_search{
+    //     button{
+    //         border-radius: 30px;
+    //         background: #e7e7e8;
+    //         height: 36px;
+    //         width: 36px;
+    //         padding: 0;
+    //         margin: 0 !important;
+    //     }
+    // }
+
+    // button.btn_view {
+    //     height: 38px !important;
+    //     width: 90px;
+    //     font-size: 18px !important;
+    //     border: 1px solid #bcbdc0;
+    // }
+
+
+    .toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    .block {
+    //     width: 100%;
+    //     padding-top: 20px;
+    //     background-color: white;
+    //     border-radius: 25px;
+    //     box-shadow: 1px 1px 7px #e3e3e3;
+            width: 100%;
+            background-color: white;
+            border-radius: 0;
+            box-shadow: 0px 4px 0 #f1f1f1;
+            padding: 10px;
+
+        .text-input-ios {
+            margin: 13px 8px 11px 15px !important;
+        }
+
+        .text-input-md {
+            margin: 13px 8px 11px 15px !important;
+        }
+    }
+
+    .listing {
+        ion-item {
+            // width: 100%;
+            // background-color: white;
+            // height: 80px;
+            // border-radius: 15px;
+            // -webkit-box-shadow: 1px 1px 10px #f7f7f7;
+            // box-shadow: 1px 1px 7px #e3e3e3;
+            width: 100%;
+            background-color: white;
+            height: auto;
+            border-bottom: 2px solid #f1f1f1;
+            border-radius: 0;
+        }
+
+        .item-inner{
+            border-bottom: 0 !important;
+        }
+    }
+    .avtar_item{
+        img {
+            border-radius: 50%;
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border: 1px solid #a64686;
+            padding: 1px;
+        }
+    }
+
+    .new_search.item.item-block.item-ios.item-input {
+        margin: 0;
+        border-radius: 30px !important;
+        border: 1px solid #bcbdc0 !important;
+        box-shadow: none !important;
+    }
+
+    .new_search{
+        button{
+            border-radius: 30px;
+            background: #e7e7e8;
+            height: 36px;
+            width: 36px;
+            padding: 0;
+            margin: 0 !important;
+        }
+    }
+
+    button.btn_view {
+        height: 38px !important;
+        width: 90px;
+        font-size: 18px !important;
+        border: 1px solid #bcbdc0;
+    }
+    h2{
+      font-family: 'Helvetica' !important;
+    }
+
+}

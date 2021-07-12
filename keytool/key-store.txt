@@ -1,0 +1,16 @@
+
+password :- 123456
+
+
+ionic cordova build --release android --prod
+1. jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks app-release-unsigned.apk FMP
+2. zipalign -v 4 app-release-unsigned.apk FMP.apk
+
+
+
+other way : -
+1. ionic cordova build --release android --prod 
+
+2. jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore "keystore\my-release-key.jks" platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk FMP
+
+3. zipalign -v 4 platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk FMP.apk

@@ -1,0 +1,136 @@
+<!--
+  Generated template for the SharePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+  <ion-navbar color="primary">
+  	 <ion-buttons end (click)="close()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Share On</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content padding>
+
+
+
+
+  <div class="login_form">
+    <button ion-button icon-only (click)="closemodal()" small clear class="btn_close">
+      <ion-icon name="close"></ion-icon>
+    </button>
+	<ion-grid *ngIf="ownerinfo" no-padding>
+		<ion-row padding-horizontal>
+			<ion-col>
+				<ion-item no-padding class="bx">
+      <ion-avatar item-start>
+        <div class="circle" [ngClass]="active">
+        <img [src]="ownerinfo?.profile" alt="">
+        </div>
+      </ion-avatar>
+      <h2>{{ownerinfo.first_name}} {{ownerinfo.last_name}}</h2>
+      <p *ngIf="ownerinfo.city != ''">{{ownerinfo.city}},{{ownerinfo.state}}</p>
+    </ion-item>
+	</ion-col>
+		</ion-row>
+
+		<ion-row class="block">
+      <ion-col margin-horizontal>
+
+       <!--  <ion-textarea placeholder="Say somthing about this.."
+      name="note" autocomplete="on" autocorrect="on" rows="7"
+      [(ngModel)]="desc"></ion-textarea> -->
+
+        <textarea rows="5" [(ngModel)]="desc"
+        placeholder="What do you want to say?" >
+       </textarea>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row padding-horizontal>
+      <ion-col col-12  text-right>
+        <button small ion-button color="primary">Share</button>
+      </ion-col>
+    </ion-row>
+
+  <!--  <ion-row>
+    	 <ion-col>
+    		<ion-item>
+			  <ion-label>Share on, Own wall</ion-label>
+			  <ion-checkbox [(ngModel)]="is_wall" (click)="wall_change(is_wall)"></ion-checkbox>
+			</ion-item>
+    	</ion-col> -->
+
+      <!--<ion-col *ngIf="buddies.length > 0">
+         <ion-item>
+        <ion-label>Share on, Friend wall</ion-label>
+        <ion-checkbox [(ngModel)]="is_friend" (click)="friend_wall(is_friend)"></ion-checkbox>
+      </ion-item> -->
+        <!-- <ion-row>
+          <ion-col col-12><strong>Friend's</strong></ion-col>
+            <ion-col col-12 *ngFor="let b of buddies;let i = index" text-capitalize>
+            <ion-item>
+
+              <ion-label>Share on {{b.first_name}} {{b.last_name}} wall</ion-label>
+              <ion-checkbox [(ngModel)]="b.is_check"
+              (click)="friend_wall(b.is_check,i)"></ion-checkbox>
+
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </ion-col> -->
+
+    	<!-- <ion-col *ngIf="petList.length > 0">
+          <ion-col col-12><strong>Pet's</strong></ion-col>
+
+        <ion-row>
+      <ion-col *ngFor="let p of petList;let i=index">
+        <ion-item>
+        <ion-label>Share on {{p.name}} wall</ion-label>
+        <ion-checkbox [(ngModel)]="p.is_pet"
+        (click)="change(p.is_pet,i)"></ion-checkbox>
+      </ion-item>
+      </ion-col>
+        </ion-row>
+
+    	</ion-col>
+    </ion-row>-->
+
+    <!-- <ion-row>
+    	<ion-col col-12 text-center>
+    		<button ion-button full round (click)="share()">Share</button>
+    	</ion-col>
+    </ion-row> -->
+
+
+    <div class="bottom_share">
+      <ion-item no-lines>
+        <img src="assets/imgs/new/test.png" item-start>
+        <h3>Send as Text Message</h3>
+      </ion-item>
+      <ion-item no-lines >
+        <img src="assets/imgs/new/fb.png" item-start>
+        <h3>Share with Facebook</h3>
+      </ion-item>
+      <ion-item no-lines >
+        <img src="assets/imgs/new/twitter.png" item-start>
+        <h3>Share with Twitter</h3>
+      </ion-item>
+      <ion-item no-lines >
+        <img src="assets/imgs/new/insta.png" item-start>
+        <h3>Share with Instagram</h3>
+      </ion-item>
+    </div>
+
+	</ion-grid>
+
+</div>
+</ion-content>

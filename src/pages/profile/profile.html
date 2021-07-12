@@ -1,0 +1,433 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <!-- <ion-buttons end (click)="notification()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title *ngIf="petInfo">{{petInfo.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="petInfo">
+
+  <ion-grid style="background: white;">
+    <ion-row class="user-img">
+      <ion-col text-center col-4>
+        <img [src]="petInfo.profile" alt="" class="user"/>
+        <!-- <img src="../../assets/imgs/profile/edit.png" alt="" class="edit"/> -->
+      </ion-col>
+      <ion-col col-8 padding>
+        <!-- (click)="editpetprofile()" -->
+        <ion-col col-12>
+          <h2 style="font-size: 16px;text-transform: capitalize">Hi,I'm {{petInfo.name}}</h2>
+          <!-- <img src="../../assets/imgs/profile/edit-pencil.png" alt="" style="width: 15px;">
+          <span style="font-size: 14px;">Edit Profile</span> -->
+        </ion-col>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-4 text-center>
+        <button class="btn-act" ion-button round [ngClass]="type == 1?'btn-color-change':''"
+        (click)="change(1)">
+          Barks
+        </button>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <button class="btn-act" ion-button round  [ngClass]="type == 2?'btn-color-change':''"
+        (click)="change(2)">
+          Buddies
+        </button>
+      </ion-col>
+      <ion-col col-4 text-center>
+        <button class="btn-act" ion-button round  [ngClass]="type == 3?'btn-color-change':''"
+        (click)="change(3)">
+          Account
+        </button>
+      </ion-col>
+    </ion-row>  
+  </ion-grid>
+
+  <ion-grid style="border-bottom: 1px solid #81007f;padding: 5px 15px;background: white">
+    <ion-row no-padding>
+     <!-- <ion-col col-2>
+            <ion-avatar item-start>
+              <div class="circle" [ngClass]="active">
+              <img src="../../assets/imgs/pet.png">
+              </div>
+            </ion-avatar>
+       </ion-col> -->
+       <ion-col col-12
+       style="border: 1px solid #e4e4e4;border-radius: 35px;background: #eeeeee;">
+         <ion-textarea rows="" cols="" placeholder="Bark something here…" readonly
+         (click)="addpet()"></ion-textarea>
+         <!-- <button ion-button clear full >
+            Bark something here…
+         </button> -->
+       </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+
+<div *ngIf="type == 1">
+  <ion-grid no-padding *ngFor="let l of petPost;let i=index" 
+  style="border-bottom: 10px solid #f1f1f1;background: white;">
+      
+      <ion-item no-padding class="bx" *ngIf="l.is_your_pet==1">
+        <ion-avatar item-start>
+          <div class="circle" [ngClass]="active">
+          <img [src]="l?.users?.profile">
+          </div>
+        </ion-avatar>
+        <h2>{{l.users.name}}</h2>
+        <p>Posted on {{l.create_date}}</p>
+        <button item-end ion-button clear icon-only 
+        color="light" *ngIf="l.is_first == 0"
+        (click)="ownerActionSheet(l)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+        
+      </ion-item>
+
+      <ion-item no-padding class="bx" *ngIf="l.is_your_pet==0">
+        <ion-avatar item-start>
+          <div class="circle" [ngClass]="active">
+          <img [src]="l?.user_data?.profile">
+          </div>
+        </ion-avatar>
+        <h2>{{l.user_data.first_name}} {{l.user_data.last_name}}</h2>
+        <p>Posted on {{l.create_date}}</p>
+        <button item-end ion-button clear icon-only 
+        color="light" *ngIf="l.is_first == 0"
+        (click)="ownerActionSheet(l)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+        
+      </ion-item>
+  
+      <!-- <ion-col col-12>
+        <p style="margin: 5px 0;">{{l.description}}</p>
+      </ion-col> -->
+
+      <ion-col col-12 text-justify style="padding-left: 10px;">
+        <!-- <p style="margin: 5px 0;">{{f.description}}</p> -->
+        <p *ngIf="l?.description?.length < 100" (click)="read_more(l,i)">
+                        {{l.description}}
+                    </p>
+
+                    <p *ngIf="l?.description?.length > 100 && l?.is_less != 0"
+                      (click)="more_content(l,i)">
+                        {{l.description.substring(0,100)}}
+                        <span class="rd-more">...</span>
+                   
+                    </p>
+                    
+                    <p (click)="read_more(l,i)" *ngIf="l?.is_long && l?.description?.length > 100">
+                    {{l.description}}
+                    </p>
+      </ion-col>
+
+      <!-- <ion-grid *ngIf="l.is_shared == 1" padding> -->
+      
+  
+      <ion-row class="block">
+          <img class="img" [src]="l.image" alt="" (click)="detail(l.id)" />
+          <div class="play">
+          <img class="img" [src]="l.thumbnail" alt="" (click)="detail(l.id)" *ngIf="l.file_type== 'Video'"/>
+          <ion-icon ios="ios-play" md="md-play" (click)="detail(l.id)"
+          *ngIf="l.file_type== 'Video'" class="play-icon"></ion-icon>
+          </div>
+
+
+          <div padding *ngIf="l.is_shared == 1" (click)="detail(l.id)"
+style="border: 1px solid #e8e5e5;margin-bottom: 16px;
+border-radius: 10px;width: 100%;">
+
+<ion-item no-padding class="bx" *ngIf="l.is_shared == 1">
+  <ion-avatar item-start *ngIf="l.shared_feed_data.type == 2">
+    <div class="circle" [ngClass]="active">
+    <img [src]="l?.shared_feed_data?.users?.profile">
+    </div>
+  </ion-avatar>
+  <h2 *ngIf="l.shared_feed_data.type == 2">{{l.shared_feed_data.users.name}}</h2>
+
+  <ion-avatar item-start *ngIf="l.shared_feed_data.type == 1">
+    <div class="circle" [ngClass]="active">
+    <img [src]="l?.shared_feed_data?.user_data?.profile">
+    </div>
+  </ion-avatar>
+  <h2 *ngIf="l.shared_feed_data.type == 1">{{l.shared_feed_data.user_data.first_name}}
+  {{l.shared_feed_data.user_data.last_name}}</h2>
+
+  <p>Posted on {{l.shared_feed_data.create_date}}</p>        
+</ion-item>
+
+<ion-col col-12 text-justify *ngIf="l.is_shared == 1" style="padding-left: 10px;">
+  <!-- <p style="margin: 5px 0;">{{f.description}}</p> -->
+  <p *ngIf="l?.shared_feed_data?.description?.length < 100" (click)="read_more(l.shared_feed_data,i)">
+                  {{l.shared_feed_data.description}}
+              </p>
+
+              <p *ngIf="l?.shared_feed_data?.description?.length > 100 && l?.shared_feed_data?.is_less != 0"
+                (click)="more_content(l.shared_feed_data,i)">
+                  {{l.shared_feed_data.description.substring(0,100)}}
+                  <span class="rd-more">...</span>
+             
+              </p>
+              
+              <p (click)="read_more(l.shared_feed_data,i)" *ngIf="l?.shared_feed_data?.is_long && l?.shared_feed_data?.description?.length > 100">
+              {{l.shared_feed_data.description}}
+              </p>
+</ion-col>
+
+<ion-row class="block" *ngIf="l.is_shared == 1">
+    <img class="img" [src]="l.shared_feed_data.image" alt="" 
+    width="100" height="" />
+
+    <div class="play">
+    <img class="img" [src]="l.shared_feed_data.thumbnail" 
+    width="100" height="100"
+    alt="" 
+    *ngIf="l.shared_feed_data.file_type== 'Video'"/>
+    <ion-icon ios="ios-play" md="md-play" (click)="detail(l.id)"
+    *ngIf="l.shared_feed_data.file_type== 'Video'" class="play-icon"></ion-icon>
+    </div>
+</ion-row>
+</div>
+       
+        <ion-row col-12 class="icons" no-padding>
+          <ion-col col-6 (click)="likes(l.id)" style="justify-content: left;" no-padding>
+
+            <!-- <ion-icon ios="ios-heart-outline" md="ios-heart-outline"></ion-icon> -->
+            <!-- <img src="assets/imgs/pawprint.png" alt="" width="30" /> -->
+            <span style="margin-right: 20px;margin-left: 5px;">Licks {{l.likes}}</span>
+          </ion-col>
+          <!-- (click)="comment(l.id)" -->
+          <ion-col col-6 style="justify-content: flex-end;" no-padding>
+            <!-- <ion-icon ios="ios-chatbubbles-outline" md="ios-chatbubbles-outlinee"></ion-icon> -->
+            <!-- <img src="assets/imgs/dog.png" alt="" width="50" />-->
+
+            <span style="margin-right: 5px;margin-left: 5px;">{{l.comments}}</span>
+            <span>Barks</span> 
+            </ion-col>
+        </ion-row>
+
+         <div class="comment_sec">
+          <ion-row col-12 text-left class="icons icons_2" no-padding>
+          <ion-col col-6 style="justify-content: left;font-weight: bolder;" no-padding 
+          (click)="like_unlike(l)">
+            <img src="assets/imgs/pawprint.png" alt="" width="20" *ngIf="l.is_like == 0" />
+            <img src="assets/imgs/pawprint-active.png" *ngIf="l.is_like == 1" alt="" width="20" />
+
+            <span style="margin-right: 20px;margin-left: 5px;">Licks</span>
+          </ion-col>
+  
+          <ion-col col-6 no-padding style="justify-content: flex-end;font-weight: bolder;" (click)="comment(l.id)">
+            
+            <img src="assets/imgs/dog.png" alt="" width="40" />
+            <!-- <img src="assets/imgs/dog.png" alt="" width="30" />             -->
+            <span style="margin-right: 5px;margin-left: 5px;">Barks</span>
+           </ion-col>
+        </ion-row>
+  
+      </div>
+
+
+  
+        <!-- <ion-item style="padding: 0 16px;" class="bx">
+          <ion-avatar item-start>
+            <div class="circle circle_2" [ngClass]="active">
+            <img src="../../assets/imgs/owner.png">
+            </div>
+          </ion-avatar>
+          <h2>Nick</h2>
+          <p>Posted on 08 Jul 2020, 11:19 PM</p>
+          
+        </ion-item>
+  
+        <ion-item style="padding: 0 16px;" class="bx">
+          <ion-avatar item-start>
+            <div class="circle circle_2" [ngClass]="active">
+            <img src="../../assets/imgs/pet.png">
+            </div>
+          </ion-avatar>
+          <div class="new_div">
+            <input type="text" placeholder="Bark Something..">
+            <button ion-button clear float-right class="btn-send">
+              <img  src="../../assets/imgs/home/send.png" width="25px;">
+            </button>
+          </div>
+        </ion-item> -->
+  
+      </ion-row>  
+    
+  </ion-grid>
+
+  <ion-row *ngIf="petPost.length == 0" margin-top>
+    <ion-col col-12 text-center>No Feed Yet..</ion-col>
+  </ion-row>
+
+      <ion-infinite-scroll no-padding (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading..."
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+</div>
+  <ion-grid *ngIf="type == 2">
+    <ion-row>
+      <ion-col text-left>
+        <h2 style="font-size: 15px;padding: 10px 10px 0;">{{buddies.length}} Friends</h2>
+      </ion-col>
+    </ion-row>
+    <div *ngFor="let b of buddies">
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <ion-avatar item-start>
+              <img [src]="b.profile">
+            </ion-avatar>
+            <h2>{{b.name}}</h2>
+            <p>{{b.race.name}} {{b.coat.coat_name}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row *ngIf="buddies.length == 0">
+      <ion-col text-center>
+        <h6>No buddies here..</h6>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="type == 3">
+    <ion-row>
+      <ion-col text-left>
+        <h2 style="font-size: 15px;padding: 10px 0;">Profile Details</h2>
+      </ion-col>
+    </ion-row>
+    <div>
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Gender</h2>
+            <p>{{petInfo.gender}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Race</h2>
+            <p>{{petInfo.race.name}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Breed</h2>
+            <p>{{petInfo.breed.breed_name}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Color</h2>
+            <p>{{petInfo.color.color_name}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Coat</h2>
+            <p>{{petInfo.coat.coat_name}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Behavior</h2>
+            <p>{{petInfo.behaviour.behaviour}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Size</h2>
+            <p>{{petInfo.size.size}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Weight</h2>
+            <p>{{petInfo.weight}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="avtar_bor">
+        <ion-col col-12>
+          <ion-item no-padding style="">
+            <h2>Date of Birth</h2>
+            <p>{{petInfo.dob | date:'MM-dd-yyyy'}}</p>
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+    </div>
+    <ion-row>
+      <ion-col text-left>
+        <h2 style="font-size: 15px;padding: 10px 0;margin: 0;">Pet Parent</h2>
+      </ion-col>
+    </ion-row>
+
+    <div>
+      <ion-row class="avtar_bor avtar_bor2">
+        <ion-col col-12 (click)="owner_profile()">
+          <ion-item no-padding style="" no-lines>
+            <ion-avatar item-start>
+              <img [src]="petInfo.owner.profile">
+            </ion-avatar>
+            <h2 style="font-size: 16px;text-transform: capitalize">{{petInfo.owner.first_name}} {{petInfo.owner.last_name}}</h2>
+            <!-- <p>Dog, Lahasa Apso</p> -->
+            <!-- <button ion-button round small item-end>View</button> -->
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+</div>
+</ion-content>

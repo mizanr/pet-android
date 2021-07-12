@@ -1,0 +1,87 @@
+<!--
+  Generated template for the VendorLoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'VENDOR'| lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding>
+        <!-- <img src="../../assets/imgs/details-image.jpg" alt="">
+        <img [src]="wallImage" alt="" *ngIf="wallImage">
+      <img src="../../assets/imgs/profile/add.png" alt="" class="edit2"/> -->
+      </ion-col>
+
+      <ion-col text-center col-12 text-center class="user-img">
+      <img [src]="auth?.getUserDetails()?.company_logo" class="user">
+      <!-- <img src="../../assets/imgs/pet-profile.png" alt="" class="user" > -->
+      <!-- <img [src]="petImage" alt="" class="user" *ngIf="petImage"/> -->
+      <!-- <img src="../../assets/imgs/profile/add.png" alt="" class="edit"/> -->
+    </ion-col>
+  </ion-row>
+<!--
+  <ion-row >
+
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+
+    <h3>{{auth.getUserDetails().company_name}}</h3>
+    <p *ngIf="auth.getUserDetails().address">{{auth.getUserDetails().address}}</p>
+    <p *ngIf="!auth.getUserDetails().address">{{'NOLOCTION' | lang}}</p>
+
+  </div>
+
+  <ion-item no-lines (click)="products()">
+    <img item-start src="assets/imgs/new/icons8-product-loading-100.png" class="img_left">
+    <h3>{{'PRODUCT' | lang}}</h3>
+    <button ion-button small clear item-end>
+      <img item-start src="assets/imgs/next.png" class="img_right">
+      </button>
+  </ion-item>
+
+  <ion-item no-lines (click)="services()">
+    <img item-start src="assets/imgs/new/icons8-product-loading-100.png" class="img_left">
+    <h3>{{'SERVICES' | lang}}</h3>
+    <button ion-button small clear item-end>
+      <img item-start src="assets/imgs/next.png" class="img_right">
+      </button>
+  </ion-item>
+
+  <ion-item no-lines (click)="ad()">
+    <img item-start src="assets/imgs/new/icons8-post-ads-100.png" class="img_left">
+    <h3>{{'ADCOM'| lang}}</h3>
+    <button ion-button small clear item-end>
+      <img item-start src="assets/imgs/next.png" class="img_right">
+      </button>
+  </ion-item>
+
+  <ion-item no-lines (click)="settings()">
+    <img item-start src="assets/imgs/new/icons8-business-building-100.png" class="img_left">
+    <h3>{{'ACCOUNTSETTING' | lang}}</h3>
+    <button ion-button small clear item-end>
+      <img item-start src="assets/imgs/next.png" class="img_right">
+      </button>
+  </ion-item>
+
+
+</div>
+
+</ion-content>

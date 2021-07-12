@@ -1,0 +1,47 @@
+<!--
+  Generated template for the UserAccountLocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'ADDRESS' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding 
+    (click)="getwallimage();$event.stopPropagation();">
+      <img [src]="formData?.wall_image" alt="" *ngIf="formData?.wall_image">
+      <img src="../../assets/imgs/image-placeholder.png" alt="" *ngIf="!formData?.wall_image">
+      </ion-col>
+
+      <ion-col text-center col-12 
+      (click)="getProfileImage();$event.stopPropagation();" text-center class="user-img">
+      <img [src]="formData?.profile" class="user" *ngIf="formData?.profile">
+      <img src="../../assets/imgs/dummy_user.png" class="user" *ngIf="!formData?.profile">
+    </ion-col>
+  </ion-row>
+<div class="pet_details2">
+
+  <div text-center class="login_text">
+    <h3>{{formData.company_name}}</h3>
+    <p *ngIf="formData.address">{{formData.address}}</p>
+    <p *ngIf="!formData.address">{{'NOLOCTION' | lang}}</p>
+  </div>
+
+  
+  <ion-item no-lines (click)="OpenAutofillPlaces()">
+    <img item-start src="assets/imgs/new/icons8-address-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="Address" [(ngModel)]="formData.address" readonly>
+  </ion-item>
+</div>
+
+<ion-fab left bottom *ngIf="!keyboard.isVisible">
+  <button ion-fab color="vibrant" (click)="update()">
+    <img src="assets/imgs/new/icons8-ok-100.png">
+  </button>
+</ion-fab>
+</ion-content>

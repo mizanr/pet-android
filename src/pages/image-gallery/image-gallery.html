@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Select Photo/Video</ion-title>
+    <ion-buttons end>
+      <button ion-button small outline color="light" (click)="backtopost()"
+      [disabled]="!sel_value">
+      Done
+    </button> 
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <!-- <ionic-image-cache [src]="this.auth.getUserDetails().profile"></ionic-image-cache> -->
+  <ion-item no-lines>
+    <button clear ion-button icon-only item-end color="dark" (click)="ImagebyCamera()">
+      <ion-icon name="md-camera"></ion-icon>
+    </button>
+    <!-- <button ion-button small item-end color="vibrant" (click)="backtopost()"
+    [disabled]="!sel_value">
+      Done
+    </button>  -->
+  </ion-item>
+
+  <ion-grid margin-top>
+    <ion-row align-items-center>
+      <ion-col col-4 *ngFor="let val of all_data;let i=index" class="main-col" 
+      (click)="select_img_video(val,i)">
+
+        <!-- <img [src]="val?.thumb" *ngIf="val?.type=='Image'" class="img-css">
+        <img [src]="val?.thumb" *ngIf="val?.type=='Video'" class="img-css"> -->
+
+                  <!-- cache image view -->
+        <ionic-image-cache [src]="this.all_data[i].nativeURL" [showPreview]="'false'"
+        *ngIf="val?.type=='Image'" class="img-css"></ionic-image-cache>
+        <img [src]="val?.thumb" *ngIf="val?.type=='Video'" class="video-css">
+
+        <!-- <ionic-image-cache [src]="this.all_data[i].nativeURL" 
+        *ngIf="val?.type=='Video'" class="img-css"></ionic-image-cache> -->
+<!-- android me nahi chal rahi hogi... browser me chal rahi hai.. -->
+
+
+        <!-- <img-loader [src]="val?.thumb" *ngIf="val?.type=='Image'" class="img-css"></img-loader>
+        <img-loader [src]="val?.thumb" *ngIf="val?.type=='Video'" class="img-css"></img-loader> -->
+
+        <!-- <img src="https://www.friendmypet.com/img/thumbnail.png" class="img-css"> -->
+        <img src="../../assets/imgs/check.png" class="checked-img" *ngIf="val?.isChecked">
+        <ion-icon ios="ios-play" md="md-play" class="play-btn" *ngIf="val?.type=='Video'"></ion-icon>  
+      </ion-col>
+    </ion-row>
+
+    <ion-infinite-scroll no-padding (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading..."
+      ></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,233 @@
+page-comment {
+
+    ion-avatar {
+        margin: 5px 14px 10px 0 !important; 
+    }
+
+    .desc {
+        font-size: 13px;
+    }
+
+    .item-ios ion-avatar img{
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+	  .compose {
+		margin-bottom: 1px;
+        width: 100%;
+        left: 0px;
+        background: #dddddd;
+        z-index: 999;
+        padding: 12px;
+        padding-right: 60px;
+        ion-input {
+            position: relative;
+            display: block;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            padding: 0 10px;
+            -ms-flex: 1;
+            width: 100%;
+            border: 1px solid gray;
+            border-radius: 10px;
+        }
+    }
+    
+    .add-media{
+		position: absolute;
+		top: 2px;
+		left: 5px;
+		width: 35px;
+		height: 35px;
+		background:#0081df;
+		border-radius: 50%;
+		line-height: 35px;
+		color: #fff;
+		text-align: center;
+		font-size: 30px;
+    }
+    
+    .send-btn {
+		position: absolute;
+        top: 6px;
+        right: 5px;
+  }
+  
+  .list-content{
+    margin:0 !important;
+  }
+
+  .message input {
+        background: #f4f1f1;
+        min-height: 40px;
+        padding: 0 15px;
+        margin: 0;
+        //color: #ccc;
+        width: 100%;
+        font-size: 13px;
+    }
+    .message .item {
+        min-height: 40px;
+        border: none;
+        background: transparent;
+        box-shadow: none !important;
+    }
+    .message {
+        //position: fixed;
+        // border: 0;
+        // bottom: 0;
+        // width: 100%;
+        // border-radius: 50px;
+        // overflow: hidden;
+      //  margin: 8px 0;
+
+        .item-inner {
+            padding-right: 0 !important;
+            border-bottom: 0.55px solid #c8c7cc;
+            border-radius: 50px;
+        }
+    }
+
+    .btn_plus {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+    }
+   
+    .message img {
+        position: relative;
+        right: 0;
+        bottom: -2px;
+        width: auto;
+        height: 18px;
+    }
+
+    .setmargin{
+
+        .scroll-content{
+            margin-bottom:100px !important;
+        }
+        .fixed-content{
+            margin-bottom:100px !important;
+        }
+      }
+
+    //   .message input {
+    //     background: #e7e7e8;
+    //     min-height: 55px;
+    //     padding: 0 20px;
+    //     margin: 0;
+    //     width: 100%;
+    //     font-size: 16px;
+    // }
+    // .message .item {
+    //     min-height: 40px;
+    //     border: none;
+    //     background: #e7e7e8;
+    //     box-shadow: none !important;
+    // }
+    // .message {
+    //     //position: fixed;
+    //     border: 0;
+    //     bottom: 0;
+    //     width: 100%;
+    //     // border-radius: 50px;
+    //     // overflow: hidden;
+    //    // margin: 3px 0;
+    //     padding: 5px !important;
+
+    //     .item-inner {
+    //         padding-right: 0 !important;
+    //         border-bottom: 0.55px solid #c8c7cc;
+    //         border-radius: 50px;
+    //     }
+
+    //     textarea {
+    //       border: unset;
+    //      // padding: 15px 8px 15px 25px !important;
+    //       background: #e7e7e8;
+    //       width: 95%;
+    //     //   min-height: 40px;
+    //     //   max-height: 180px;
+    //       margin-left: 10px;
+    //   }
+    //   ion-item {
+    //       border-radius: 50px;
+    //       overflow: hidden;
+    //   }
+    // }
+
+    .message input {
+        background: #e7e7e8;
+        min-height: 55px;
+        padding: 0 20px;
+        margin: 0;
+        width: 100%;
+        font-size: 16px;
+    }
+    .message .item {
+        border-radius: 50px;
+        min-height: 40px;
+        border: none;
+        background: #e7e7e8;
+        box-shadow: none !important;
+    }
+    .message {
+        //position: fixed;
+        border: 0;
+        bottom: 0;
+        width: 100%;
+        border-radius: 50px;
+        overflow: hidden;
+        margin: 3px 0;
+        padding: 8px !important;
+
+        .item-inner {
+            padding-right: 0 !important;
+            border-bottom: 0.55px solid #c8c7cc;
+            border-radius: 50px;
+        }
+
+        textarea {
+            border: unset;
+            padding: 15px 8px 15px 25px !important;
+            background: #e7e7e8;
+            width: 95%;
+            min-height: 40px;
+            max-height: 180px;
+            margin-left: 10px;
+      }
+    }
+
+    .btn_plus {
+        position: absolute;
+        top: 0px;
+        left: 5px;
+    }
+
+    .message img {
+        position: relative;
+        right: 10px;
+        bottom: -2px;
+        margin: 0;
+        width: 40px;
+        height: auto;
+    }
+    .setmargin{
+        .scroll-content{
+            margin-bottom:100px !important;
+        }
+        .fixed-content{
+            margin-bottom:100px !important;
+        }
+      }
+      .fotr-btn {
+        bottom: 0 !important;
+    }
+    .label {
+        text-overflow: unset;
+        white-space: normal;
+        margin: 0px !important;
+    }
+}

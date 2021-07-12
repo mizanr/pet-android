@@ -1,0 +1,54 @@
+page-products {
+    .toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    .block {
+        width: 100%;
+      //  padding-top: 20px;
+        background-color: white;
+        border-radius: 25px;
+        box-shadow: 1px 1px 7px #e3e3e3;
+
+        .text-input-ios {
+            margin: 13px 8px 11px 15px !important;
+        }
+
+        .text-input-md {
+            margin: 13px 8px 11px 15px !important;
+        }
+    }
+
+    .listing {
+        ion-item {
+            width: 100%;
+            background-color: white;
+            height: 80px;
+            border-radius: 15px;
+            -webkit-box-shadow: 1px 1px 10px #f7f7f7;
+            box-shadow: 1px 1px 7px #e3e3e3;
+        }
+
+        .item-inner{
+            border-bottom: 0 !important;
+        }
+    }
+    .avtar_item{
+        img {
+            //border-radius: 50%;
+            overflow: hidden;
+            width: 50px;
+            height: 50px;
+            box-shadow: 1px 1px 7px #979797d9;
+        }
+    }
+    .item-inner {
+        padding: 0 !important;
+    }
+    .btn_add{
+        color: #81007f;
+        font-size: 15px;
+        background: #fff;
+        box-shadow: 0 1px 3px #ccc;
+    }
+}

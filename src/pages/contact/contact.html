@@ -1,0 +1,71 @@
+<!--
+  Generated template for the ContactPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons end>
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>Contact Us</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  
+        <div class="block block_1">
+         <h2>{{'FMP' | lang}}</h2>
+         <p>{{'FMP2' | lang}}<br>
+         {{'FMP3' | lang}}<br>
+          {{'FMP4' | lang}}</p>
+         <br>
+          <ion-row class="row_in"> 
+          
+            <ion-col col-12 no-padding>
+              <ion-item no-lines>
+                <ion-input type="email" [(ngModel)]="email"
+                placeholder="Email"></ion-input>
+              </ion-item>
+            </ion-col>
+            <br>
+            <ion-col col-12 no-padding>
+              <ion-item no-lines>
+                <ion-input type="text" [(ngModel)]="subject"
+                placeholder="{{'SUBJECT' | lang}}"></ion-input>
+              </ion-item>
+            </ion-col>
+            <br>
+
+            <ion-col col-12 no-padding class="block2">
+                <ion-textarea placeholder="{{'MESSAGE'| lang}}" [(ngModel)]="text"
+              name="note" autocomplete="on" autocorrect="on" rows="6"></ion-textarea>
+            </ion-col>
+
+          
+            <br>
+            
+            <ion-col col-12 no-padding style="margin-top: 16px;">
+              <button ion-button full round (click)="submit()">
+                {{'SUBMIT' | lang}}
+              </button>
+            </ion-col>
+
+            
+
+          </ion-row>
+        </div>
+
+
+</ion-content>
+
+<ion-footer >
+<ion-row class="btm" *ngIf="!keyboard.isVisible">
+    <ion-col col-12 text-center>
+      <p>{{'COPYRIGHT' | lang}}</p>
+    </ion-col>
+  </ion-row>
+</ion-footer>

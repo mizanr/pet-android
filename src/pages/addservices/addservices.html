@@ -1,0 +1,308 @@
+<!--
+  Generated template for the AddservicesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Create Add Services</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-row class="user-img">
+    <!-- <ion-col text-center col-4>
+      <img [src]="image" *ngIf="image" alt="" class="user"/>
+      <img src="../../assets/imgs/dummy_user.png" *ngIf="!image" alt="" class="user"/>
+      <img src="../../assets/imgs/profile/edit.png" alt="" class="edit" (click)="get_image()"/>
+    </ion-col>
+    <ion-col col-8>
+      <ion-col col-12>
+        <h2 style="font-size: 16px;">Upload Image</h2>
+      </ion-col>
+    </ion-col> -->
+    <ion-col col-12 no-padding>
+          <ion-item no-lines class="item_Image">
+           <!--  <ion-input type="text" placeholder="Banner Image" [(ngModel)]="blob_img_name" readonly></ion-input> -->
+          <!--  <label>Ad Image</label> -->
+            <button ion-button small (click)="get_image()">Image Upload</button>
+            <img src="assets/imgs/placeholder.jpg" alt="" class="img_upload" *ngIf="!image">
+            <img [src]="image" alt="" class="img_upload" *ngIf="image">
+            <ion-icon name="close-circle" color="danger" *ngIf="image"
+            (click)="remove_img()" class="remove-icon"></ion-icon>
+          </ion-item>
+        </ion-col>
+  </ion-row>
+
+  <div class="block block_1">
+  <ion-row class="row_in"> 
+  <h3 style="font-size: 15px; margin: 5px 0;">Service Name</h3>
+          
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Service name" [(ngModel)]="s_name"></ion-input>
+      </ion-item>
+    </ion-col>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Decription</h3>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-textarea placeholder="Decription" rows="6" [(ngModel)]="desc"></ion-textarea>
+      </ion-item>
+    </ion-col>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Category</h3>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-label>Category</ion-label>
+        <ion-select [(ngModel)]="cate" interface="action-sheet">
+          <ion-option [value]="c.id" *ngFor="let c of category">{{c.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Price (Optional)</h3>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="number" placeholder="Price" [(ngModel)]="price"></ion-input>
+      </ion-item>
+    </ion-col>
+
+  <!-- <ion-row style="width: 100%;">
+
+    <ion-col col-6 no-padding class="check">
+      <ion-item no-lines>
+        <ion-label>Fixed</ion-label>
+        <ion-checkbox color="royal" checked="true"></ion-checkbox>
+        </ion-item>
+    </ion-col>
+
+    <ion-col col-6 no-padding class="check">
+      <ion-item no-lines>
+        <ion-label>Hourly</ion-label>
+        <ion-checkbox color="royal"></ion-checkbox>
+      </ion-item>
+    </ion-col>
+     
+  </ion-row> -->
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Duration (Optional)</h3>
+
+  <ion-row style="width: 100%;">
+
+    <ion-col col-6 >
+      <ion-item no-lines>
+        <ion-input type="number" placeholder="0" [(ngModel)]="dur1"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-6 >
+      <ion-item no-lines>
+        <ion-input type="number" placeholder="0" [(ngModel)]="dur2"></ion-input>
+      </ion-item>
+    </ion-col>
+     
+  </ion-row>
+
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Monday ({{mon_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="mon(monday)" [(ngModel)]="monday"></ion-checkbox>      
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+            <ion-datetime displayFormat="hh:mm A" [(ngModel)]="m1"  pickerFormat="hh:mm A"
+            placeholder="00:00" (ionChange)="time_mon(m1)" [disabled]="!monday"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+            <ion-datetime displayFormat="hh:mm A"  pickerFormat="hh:mm A"
+            [disabled]="!monday"
+            (ionChange)="time_mon(m2)"
+            [(ngModel)]="m2"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+
+
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Tuesday ({{tue_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="tue(tuesday)" [(ngModel)]="tuesday"></ion-checkbox>     
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="08:00 AM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [disabled]="!tuesday"
+            [(ngModel)]="tu1"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="12:00 PM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"
+            [disabled]="!tuesday"             
+            [(ngModel)]="tu2"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Wednesday ({{wed_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="wed(wednesday)" [(ngModel)]="wednesday"></ion-checkbox>     
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="08:00 AM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [disabled]="!wednesday"        
+            [(ngModel)]="w1"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="12:00 PM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"
+            [disabled]="!wednesday"
+            [(ngModel)]="w2"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Thursday ({{thu_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="thu(thursday)" [(ngModel)]="thursday"></ion-checkbox>     
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="08:00 AM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [disabled]="!thursday"
+            [(ngModel)]="th1"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="12:00 PM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [disabled]="!thursday"            
+            [(ngModel)]="th2"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Friday ({{fri_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="fri(friday)" [(ngModel)]="friday"></ion-checkbox>     
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="08:00 AM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"
+            [disabled]="!friday"             
+            [(ngModel)]="f1"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="12:00 PM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"
+            [disabled]="!friday"
+            [(ngModel)]="f2"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Saturday ({{sat_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="sat(saturday)" [(ngModel)]="saturday"></ion-checkbox>     
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="08:00 AM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [(ngModel)]="sa1"
+            [disabled]="!saturday"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="12:00 PM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [(ngModel)]="sa2"
+            [disabled]="!saturday"            
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+
+  <h3 style="font-size: 15px; margin: 5px 0;">Sunday ({{sun_tex}})</h3>
+  <ion-row style="width: 100%;">
+    <ion-col col-2 text-center>
+      <ion-checkbox color="primary" (click)="sun(sunday)" [(ngModel)]="sunday"></ion-checkbox>     
+    </ion-col>
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="08:00 AM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" 
+            [(ngModel)]="su1"
+            [disabled]="!sunday"        
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-5>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="12:00 PM"></ion-input> -->
+            <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"
+            [disabled]="!sunday"
+            [(ngModel)]="su2"
+            placeholder="00:00"></ion-datetime>
+      </ion-item>
+    </ion-col>     
+  </ion-row>
+    
+    
+    <ion-col col-12 no-padding>
+      <button ion-button full round (click)="add()">
+      Add Service
+      </button>
+    </ion-col>
+
+    <ion-col col-12 no-padding *ngIf="cate">
+      <button ion-button full round (click)="preview()">
+       Service Preview
+      </button>
+    </ion-col>
+  </ion-row>
+  </div>
+
+</ion-content>

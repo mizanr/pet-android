@@ -1,0 +1,81 @@
+<!--
+  Generated template for the AddPetBreedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="isupdate==0">{{'ADDPET' | lang}}</ion-title>
+    <ion-title *ngIf="isupdate==1">{{'EDITPET' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding>
+      <img *ngIf="!formData.cover_img" src="../../assets/imgs/details-image.jpg" alt="">
+      <img *ngIf="formData.cover_img" [src]="formData.cover_img" alt="">
+      </ion-col>
+
+      <ion-col text-center col-12 text-center class="user-img">
+        <img *ngIf="!formData.img" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+        <img *ngIf="formData.img" [src]="formData.img" alt="" class="user" >
+    </ion-col>
+  </ion-row>
+<!-- 
+  <ion-row >
+    
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+
+    <h3 *ngIf="!formData.pet_name">{{'NOPETNAME' | lang}}</h3>
+    <h3 *ngIf="formData.pet_name" text-capitalize>{{formData.pet_name}}</h3>
+    <!-- <h3>(No Pet Name)</h3> -->
+    <p *ngIf="!formData.breed">{{'NOBRED' | lang}}</p>
+    <p *ngIf="formData.breed" text-capitalize>{{formData.breed}}</p>
+  
+  </div>
+
+  <!-- <ion-item no-lines (click)="detail()">
+    <img item-start src="assets/imgs/new/icons8-shiba-inu-100.png" class="img_left">
+    <h3>Dog</h3>
+  </ion-item>
+
+  <ion-item no-lines (click)="gender()">
+    <img item-start src="assets/imgs/new/icons8-pet-commands-stay-100.png" class="img_left">
+    <h3>Cat</h3>
+  </ion-item> -->
+
+
+  <ion-list radio-group>
+
+    <ion-item no-lines>
+      <img item-start src="assets/imgs/new/icons8-shiba-inu-100.png" class="img_left">
+      <ion-label item-start>Dog</ion-label>
+      <ion-radio  [checked]="isdog" (ionSelect)="breed_change('d')"></ion-radio>
+    </ion-item>
+  
+    <ion-item no-lines>
+      <img item-start src="assets/imgs/new/icons8-pet-commands-stay-100.png" class="img_left">
+      <ion-label item-start>Cat</ion-label>
+      <ion-radio  (ionSelect)="breed_change('c')" [checked]="iscat"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+
+
+
+</div>
+
+
+  
+
+</ion-content>

@@ -1,0 +1,149 @@
+<!--
+  Generated template for the AddPetDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="isupdate==0">{{'ADDPETDETAIL' | lang}}</ion-title>
+    <ion-title *ngIf="isupdate==1">{{'EDITPETDETAIL' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="fab-btn">
+      <ion-fab left top>
+        <button ion-fab color="vibrant"(click)="getwallimage()">
+          <img src="assets/imgs/new/icons8-edit-fff.png" style="padding: 4px;">
+        </button>
+      </ion-fab>
+      <ion-fab right top>
+        <button ion-fab right top color="vibrant" (click)="back()">
+          <img src="assets/imgs/new/icons8-ok-100.png">
+        </button>
+      </ion-fab>      
+  </div>
+
+  <!-- <div class="fab-btn"> -->
+    <!-- <div>
+      <button ion-fab color="vibrant"(click)="getwallimage()">
+        <img src="assets/imgs/new/icons8-edit-fff.png" style="padding: 4px;">
+      </button>
+    </div> -->
+    <!-- <div>
+      <button ion-fab right top color="vibrant" (click)="back()">
+        <img src="assets/imgs/new/icons8-ok-100.png">
+      </button>
+    </div>     -->
+  <!-- </div> -->
+
+  
+
+  <ion-row class="wall-img" no-padding *ngIf="isupdate==0">
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+      <img *ngIf="!formData.cover_img" src="../../assets/imgs/details-image.jpg" alt="" class="wallimg">
+      <img *ngIf="formData.cover_img" [src]="formData.cover_img" alt="" class="wallimg">
+      </ion-col>
+
+      <ion-col text-center col-12 text-center class="user-img" (click)="get_image()">
+        <img *ngIf="!formData.img" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+        <img *ngIf="formData.img" [src]="formData.img" alt="" class="user" >
+      <img src="assets/imgs/profile/edit-pencil.png" alt="" class="edit">
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="wall-img" no-padding *ngIf="isupdate==1">
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+      <img *ngIf="!formData.wall_image" src="../../assets/imgs/details-image.jpg" alt="" class="wallimg">
+      <img *ngIf="formData.wall_image" [src]="formData.wall_image" alt="" class="wallimg">
+      </ion-col>
+
+      <ion-col text-center col-12 text-center class="user-img" (click)="get_image()">
+        <img *ngIf="!formData.profile" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+        <img *ngIf="formData.profile" [src]="formData.profile" alt="" class="user" >
+      <img src="assets/imgs/profile/edit-pencil.png" alt="" class="edit">
+    </ion-col>
+  </ion-row>
+
+  
+<!--
+  <ion-row >
+
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+
+    <h3 *ngIf="!formData.pet_name">{{'NOPETNAME' | lang}}</h3>
+    <h3 *ngIf="formData.pet_name" text-capitalize>{{formData.pet_name}}</h3>
+    <!-- <h3>(No Pet Name)</h3> -->
+    <p *ngIf="!formData.breed">{{'NOBRED' | lang}}</p>
+    <p *ngIf="formData.breed" text-capitalize>{{formData.breed}}</p>
+
+  </div>
+
+  <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-shiba-inu-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="{{'PETNAME' | lang}}" [(ngModel)]="formData.pet_name">
+  </ion-item>
+
+  <ion-item no-lines (click)="race()">
+    <img item-start src="assets/imgs/new/icons8-pets-100.png" class="img_left">
+    <!-- <input item-end class="input_pet" type="text" placeholder="Coat (e.g. pitbull,shitzu etc)"
+    [(ngModel)]="formData.coat"> -->
+    <!-- <ion-select placeholder="Coat (e.g. pitbull,shitzu etc)" class="input_pet"
+    (ionChange)="mergeup(formData.coat,0)"
+    [(ngModel)]="formData.coat">
+      <ion-option *ngFor="let c of coats" [value]="c.id">{{c.coat_name}}</ion-option>
+    </ion-select> -->
+    <input item-end class="input_pet" type="text" placeholder="{{'PETRACE' | lang}}" [(ngModel)]="formData.race">
+  </ion-item>
+
+  <ion-item no-lines (click)="breed()">
+    <img item-start src="assets/imgs/new/icons8-pets-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="{{'PETBREED' | lang}}" [(ngModel)]="formData.breed"
+    [disabled]="!formData.raceid">
+  </ion-item>
+
+  <ion-item no-lines (click)="coat()">
+    <img item-start src="assets/imgs/new/icons8-pets-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="{{'PETCOAT' | lang}}" [(ngModel)]="formData.coat">
+  </ion-item>
+
+  <ion-item no-lines (click)="color_modal()">
+    <img item-start src="assets/imgs/new/icons8-color-palette-100.png" class="img_left">
+    <!-- <input item-end class="input_pet" type="text" placeholder="Pet Color" [(ngModel)]="formData.color"> -->
+    <!-- <ion-select placeholder="Pet Color" [disabled]="color.length==0" class="input_pet"
+    [(ngModel)]="formData.color">
+      <ion-option *ngFor="let c of color" [value]="c.id">{{c.color_name}}</ion-option>
+    </ion-select> -->
+    <input item-end class="input_pet" type="text" placeholder="{{'PETCOLOR' | lang}}" [(ngModel)]="formData.color"
+    [disabled]="!formData.coatid">
+  </ion-item>
+
+  <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-weight-pound-100.png" class="img_left">
+    <input item-end class="input_pet" type="number" placeholder="{{'PETWEIGHT' | lang}}" [(ngModel)]="formData.weight">
+  </ion-item>
+
+
+</div>
+
+<!-- <ion-fab left top>
+  <button ion-fab color="vibrant"(click)="getwallimage()">
+    <img src="assets/imgs/new/icons8-edit-fff.png" style="padding: 4px;">
+  </button>
+</ion-fab>
+<ion-fab right top>
+  <button ion-fab right top color="vibrant" (click)="back()">
+    <img src="assets/imgs/new/icons8-ok-100.png">
+  </button>
+</ion-fab>   -->
+
+</ion-content>

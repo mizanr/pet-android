@@ -1,0 +1,46 @@
+<!--
+  Generated template for the ModalpagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content>
+
+  <div class="popup">
+
+    <button ion-button icon-only (click)="closemodal()" small clear style="font-size: 18px;float: right;">
+      <ion-icon name="close"></ion-icon>
+    </button>
+
+    <ion-item no-padding class="bx">
+      <ion-avatar item-start>
+        <div class="circle" [ngClass]="active">
+          <ion-icon name="trash"></ion-icon>
+        </div>
+      </ion-avatar>
+      <h2>Edit Post</h2>
+      <p>Lorem ipsum dolar sit amet...</p>
+    </ion-item>
+    <ion-item no-padding class="bx">
+      <ion-avatar item-start>
+        <div class="circle" [ngClass]="active">
+          <ion-icon name="create"></ion-icon>
+        </div>
+      </ion-avatar>
+      <h2>Delete Post</h2>
+      <p>Lorem ipsum dolar sit amet...</p>
+    </ion-item>
+    <ion-item no-padding class="bx">
+      <ion-avatar item-start>
+        <div class="circle" [ngClass]="active">
+          <ion-icon name="book"></ion-icon>
+        </div>
+      </ion-avatar>
+      <h2>Report</h2>
+      <p>Lorem ipsum dolar sit amet...</p>
+    </ion-item>
+  </div>
+
+</ion-content>

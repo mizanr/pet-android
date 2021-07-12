@@ -1,0 +1,98 @@
+<!--
+  Generated template for the VendorAddProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="isupdate==0">{{'VENDORADDPRODUCT' | lang}}</ion-title>
+    <ion-title *ngIf="isupdate==1">{{'VENDOREDITPRODUCT' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item no-lines padding-horizontal align-items-center>
+    <ion-avatar item-start>
+      <img [src]="auth?.getUserDetails()?.company_logo">
+    </ion-avatar>
+    <div text-center class="login_text">
+      <h3>{{auth.getUserDetails().company_name}}</h3>
+    <p *ngIf="auth.getUserDetails().address">{{auth.getUserDetails().address}}</p>
+    <p *ngIf="!auth.getUserDetails().address">{{'NOLOCTION' | lang}}</p>
+    </div>
+  </ion-item>
+
+<div class="wall_img" (click)="get_image();">
+  <img src="assets/imgs/new/icons8-edit-100.png" *ngIf="!formData?.img" class="normal-img">
+  <img [src]="formData?.img" *ngIf="formData?.img" class="img2">
+</div>
+
+<ion-item no-lines padding-horizontal class="heading_item">
+  <h3>Description</h3>
+  <!-- <p style="white-space: normal;">This product is on sale this week, This product is on sale this week,
+    This product is on sale this week</p> -->
+    <textarea [(ngModel)]="formData.desc" placeholder="{{'DESCTRIPTION' | lang}}"></textarea>
+</ion-item>
+<br>
+
+<!-- <ion-item no-lines padding-horizontal>
+  <img src="assets/imgs/new/icons8-product-loading-100.png" item-start>
+  <input class="" type="text">
+</ion-item> -->
+
+<div class="pet_details" padding-horizontal>
+
+<ion-item no-lines class="item_inner_product">
+    <img item-start src="assets/imgs/new/icons8-product-loading-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="{{'PRODUCTNAME' | lang}}" [(ngModel)]="formData.full_name">
+</ion-item>
+
+<ion-item no-lines class="item_inner_product" (click)="category()">
+  <img item-start src="assets/imgs/new/icons8-color-palette-category.png" class="img_left">
+  <input item-end class="input_pet" type="text" placeholder="{{'CATEGORY' | lang}}" readonly [(ngModel)]="formData.cate.name">
+  <button ion-button small clear item-end>
+    <img item-start src="assets/imgs/next.png" class="img_right">
+    </button>
+</ion-item>
+
+<ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-pricing-100.png" class="img_left">
+  <input item-end class="input_pet" type="number" placeholder="{{'PRICE'| lang}}" [(ngModel)]="formData.price">
+</ion-item>
+
+<ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-discount-100.png" class="img_left">
+  <input item-end class="input_pet" type="number" placeholder="{{'DISCOUNT' | lang}}" [(ngModel)]="formData.discount">
+</ion-item>
+
+<ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-website-100.png" class="img_left">
+  <input item-end class="input_pet" type="text" placeholder="{{'BUYURLADD' | lang}}" [(ngModel)]="formData.url">
+</ion-item>
+
+
+</div>
+<ion-fab right top *ngIf="isupdate==0">
+  <button ion-fab color="vibrant" (click)="add_product()">
+    <img src="assets/imgs/new/icons8-ok-100.png">
+  </button>
+</ion-fab>
+
+<ion-fab right top *ngIf="isupdate==1">
+  <button ion-fab color="vibrant" (click)="update_product()">
+    <img src="assets/imgs/new/icons8-ok-100.png">
+  </button>
+</ion-fab>
+
+<ion-fab right top *ngIf="isupdate==1" 
+style="margin-top: 75px;" 
+(click)="get_image()">
+  <button ion-fab color="vibrant" >
+    <img src="assets/imgs/new/icons8-edit-100.png" style="width: 60%;">
+  </button>
+</ion-fab>
+
+</ion-content>

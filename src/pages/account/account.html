@@ -1,0 +1,174 @@
+<!--
+  Generated template for the AccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'ACCOUNT'| lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+        <img *ngIf="!current_user?.wall_image" src="../../assets/imgs/details-image.jpg" alt="">
+        <img  *ngIf="current_user?.wall_image" [src]="current_user?.wall_image" alt="">
+      </ion-col>
+      <ion-col text-center col-12 (click)="getwallimage()" text-center class="user-img">
+      <img *ngIf="!current_user?.profile" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+      <img *ngIf="current_user?.profile" [src]="current_user?.profile" alt="" class="user" >
+    </ion-col>
+  </ion-row>
+<!--
+  <ion-row >
+
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text" *ngIf="current_user">
+
+    <h3 text-capitalize>{{current_user.nic_name}}</h3>
+    <p style="font-size: 14px !important;" *ngIf="current_user.city">{{current_user.city}}</p>
+    <p  *ngIf="!current_user.city">{{'NOLOCTION'| lang}}</p>
+
+    <button ion-button small round color="primary" [ngClass]="type==0?'btn-bg':''"
+     (click)="change('0')">{{'FRIENDS' | lang}}</button>
+
+    <button ion-button small round color="primary" [ngClass]="type==2?'btn-bg':''"
+    (click)="edit()">{{'EDITPROFL' | lang}}</button>
+
+    <button ion-button small round color="primary" [ngClass]="type==1?'btn-bg':''"
+    (click)="change('1')">{{'PETS' | lang}}</button>
+
+
+  </div>
+
+  <div *ngIf="type==1">
+    <ion-list>
+      <ion-item-sliding *ngFor="let p of pets;let i=index">
+      <ion-item no-lines class="item_edit" (click)="petProfile(p)">
+        <img item-start [src]="p.profile" class="img_left">
+        <h3 text-capitalize>{{p.name}}</h3>
+        <p text-capitalize>
+          <p text-capitalize>
+            <span>{{p.race}}</span>
+            <span  *ngIf="p.gendar&&p.race"> , </span>
+            <span  *ngIf="p.race&&p.breed&&!p.gendar"> , </span>
+            <span *ngIf="p.gendar">{{p.gendar}}</span>
+            <span  *ngIf="p.gendar&&p.breed">,</span> {{p.breed}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button item-end small color="vibrant" class="button1" (click)="pet_edit(p)">{{'EDIT'| lang}}</button>
+        <button ion-button item-end small color="danger" class="button2" (click)="pet_delete(p.id,i)">{{'DELETE' | lang}}</button>
+    
+      </ion-item-options>
+    </ion-item-sliding>
+    </ion-list>
+      <div class="noDatadiv2" *ngIf="pets.length==0">
+        <ion-icon name="ios-search-outline"></ion-icon>
+        <p>{{'NOPETHERE' | lang}}</p>
+      </div>
+  </div>
+  
+  <ion-grid  *ngIf="type==0">
+    <ion-row>
+      <ion-col col-12>
+        <!-- <div no-padding>
+          <ion-segment [(ngModel)]="select_type">
+            <ion-segment-button value="mybuddies">
+              My Buddies
+            </ion-segment-button>
+            <ion-segment-button value="inbuddies">
+              Incoming Buddies
+            </ion-segment-button>
+          </ion-segment>
+      </div> -->
+
+<div [ngSwitch]="select_type">
+  <ion-list *ngSwitchCase="'mybuddies'">
+    <ion-item-sliding *ngFor="let b of buddies;let i = index">
+    <ion-item (click)="otherUser(b.id);$event.stopPropagation()">
+      <ion-avatar item-start>
+        <img [src]="b.profile">
+      </ion-avatar>
+      <h2 style="text-transform: capitalize;">{{b.first_name}} {{b.last_name}}</h2>
+      <p *ngIf="b.address">{{b.address}}</p>
+    <p *ngIf="!b.address">{{'NOLOCTION' | lang}}</p>
+    <p *ngIf="b.gender">{{b.gender}}</p>
+    </ion-item>
+    <ion-item-options side="right">
+      <button ion-button color="danger" (click)="remove_buddies(b);$event.stopPropagation()">
+        <ion-icon name="trash"></ion-icon>
+        {{'REMOVE' | lang}}
+      </button>
+      <button ion-button color="primary" (click)="chat(b);$event.stopPropagation()">
+        <ion-icon name="chatboxes"></ion-icon>
+        {{'CHAT' | lang}}
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-row *ngIf="buddies.length == 0" margin-top>
+    <ion-col col-12 text-center><span>{{'NOBUDDEHERE' | lang}}</span></ion-col>
+  </ion-row>
+
+  </ion-list>
+
+  <!-- <ion-list *ngSwitchCase="'inbuddies'">
+      <ion-item *ngFor="let f of incomingFriends" (click)="otherUser(f.id);$event.stopPropagation()">
+      <ion-avatar item-start>
+      <img [src]="f.profile">
+      </ion-avatar>
+    <h2>{{f.nic_name}} {{f.last_name}}</h2>
+    <p *ngIf="f.address">{{f.address}}</p>
+    <p *ngIf="!f.address">(No Location)</p>
+    <p *ngIf="f.gender">{{f.gender}}</p>
+    <button ion-button  item-end ion-button small round color="primary" (click)="in_accept(f);$event.stopPropagation()">Accept</button>
+    <button ion-button  item-end ion-button small round color="primary" (click)="in_reject(f);$event.stopPropagation()">Reject</button>
+  </ion-item>
+  <ion-row *ngIf="incomingFriends.length == 0" margin-top>
+    <ion-col col-12 text-center><span>No friend request here..</span></ion-col>
+  </ion-row>
+  </ion-list> -->
+
+
+  </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-shiba-inu-100.png" class="img_left">
+    <h3>Motta</h3>
+    <p>Male, Dog</p>
+  </ion-item>
+  <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-shiba-inu-100.png" class="img_left">
+    <h3>Motta</h3>
+    <p>Male, Dog</p>
+  </ion-item> -->
+
+
+</div>
+<ion-fab right top>
+  <button ion-fab color="primary" (click)="add()">
+    <img src="assets/imgs/new/add-pet.png">
+  </button>
+</ion-fab>
+
+
+
+</ion-content>

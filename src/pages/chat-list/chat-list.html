@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <ion-buttons end (click)="notification()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>{{'CHATLIST' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar> -->
+  
+  <ion-row class="block" margin-bottom>
+    <ion-col no-padding>
+      <ion-item no-lines class="new_search">
+        <ion-input type="text" (keyup)="search($event)" 
+        placeholder="{{'SEARCHPETONER' | lang}}"></ion-input>
+        <button ion-button clear small item-end>
+        <img src="assets/imgs/new/icons8-search-chat-100.png" style="width:24px;">
+      </button>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row class="listing">
+    <ion-list style="width: 100%;">
+    <ion-item-sliding *ngFor="let f of friends;let i=index" 
+    (click)="chatdetail(f);$event.stopPropagation();">
+      <ion-item>
+        <ion-avatar item-start class="avtar_item">
+          <img [src]="f.profile">
+        </ion-avatar>
+        
+        <h2 style="font-size: 15px;white-space: break-spaces;font-weight: 600;text-transform: capitalize;">{{f.first_name}}</h2>
+        <p style="font-size: 13px;" *ngIf="f.gender">({{f.gender}}, {{'PARENT' | lang}})</p>
+        <!-- <p style="font-size: 13px;" *ngIf="f.gender">({{f.gender}}, {{'PARENT' | lang}})</p> -->
+        <p style="font-size: 13px;" *ngIf="!f.gender">({{'PARENT' | lang}})</p>    
+        <div style="font-size: 13px;">
+          <span style="white-space: normal;" *ngIf="f.address">{{f.address}}</span>
+          <span style="white-space: normal;" *ngIf="!f.address">{{'NOLOCTION' | lang}}</span>
+          </div> 
+          <ion-badge color="danger" item-end class="badges-content"
+          *ngIf="f.unread>0"
+            >{{f.unread}}</ion-badge>
+          <p item-end class="time_left">
+            {{f.last_message.create_date}}
+          </p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="delete_chat(f,i);$event.stopPropagation();">
+             {{'DELETE' | lang}}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+      <ion-col col-12 text-center *ngIf="friends.length==0">
+        <div class="noDatadiv">
+          <ion-icon name="ios-search-outline"></ion-icon>
+          <p>{{'NORECORDFOUND' | lang}}</p>
+        </div>
+      </ion-col>      
+  </ion-row>
+<!-- 
+    <ion-searchbar (keyup)="search($event)">  </ion-searchbar>
+
+	<div class="user" *ngFor="let f of friends">
+    <ion-row (click)="chatdetail(f)">
+         <ion-col col-2>
+        <div class="user_img">
+            <img [src]="f?.profile">
+            <ionic-image-cache [src]="this.f.profile" alt=""></ionic-image-cache> 
+            <ionic-image-cache [isAvatar]="'true'" [showPreview]="'false'" (tap)="whatever($event)" 
+            [src]="this.f.profile" class="img-circle" alt=""></ionic-image-cache>
+
+        </div>
+    </ion-col>
+   
+    <ion-col col-10>
+   <ion-item no-padding>
+            <h6 class="heading_int">{{f.first_name}} {{f.last_name}}</h6>
+            <p class="dat">{{f.last_message.message}}</p>
+            <div class="rate">
+                <p class="" item-end>{{f.last_message.create_date}}</p>
+             <ion-badge item-end *ngIf="f?.unread > 0">{{f.unread}}</ion-badge>            
+
+             </div>
+    </ion-item>
+  </ion-col>
+</ion-row>
+    </div>
+    <ion-row *ngIf="friends.length == 0">
+      <ion-col col-12 text-center><p>No data found..</p></ion-col>
+    </ion-row> -->
+
+</ion-content>

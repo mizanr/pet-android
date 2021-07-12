@@ -1,0 +1,208 @@
+<!--
+  Generated template for the AddadsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Create AD Campaign</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- <ion-row class="user-img">
+    <ion-col text-center col-6>
+      <img src="../../assets/imgs/dummy_user.png" alt="" class="user" *ngIf="!image"/>
+      <img [src]="image" alt="" class="user" *ngIf="image"/>
+      <img src="../../assets/imgs/profile/edit.png" alt="" class="edit" (click)="get_image()"/>
+      <h5>Image</h5>      
+    </ion-col>
+
+    <ion-col text-center col-6>
+      <img src="../../assets/imgs/logo-dummy.png" alt="" class="user" *ngIf="!com_logo"/>
+      <img [src]="com_logo" alt="" class="user" *ngIf="com_logo"/>
+      <img src="../../assets/imgs/profile/edit.png" alt="" class="edit" (click)="get_logo()"/>
+      <h5>Company Logo</h5>      
+    </ion-col>
+
+  </ion-row> -->
+
+  <div class="block block_1">
+  <ion-row class="row_in"> 
+
+<!-- <ion-col col-12 no-padding>
+    <div class="add_payment">
+      <button ion-button small (click)="get_image()" item-end>Add Payment method</button>
+    </div>
+  </ion-col> -->
+
+
+      
+          
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Campaign name" [(ngModel)]="title"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <textarea rows="4" placeholder="Campaign description" [(ngModel)]="desc"></textarea>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+          <ion-item no-lines class="item_Image">
+           <!--  <ion-input type="text" placeholder="Banner Image" [(ngModel)]="blob_img_name" readonly></ion-input> -->
+          <!--  <label>Ad Image</label> -->
+            <button ion-button small (click)="get_image()">Image Upload</button>
+            <img src="assets/imgs/placeholder.jpg" alt="" class="img_upload" *ngIf="!image">
+            <img [src]="image" alt="" class="img_upload" *ngIf="image">
+            <ion-icon name="close-circle" color="danger" *ngIf="image"
+            (click)="remove_img()" class="remove-icon"></ion-icon>
+          </ion-item>
+        </ion-col>
+
+    
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Website Product or Catelog URL" 
+        [(ngModel)]="url"></ion-input>
+      </ion-item>
+    </ion-col>
+
+   
+
+    <ion-col col-12 no-padding>
+      <label style="margin-bottom: 10px !important;display: block;font-size: 15px;font-weight: bold;">Campaign Duration (Days)</label>
+      
+
+      <ion-item class="item_Image" no-lines style="margin-bottom: 0 !important;">  
+       <ion-range min="0" max="30" step="1" snaps="true" (ionChange)="duratin_change($event)"
+       [(ngModel)]="duration" color="danger"> 
+       </ion-range>  
+       </ion-item>
+
+       <ion-row class="row_slide">
+         <ion-col col class="center_col">0</ion-col>
+         <ion-col col class="center_col">5</ion-col>
+         <ion-col col class="center_col">10</ion-col>
+         <ion-col col class="center_col">15</ion-col>
+         <ion-col col class="center_col">20</ion-col>
+         <ion-col col class="center_col">25</ion-col>
+         <ion-col col class="center_col">30</ion-col>
+       </ion-row> 
+
+    <!-- <ion-item class="check1" no-lines no-padding>
+      <ion-range min="5" max="30" pin="true" [(ngModel)]="duration" 
+      color="primary" no-padding
+      (ionChange)="duratin_change($event)"
+       no-padding>
+        <p range-left small name="duration">1</p>
+        <p range-right small name="duration">30</p>
+      </ion-range>
+    </ion-item> -->
+    <label style="margin-bottom: 10px !important;display: block;" text-center>You have choosen {{duration}} Days</label>
+    </ion-col>
+
+    <ion-col col-12 no-padding style="margin-top: 10px;">
+      <label style="margin-bottom: 10px !important;display: block;font-size: 15px;font-weight: bold;">Campaign Budget (Cost per Day USD)</label>
+      
+
+
+    <!-- <ion-item class="check1" no-lines no-padding>
+      <ion-range min="5" max="100" pin="true" [(ngModel)]="budget" color="primary" no-padding
+      (ionChange)="budget_change($event)"
+       no-padding>
+        <p range-left small name="budget">1</p>
+        <p range-right small name="budget">100</p>
+      </ion-range>
+    </ion-item> -->
+    <ion-item class="item_Image" no-lines style="margin-bottom: 0 !important;">  
+       <ion-range min="0" max="30" step="1" snaps="true" 
+       (ionChange)="budget_change($event)"
+
+       [(ngModel)]="budget" color="danger"> 
+       </ion-range>  
+       </ion-item>
+
+       <ion-row class="row_slide">
+         <ion-col col class="center_col">0</ion-col>
+         <ion-col col class="center_col">5</ion-col>
+         <ion-col col class="center_col">10</ion-col>
+         <ion-col col class="center_col">15</ion-col>
+         <ion-col col class="center_col">20</ion-col>
+         <ion-col col class="center_col">25</ion-col>
+         <ion-col col class="center_col">30</ion-col>
+       </ion-row> 
+
+      <label text-center style="margin-bottom: 5px !important;display: block;">Maximum $30.00 per Days</label>
+      <label text-center style="margin-bottom: 10px !important;display: block;">Rate of $0.30 everytime a visiter click on your add</label>
+    </ion-col>
+
+     <ion-col col-12 no-padding style="margin-top: 10px;">
+      <label style="margin-bottom: 10px !important;display: block;font-size: 15px;font-weight: bold;">Start Date</label>
+      <ion-item no-lines>
+        <ion-datetime displayFormat="" pickerFormat="" [min]="mindate"
+        [(ngModel)]="startdate"></ion-datetime>
+      </ion-item>
+    </ion-col>
+    
+  </ion-row>
+
+  <ion-item class="item_Image item_Image2">
+    <h2>Campaign Total Project Exposure</h2>
+    <h2 item-end>{{projected_exposure | number:'1.2-2'}}</h2>
+  </ion-item>
+  <ion-item class="item_Image item_Image2">
+    <h2>Project Total Cost of this Campaign</h2>
+    <h2 item-end>${{projected_cost}}</h2>
+  </ion-item>
+
+  <!-- <ion-col col-12 text-center>
+    <h5></h5>
+  </ion-col>
+  <ion-col col-12 text-center>
+    <h5></h5>
+  </ion-col>
+  
+  <ion-col col-12 text-center>
+    <h5>Project Total Cost of this Campaign</h5>
+  </ion-col>
+  <ion-col col-12 text-center>
+    <h5></h5>
+  </ion-col> -->
+
+  </div>
+
+
+
+      <ion-row>
+        <ion-col col-12 no-padding>
+          <button ion-button full round (click)="submit('0')" color="light">
+           SAVE FOR LATER
+          </button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+          <ion-col col-12 no-padding>
+            <button ion-button full round (click)="submit('1')" color="">
+             START CAMPAIGN
+            </button>
+          </ion-col>
+        </ion-row>
+
+         <ion-row>
+          <ion-col col-12 no-padding 
+          *ngIf="title&&image">
+            <button ion-button full round (click)="preview()" color="">
+             CAMPAIGN PREVIEW
+            </button>
+          </ion-col>
+        </ion-row>
+
+</ion-content>

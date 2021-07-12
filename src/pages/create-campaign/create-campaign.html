@@ -1,0 +1,151 @@
+<!--
+  Generated template for the CreateCampaignPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title *ngIf="isupdate==0">{{'VENDORCREATECAM' | lang}}</ion-title>
+    <ion-title *ngIf="isupdate==1">{{'VENDOREDITCAM' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item no-lines padding-horizontal align-items-center>
+    <ion-avatar item-start>
+      <img [src]="auth?.getUserDetails()?.company_logo">
+    </ion-avatar>
+    <div text-center class="login_text">
+      <h3>{{auth.getUserDetails().company_name}}</h3>
+    <p *ngIf="auth.getUserDetails().address">{{auth.getUserDetails().address}}</p>
+    <p *ngIf="!auth.getUserDetails().address">{{'NOLOCTION' | lang}}</p>
+    </div>
+  </ion-item>
+
+<div (click)="get_image()">
+  <img src="assets/imgs/image-placeholder.png" class="banner-img" *ngIf="!formData?.image">
+  <img [src]="formData?.image" class="banner-img" *ngIf="formData?.image">
+</div>
+  
+
+<br>
+
+<div class="pet_details" padding-horizontal>
+
+<textarea rows="3" placeholder="Campaign Description" class="text_area" [(ngModel)]="formData.description"></textarea>
+
+<ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-company-100.png" class="img_left">
+  <input item-end class="input_pet" type="text" placeholder="Title" [(ngModel)]="formData.title">
+</ion-item>
+
+<ion-item no-lines class="item_inner_product">
+    <img item-start src="assets/imgs/new/icons8-website-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="Website URL" [(ngModel)]="formData.url">
+</ion-item>
+
+<!-- <ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-calendar-1000-100.png" class="img_left">
+  <input item-end class="input_pet" type="number" placeholder="Duration (Days)" [(ngModel)]="formData.duration">
+</ion-item>
+
+<ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-transaction-100.png" class="img_left">
+  <input item-end class="input_pet" type="number" placeholder="Daily Budget (e.g. $5.00)"
+  [(ngModel)]="formData.budget">
+</ion-item> -->
+
+<ion-item no-lines class="item_inner_product">
+  <img item-start src="assets/imgs/new/icons8-calendar-100.png" class="img_left">
+  <!-- <input item-end class="input_pet" type="text" placeholder="Start Date (01/01/2021)"> -->
+  <ion-datetime 
+  placeholder="Start Date" 
+  [(ngModel)]="formData.start_date1">
+  </ion-datetime>
+</ion-item>
+
+<ion-col col-12 no-padding>
+  <label style="margin-bottom: 10px !important;display: block;font-size: 15px;font-weight: bold;">
+   {{'CAMDURDAYS' | lang}}</label>
+  
+
+  <ion-item class="item_Image" no-lines style="margin-bottom: 0 !important;">  
+   <ion-range min="0" max="30" step="1" snaps="true" (ionChange)="duratin_change($event)"
+   [(ngModel)]="formData.duration" color="danger"> 
+   </ion-range>  
+   </ion-item>
+
+   <ion-row class="row_slide">
+     <ion-col col class="center_col">0</ion-col>
+     <ion-col col class="center_col">5</ion-col>
+     <ion-col col class="center_col">10</ion-col>
+     <ion-col col class="center_col">15</ion-col>
+     <ion-col col class="center_col">20</ion-col>
+     <ion-col col class="center_col">25</ion-col>
+     <ion-col col class="center_col">30</ion-col>
+   </ion-row>
+<label style="margin-bottom: 10px !important;display: block;" text-center>
+  {{'YOUHAVECHOO' | lang}} {{duration}} {{'DAYS'| lang}}</label>
+</ion-col>
+
+<ion-col col-12 no-padding style="margin-top: 10px;">
+  <label style="margin-bottom: 10px !important;display: block;font-size: 15px;font-weight: bold;">
+    {{'CAMBUGET'| lang}}</label>
+<ion-item class="item_Image" no-lines style="margin-bottom: 0 !important;">  
+   <ion-range min="0" max="30" step="1" snaps="true" 
+   (ionChange)="budget_change($event)"
+
+   [(ngModel)]="formData.budget" color="danger"> 
+   </ion-range>  
+   </ion-item>
+
+   <ion-row class="row_slide">
+     <ion-col col class="center_col">0</ion-col>
+     <ion-col col class="center_col">5</ion-col>
+     <ion-col col class="center_col">10</ion-col>
+     <ion-col col class="center_col">15</ion-col>
+     <ion-col col class="center_col">20</ion-col>
+     <ion-col col class="center_col">25</ion-col>
+     <ion-col col class="center_col">30</ion-col>
+   </ion-row> 
+
+  <label text-center style="margin-bottom: 5px !important;display: block;">{{'MAXSPENTDAY'| lang}}</label>
+  <label text-center style="margin-bottom: 10px !important;display: block;">
+    {{'RATEEVERYTIME' | lang}}</label>
+</ion-col>
+
+<ion-item class="item_Image item_Image2">
+  <h2>{{'CAMTOTALEXPO' | lang}}</h2>
+  <h2 item-end>{{formData.projected_exposure | number:'1.2-2'}}</h2>
+</ion-item>
+<ion-item class="item_Image item_Image2">
+  <h2>{{'PROTOTALCOST'| lang}}</h2>
+  <h2 item-end>${{formData.projected_cost}}</h2>
+</ion-item>
+
+
+<button ion-button block round color="primary" *ngIf="isupdate==0" (click)="submit(1)">{{'STARTCOM' | lang}}</button>
+<button ion-button block round color="primary" *ngIf="isupdate==0" (click)="submit(0)">{{'SAVEFORLATER' | lang}}</button>
+<button ion-button block round color="primary" *ngIf="isupdate==1" (click)="update()">{{'UPDATE'| lang}}</button>
+
+<ion-fab right top *ngIf="isupdate==1" 
+style="margin-top: 60px;" 
+(click)="get_image()">
+  <button ion-fab color="vibrant" >
+    <img src="assets/imgs/new/icons8-edit-100.png" style="width: 60%;">
+  </button>
+</ion-fab>
+
+</div>
+
+<!-- <ion-fab right top >
+  <button ion-fab color="vibrant" (click)="back()" style="width: 45px;height: 45px;">
+    <img src="assets/imgs/new/icons8-ok-100.png">
+  </button>
+</ion-fab> -->
+
+
+</ion-content>

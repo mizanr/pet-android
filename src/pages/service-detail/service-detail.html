@@ -1,0 +1,160 @@
+<!--
+  Generated template for the ServiceDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+	<ion-grid>
+		<ion-row>
+			<ion-col col-12 text-left>
+				<img [src]="info.image" width="100" height="100">
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4 text-left>
+				Service Name :
+			</ion-col>
+
+			<ion-col col-8 text-left>
+				{{info.name}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4 text-left>
+				Category :
+			</ion-col>
+
+			<ion-col col-8 text-left>
+				{{info.category.name}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4 text-left>
+				Description :
+			</ion-col>
+
+			<ion-col col-8 text-left>
+				{{info.description}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col col-4 text-left>
+				Price :
+			</ion-col>
+
+			<ion-col col-8 text-left>
+				${{info.price}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Mon_status == 1">
+			<ion-col col-4 text-left>
+				Monday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Mon_start}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Mon_end}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Tue_status == 1">
+			<ion-col col-4 text-left>
+				Tuesday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Tue_start}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Tue_end}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Wed_status == 1">
+			<ion-col col-4 text-left>
+				Wednesday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Wed_start}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Wed_end}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Thu_status == 1">
+			<ion-col col-4 text-left>
+				Thursday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Thu_end}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Thu_start}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Fri_status == 1">
+			<ion-col col-4 text-left>
+				Friday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Fri_start}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Fri_end}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Sat_status == 1">
+			<ion-col col-4 text-left>
+				Saturday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Sat_start}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Sat_end}}
+			</ion-col>
+		</ion-row>
+
+		<ion-row *ngIf="info.Sun_status == 1">
+			<ion-col col-4 text-left>
+				Sunday:
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				Start Time {{info.Sun_start}}
+			</ion-col>
+
+			<ion-col col-4 text-left>
+				End Time  {{info.Sun_end}}
+			</ion-col>
+		</ion-row>
+
+	</ion-grid>
+</ion-content>

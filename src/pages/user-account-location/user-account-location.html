@@ -1,0 +1,95 @@
+<!--
+  Generated template for the UserAccountLocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'LOCATION' | lang}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+        <img src="../../assets/imgs/details-image.jpg" alt="" *ngIf="!current_user?.wall_image">
+        <img [src]="current_user?.wall_image" alt="" *ngIf="current_user?.wall_image">
+      </ion-col>
+
+      <ion-col text-center col-12 (click)="getProfileImage()" text-center class="user-img">
+        <img *ngIf="!current_user?.profile" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+        <img *ngIf="current_user?.profile" [src]="current_user?.profile" alt="" class="user" >
+    </ion-col>
+  </ion-row>
+<!--
+  <ion-row >
+
+
+  </ion-row> -->
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+
+    <h3 text-capitalize>{{current_user.nic_name}}</h3>
+    <p style="font-size: 14px !important;" *ngIf="current_user.city">{{current_user.city}}</p>
+    <p  *ngIf="!current_user.city">{{'NOLOCTION' | lang}}</p>
+
+  </div>
+
+  <ion-item no-lines (click)="OpenAutofillPlaces()">
+    <img item-start src="assets/imgs/new/icons8-location-100.png" class="img_left">
+    <input item-end class="input_pet" type="text" placeholder="location" [(ngModel)]="current_user.city">
+    <!-- <ion-select placeholder="Countries" [(ngModel)]="selected_country"
+    (ionChange)="state_change(0)"
+    class="input_pet">
+      <ion-option *ngFor="let c of countries" [value]="c.id">{{c.country}}</ion-option>
+    </ion-select> -->
+  </ion-item>
+
+  <!-- <ion-item no-lines>
+    <img item-start src="assets/imgs/new/icons8-location-100.png" class="img_left">
+    <ion-select placeholder="Countries" [(ngModel)]="selected_country"
+    (ionChange)="state_change(0)"
+    class="input_pet">
+      <ion-option *ngFor="let c of countries" [value]="c.id">{{c.country}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item no-lines >
+    <img item-start src="assets/imgs/new/icons8-ukraine-territory-100.png" class="img_left">
+    <ion-select placeholder="Province / State"
+    (ionChange)="city_change(current_user.stateid,0)"
+    [disabled]="sel_states.length==0"
+     [(ngModel)]="selected_state" class="input_pet">
+      <ion-option *ngFor="let s of sel_states" [value]="s.id">{{s.state}}</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item no-lines >
+    <img item-start src="assets/imgs/new/icons8-location-off-100.png" class="img_left">
+    <ion-select placeholder="City" [disabled]="sel_cities.length==0"
+    (ionChange)="get_city()"
+     [(ngModel)]="selected_city" class="input_pet">
+      <ion-option *ngFor="let c of sel_cities" [value]="c.id">{{c.city}}</ion-option>
+    </ion-select>
+  </ion-item> -->
+
+
+
+
+</div>
+<div>
+  <ion-fab right top>
+    <button ion-fab color="vibrant" (click)="update_account()">
+      <img src="assets/imgs/new/icons8-ok-100.png">
+    </button>
+  </ion-fab>
+</div>
+
+
+</ion-content>

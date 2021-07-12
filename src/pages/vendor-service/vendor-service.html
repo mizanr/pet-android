@@ -1,0 +1,151 @@
+<!--
+  Generated template for the VendorProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'VENDORSERVIE'| lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+        <!-- <img src="../../assets/imgs/details-image.jpg" alt=""> -->
+        <!-- <img [src]="wallImage" alt="" *ngIf="wallImage">      -->
+
+      <!-- <img src="../../assets/imgs/profile/add.png" alt="" class="edit2"/> -->
+      </ion-col>
+
+      <ion-col text-center col-12 (click)="getProfileImage()" text-center class="user-img">
+      <img [src]="auth?.getUserDetails()?.company_logo" class="user">
+      <!-- <img src="../../assets/imgs/pet-profile.png" alt="" class="user" > -->
+      <!-- <img [src]="petImage" alt="" class="user" *ngIf="petImage"/> -->
+      <!-- <img src="../../assets/imgs/profile/add.png" alt="" class="edit"/> -->
+    </ion-col>
+  </ion-row>
+
+
+
+<div class="pet_details">
+
+  <div text-center class="login_text">
+
+    <h3>{{auth.getUserDetails().company_name}}</h3>
+    <p *ngIf="auth.getUserDetails().address">{{auth.getUserDetails().address}}</p>
+    <p  *ngIf="!auth.getUserDetails().address">{{'NOLOCTION' | lang}}</p>
+
+  </div>
+
+  <div class="main_content" *ngFor="let l of lists">
+
+  <ion-item no-lines class="product_info">
+    <p>{{'SERVICENAME' | lang}}</p>
+   <h3>{{l.data1.name}}</h3>
+   <button ion-button clear item-end (click)="action_sheet(l);$event.stopPropagation();">
+     <ion-icon name="more"></ion-icon>
+   </button>
+  </ion-item>
+
+  <ion-row padding-left>
+    <ion-col col-5>
+       <div class="img_product">
+        <img [src]="l.data2.image">
+       </div>
+    </ion-col>
+    <ion-col col-7>
+      <ion-item no-lines class="product_info" no-padding>
+        <p>{{'CATEGORY'| lang}}</p>
+       <h3>{{l.data2.category.name}}</h3>
+      </ion-item>
+      <ion-row no-padding>
+        <ion-col col-5 no-padding>
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'PRICE' | lang}}</p>
+           <h3>${{l.data2.price}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-7 no-padding *ngIf="l.data2.duration1&&l.data2.duration2">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'DURATTION' | lang}}</p>
+           <h3>{{l.data2.duration1}}:{{l.data2.duration2}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Mon_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'MON' | lang}}</p>
+           <h3>{{l.data2.Mon_start}} - {{l.data2.Mon_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Tue_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'TUE' | lang}}</p>
+           <h3>{{l.data2.Tue_start}} - {{l.data2.Tue_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Wed_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'WED'| lang}}</p>
+           <h3>{{l.data2.Wed_start}} - {{l.data2.Wed_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Thu_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'THU'| lang}}</p>
+           <h3>{{l.data2.Thu_start}} - {{l.data2.Thu_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Fri_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'FRI'| lang}}</p>
+           <h3>{{l.data2.Fri_start}} - {{l.data2.Fri_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Sat_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'SAT' | lang}}</p>
+           <h3>{{l.data2.Sat_start}} - {{l.data2.Sat_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        <ion-col col-12 no-padding *ngIf="l.data2.Sun_status==1">
+          <ion-item no-lines class="product_info" no-padding>
+            <p>{{'SUN' | lang}}</p>
+           <h3>{{l.data2.Sun_start}} - {{l.data2.Sun_end}}</h3>
+          </ion-item>
+        </ion-col>
+
+        </ion-row>
+        <!-- <button ion-button block class="buy_btn" *ngIf="l.url"
+        (click)="open_url(l.url);$event.stopPropagation();">Buy Link</button> -->
+      </ion-col>
+  </ion-row>
+
+
+
+  <p class="content_p">{{l.data2.description}}</p>
+</div>
+
+<div class="noDatadiv2" *ngIf="lists.length==0">
+  <ion-icon name="ios-search-outline"></ion-icon>
+  <p>{{'NORECORDFOUND' | lang}}</p>
+</div>
+
+</div>
+
+<ion-fab right top>
+  <button ion-fab color="vibrant" (click)="add()">
+    <img src="assets/imgs/new/plus.png" style="width: 30px;">
+  </button>
+</ion-fab>
+</ion-content>

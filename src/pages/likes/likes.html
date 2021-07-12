@@ -1,0 +1,43 @@
+<!--
+  Generated template for the LikesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" hideBackButton >
+    <ion-buttons start (click)="close()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="ios-arrow-dropleft-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>{{'LIKES'|lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+<ion-grid no-padding>
+  <ion-row>
+    <ion-col>
+      <div *ngFor="let l of list">
+        <ion-item  (click)="otherUser(l.user_id)" text-wrap class="image-cnt" *ngIf="l?.created_by?.id">
+          <ion-avatar item-start>
+        <img [src]="l?.created_by?.profile">
+        </ion-avatar>
+        <h2>{{l.created_by.first_name}} {{l.created_by.last_name}}</h2>
+        <p *ngIf="l?.created_by?.address">{{l.created_by.address}}</p>
+        <p *ngIf="!l?.created_by?.address || !l?.created_by?.address == null">{{'NOLOCTION' | lang}}</p>
+        <p *ngIf="l?.created_by?.gender" text-capitalize>{{l.created_by.gender}}</p>
+        <p item-end>{{l.time_ago}}</p>
+        </ion-item>
+      </div>      
+    </ion-col>
+
+    <ion-col col-12 text-center *ngIf="list.length == 0">
+      <h6>{{'NORECORDFOUND' | lang}}</h6>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</ion-content>

@@ -1,0 +1,438 @@
+// http://ionicframework.com/docs/theming/
+
+
+	// App Global Sass
+	// --------------------------------------------------
+	// Put style rules here that you want to apply globally. These
+	// styles are for the entire app and not just one component.
+	// Additionally, this file can be also used as an entry point
+	// to import other Sass files to be included in the output CSS.
+	//
+	// Shared Sass variables, which can be used to adjust Ionic's
+	// default Sass variables, belong in "theme/variables.scss".
+	//
+	// To declare rules for a specific mode, create a child rule
+	// for the .md, .ios, or .wp mode classes. The mode class is
+	// automatically applied to the <body> element in the app.
+
+	.tabs {
+    .tabbar {
+        background: #fff;
+        padding: 0px 5px 5px;
+        border: 0px;
+        border-top-color: currentcolor;
+        border-top-style: none;
+        border-top-width: 0px;
+        border-top: none;
+        height: 60px !important;
+        box-shadow: 0 -5px 0px #f1f1f1;
+    }
+    .tabbar .tab-button-text {
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+}
+.show-tabbar .tab-button {
+    background-repeat: no-repeat;
+    background-position: center 8px;
+    background-size: 30px;
+    padding-top: 0px !important;
+}
+
+.tabs-ios .tab-button {
+    color: #000;
+}
+
+.tab-button .tab-button-icon {
+    opacity: 0;
+}
+
+.tabbar {
+    span {
+        margin-top: 32px;
+    }
+}
+.tabs .tabbar .tab-button-text {
+    text-transform: uppercase;
+    font-size: 11px;
+}
+.tabs-ios .tab-button-icon {
+    margin-top: 4px;
+    margin-bottom: 1px;
+    min-width: 35px;
+    height: 35px;
+    font-size: 30px;
+    color: #000;
+}
+.tab-button {
+    &:nth-child(1) {
+        background-image: url(/assets/imgs/new/icons8-smart-home-checked-50.png);
+    }
+    &:nth-child(2) {
+        background-image: url(/assets/imgs/new/icons8-search-contacts-50.png);
+    }
+    &:nth-child(3) {
+        background-image: url(/assets/imgs/new/icons8-chat-message-50.png);
+    }
+    &:nth-child(4) {
+        background-image: url(/assets/imgs/new/icons8-test-account-50.png);
+        // background-size: 30px;
+    }
+}
+
+.tab-button[aria-selected="true"] {
+    &:nth-child(1) {
+        background-image: url(/assets/imgs/new/icons8-smart-home-checked-50-active.png);
+    }
+    &:nth-child(2) {
+        background-image: url(/assets/imgs/new/icons8-search-contacts-50-active.png);
+    }
+    &:nth-child(3) {
+        background-image: url(/assets/imgs/new/icons8-chat-message-50-active.png);
+    }
+    &:nth-child(4) {
+        background-image: url(/assets/imgs/new/icons8-test-account-50-active.png);
+        // background-size: 30px;
+    }
+
+}
+
+
+
+
+
+
+
+
+.button-full.button-outline {
+    border-radius: 4px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+}
+.list_img {
+  background: #a64686;
+  border-radius: 0 0 30px 15px;
+    .item {
+        background: transparent;
+    }
+    .item-inner {
+        border: none !important;
+    }
+    h2{
+        color: #fff;
+        font-size: 18px !important;
+    }
+    .item-ios ion-avatar img {
+        border-radius: 50%;
+        overflow: hidden;
+        width: 55px;
+        height: 55px;
+    }
+}
+.header_menu {
+  padding-bottom: 10px;
+}
+.menu_list{
+    .item-block:first-child {
+        border-top: 0.55px solid #c8c7cc;
+        border: none;
+        padding-top: 10px;
+    }
+    .label img {
+        width: auto;
+        height: 30px;
+        margin-right: 12px;
+    }
+    .label {
+        margin: 11px 8px 11px 0;
+        align-items: center;
+        line-height: 30px;
+        display: flex;
+    }
+    .item-ios[detail-push] .item-inner, button.item-ios:not([detail-none]) .item-inner, a.item-ios:not([detail-none]) .item-inner {
+      background-image: url("");
+  }
+}
+
+
+
+
+ion-menu {
+  top: 44px;
+  .menu-inner {
+    width: 238px;
+}
+}
+
+.btm{
+  width: 100%;
+}
+ion-modal {
+  left: 0;
+  top: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  contain: strict;
+  background: #0000007a;
+}
+
+.network{
+    width: 100%;
+    height: 100%;
+    background: white;
+    position: absolute;
+}
+
+.top1{
+        position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0px 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+
+// my css //
+
+.block .item-ios {
+    border-radius: 5px !important;
+    -webkit-box-shadow: 0;
+    box-shadow: 0;
+    border: 1px solid #a64686;
+   // margin: 0 0 150px;
+}
+
+.button-full-ios {
+    border-radius: 5px;
+}
+
+.login_text {
+        width: 100%;
+        margin-bottom: 20px;
+    h3 {
+        font-size: 26px;
+        color: #a64686;
+        margin: 0;
+    }
+    p{
+        margin: 5px 0 0 0;
+        font-size: 18px;
+    }
+}
+
+ion-content {
+    background-image: none !important;
+}
+.toolbar-ios-primary .toolbar-background-ios {
+    background: #a64686 !important;
+    border-radius: 0 !important;
+}
+
+ion-content {
+    background-color: #fff !important;
+}
+.block.block_1 {
+    padding: 15px 16px 0 !important;
+}
+.user-img .user {
+    border: 1px solid #d967d7 !important;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 120px !important;
+    height: 120px !important;
+    object-fit: cover;
+    display: inline-block;
+    margin: auto;
+    -webkit-border-radius: 50%;
+    background: #fff;
+    padding:2px;
+}
+.back-button-icon:before {
+    content: "";
+    background-image: url('../assets/imgs/new/icons8-backt-page-50.png');
+    background-size: contain;
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    opacity: 1;
+}
+.pet_details .item:nth-child(1) {
+    border-top: 1px solid #ccc;
+}
+.bottom_text.row {
+    padding-bottom: 14px;
+}
+.bottom_text.row p {
+    margin: 3px 0 0;
+}
+.pet_details .item {
+
+    h3 {
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0;
+        font-family: 'Helvetica-Bold' !important;
+        color: #231f20;
+    }
+    ion-label {
+        font-family: 'Helvetica-Bold' !important;
+    }
+}
+
+.pet_details{
+  .item-ios .radio-ios {
+    position: relative;
+    display: block;
+    margin: 8px 11px 8px 8px;
+    width: 75%;
+    height: 20px;
+    position: absolute;
+    text-align: right;
+    background: transparent;
+  }
+  .item-radio .input-wrapper{
+    display: inline-table;
+    width: 100%;
+  }
+  .radio-ios .radio-icon {
+    position: relative;
+    display: block;
+    width: 16px;
+    height: 21px;
+    position: absolute;
+    right: 0;
+}
+}
+
+
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #939598;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  color: #939598;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  color: #939598;
+}
+input:-moz-placeholder { /* Firefox 18- */
+  color: #939598;
+}
+
+
+textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #939598;
+}
+textarea::-moz-placeholder { /* Firefox 19+ */
+  color: #939598;
+}
+textarea:-ms-input-placeholder { /* IE 10+ */
+  color: #939598;
+}
+textarea:-moz-placeholder { /* Firefox 18- */
+  color: #939598;
+}
+
+
+.listing.row{
+  h2 {
+    color: #231f20;
+  }
+  p{
+    color: #231f20;
+  }
+}
+.moremodel{
+
+  .modal-wrapper {
+      // background: #0000003d;
+      animation: fadein 0.5s;
+      transition: ease-in-out 0.5s;
+      transform: translatey(0%) !important;
+  }
+  .modal-wrapper{
+      // pointer-events: none !important;
+  }
+  ion-backdrop {
+      visibility: hidden !important;
+      z-index: 0 !important;
+  }
+
+
+
+}
+ion-modal {
+  background: #0000;
+}
+
+.pet_details .item .label {
+  margin-top: 15px;
+}
+.pet_details .item .input_pet {
+  border-radius: 40px;
+  height: 50px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 100%;
+  padding: 16px;
+  font-weight: 600;
+}
+
+.noDatadiv {
+    text-align: center;
+    padding-top: 45px;
+    ion-icon {
+        font-size: 50px;
+        color: #bdbdbd;
+    }
+    p {
+        font-size: 18px;
+        color: #bdbdbd;
+    }
+}
+
+.searchbar-ios .searchbar-clear-icon {
+    display: none !important;
+}
+
+.noDatadiv2 {
+    text-align: center;
+   // padding-top: 45px;
+    ion-icon {
+        font-size: 50px;
+        color: #bdbdbd;
+    }
+    p {
+        font-size: 18px;
+        color: #bdbdbd;
+    }
+}
+
+.toolbar-title {
+  display: block;
+  overflow: hidden;
+  width: 100%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  top: 0;
+  font-size: 15px !important;
+  right: 0;
+  min-height: 45px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.btn-bg {
+    background-color: #222 !important;
+}
+
+h2:first-child{
+    margin-top:.0rem !important;
+}
+

@@ -1,0 +1,65 @@
+<!--
+  Generated template for the OptPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+  	<ion-buttons end>
+  		<button ion-button icon-only clear (click)="close()">
+  			<ion-icon ios="ios-close" md="md-close"></ion-icon>
+  		</button>
+  	</ion-buttons>
+    <ion-title>{{'OTP' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+  <div class="main_div">
+	<ion-grid no-padding>
+		<ion-row >
+  <ion-col text-center>
+   <ion-input #otp1 required maxLength="1" type="number"[(ngModel)]="OTP.first"(keyup)="otpController($event,otp2,'')">
+   </ion-input>
+   <ion-input #otp2 required maxLength="1" type="number"[(ngModel)]="OTP.second"(keyup)="otpController($event,otp3,otp1)">
+   </ion-input>
+   <ion-input #otp3 required maxLength="1" type="number" [(ngModel)]="OTP.third"(keyup)="otpController($event,otp4,otp2)">
+   </ion-input>
+   <ion-input #otp4  required maxLength="1" type="number" [(ngModel)]="OTP.forth"(keyup)="otpController($event,'',otp3)">
+   </ion-input>
+  </ion-col>
+</ion-row>
+
+<ion-row padding margin-top>
+	<ion-col col-12 no-padding text-center>
+		<button ion-button round full (click)="otp()">
+			{{'VALIDATEPIN' | lang}}
+		</button>
+	</ion-col>
+
+	
+
+	<!-- <ion-col col-4 no-padding text-center>
+		<button ion-button round (click)="cancel()">
+			Cancel
+		</button>
+	</ion-col> -->
+</ion-row>
+
+<ion-row>
+    <ion-col col-12 padding text-center>
+       <span>{{'IFRECEIVEVALIDATE' | lang}}</span>
+    
+  </ion-col>
+  <ion-col col-12 text-center>
+    <button ion-button round clear icon-only (click)="resend_otp()">
+      <!-- if you din't receive otp resend it -->
+        <strong color="primary">[{{'RESENDOTOP' | lang}}]</strong>
+    </button>
+  </ion-col>
+</ion-row>
+	</ion-grid>
+</div>
+</ion-content>

@@ -1,0 +1,82 @@
+<!--
+  Generated template for the SocialLoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content no-padding>
+
+        <div class="block block_1">
+          <img src="../../assets/imgs/logo.png" class="logo" alt=""/>
+
+          <div text-center class="login_text">
+
+            <h3>{{'AREYOUREADY' | lang}}</h3>
+            <p>{{'CREATEYOURACC' | lang}}</p>
+
+          </div>
+          <ion-row>
+            <ion-col col-12 no-padding>
+              <ion-item no-lines class="login_text_1" (click)="register()">
+                <h3>{{'REGISTERWITHEAMIL' | lang}}</h3>
+                <img item-start src="assets/imgs/login/envelop.png" style="width: 25px;margin: 0 3px 0 10px;">
+              </ion-item>
+            </ion-col>
+
+            <ion-col col-12 no-padding (click)="google_login()">
+              <ion-item no-lines class="login_text_1">
+                <h3>{{'REGISTERWITHGOOGLE' | lang}}</h3>
+                <img item-start src="assets/imgs/new/icons8-google-100.png" style="width: 28px;margin: 0 0 0 10px;">
+              </ion-item>
+            </ion-col>
+
+
+            <!-- <ion-col col-12 no-padding>
+              <ion-item no-lines class="login_text_1 login_text_1_apple">
+                <h3>Sign-in with Apple </h3>
+                <img item-start src="assets/imgs/new/icons8-apple-logo-50.png" style="width: 28px;margin: 0 0 0 10px;">
+              </ion-item>
+            </ion-col> -->
+
+            <ion-col col-12 no-padding (click)="fb_login()">
+              <ion-item no-lines class="login_text_1 login_text_1_facebook">
+                <h3>{{'REGISTERWITHFB' | lang}}</h3>
+                <img item-start src="assets/imgs/new/icons8-facebook-100 (1).png" style="width: 28px;margin: 0 0 0 10px;">
+              </ion-item>
+            </ion-col>
+
+            <!-- <ion-col col-12 no-padding>
+              <button ion-button full clear no-padding style="margin: 0 0 10px 0;">
+                <img src="assets/imgs/apple-login.png" style="height: auto;width: 100%;">
+              </button>
+            </ion-col>
+
+              <ion-col col-12 no-padding (click)="fb_login()">
+                <button ion-button full clear no-padding style="margin: 0 0 10px 0;">
+                  <img src="assets/imgs/fb-login.png" style="height: auto;width: 100%;">
+                </button>
+              </ion-col> -->
+
+
+          </ion-row>
+        </div>
+
+  <ion-row class="bottom_text">
+    <ion-col col-12 >
+      <p (click)="terms()">
+       {{'TERMUSE' | lang}}
+      </p>
+      <!-- <p (click)="privacy()">
+       {{'PRIVACYPOLICY' | lang}}
+      </p> -->
+    </ion-col>
+  </ion-row>
+
+
+  <ion-fab left bottom *ngIf="!keyboard.isVisible">
+    <button ion-fab color="primary" (click)="back()">
+      <img src="assets/imgs/new/icons8-backt-page-50.png">
+    </button>
+  </ion-fab>
+
+</ion-content>

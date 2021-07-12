@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <ion-buttons end (click)="notification()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>{{'SEARCH' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row class="block" margin-bottom>
+      <ion-col no-padding>
+        <ion-item no-lines class="new_search">
+          <ion-input type="text" (keyup)="search($event)" [(ngModel)]="search_val"
+          placeholder="{{'SEARCHPETONER' | lang}}"></ion-input>
+          <button ion-button clear small item-end>
+          <img src="assets/imgs/new/icons8-search-client-100.png" style="width:24px;">
+        </button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="listing" *ngFor="let l of items">
+        <ion-item>
+          <ion-avatar item-start class="avtar_item">
+            <img [src]="l?.profile">
+          </ion-avatar>
+          <h2 style="font-size: 15px;white-space: normal;overflow: hidden;text-overflow: ellipsis;font-weight: 600;letter-spacing: normal;"*ngIf="l.type == 'User'">{{l.first_name}} {{l.last_name}}
+             <!-- (Parent) -->
+            </h2>
+          <h2 style="font-size: 15px;white-space: normal;overflow: hidden;text-overflow: ellipsis;font-weight: 600;letter-spacing: normal;" *ngIf="l.type == 'Pet'">{{l.name}} 
+            <!-- ({{l.type}}) -->
+          </h2>
+          <!-- <p style="font-size: 13px;">{{l.dob}}</p> -->
+          <p style="font-size: 13px;" *ngIf="l.type == 'User'&&l.gender">({{l.gender}}, {{'PARENT' | lang}})</p>  
+          <!-- <p style="font-size: 13px;" *ngIf="l.type == 'User'&&l.gender=='dont'">(Don't.., {{l.race}})</p>  -->
+           
+          <p style="font-size: 13px;" *ngIf="l.type == 'User'&&!l.gender">({{'PARENT' | lang}})</p>    
+          <div style="font-size: 13px;" *ngIf="l.type == 'User'">
+            <span *ngIf="l.is_friend==1">{{'FRIENDSS' | lang}}/</span> 
+            <!-- <span *ngIf="l.state" style="white-space: normal;">{{l.state}},</span>  -->
+            <span style="white-space: normal;" *ngIf="l.city">{{l.city}}</span>
+            <span style="white-space: normal;" *ngIf="!l.city">{{'NOLOCTION' | lang}}</span>
+          </div> 
+          <p style="font-size: 13px;" *ngIf="l.type == 'Pet'">({{l.gender}}<span *ngIf="l.gender&&l.race">,</span>{{l.race}})</p> 
+
+            <div style="font-size: 13px;" *ngIf="l.type == 'Pet'">
+              <span *ngIf="l.is_friend==1">Friend/</span> 
+              <!-- <span *ngIf="l.state" style="white-space: normal;">{{l.state}},</span> -->
+              <span style="white-space: normal;" *ngIf="l.city">{{l.city}}</span>
+            <span style="white-space: normal;" *ngIf="!l.city">{{'NOLOCTION' | lang}}</span>
+            </div> 
+
+          <button ion-button small round item-end class="btn_view" (click)="go_to(l)">{{'VIEW' | lang}}</button>
+        </ion-item>
+    </ion-row>
+
+    <!-- <ion-row no-padding *ngIf="items.length == 0">
+      <ion-col col-12 text-center no-padding>
+        <h6>No data found..</h6>
+        <img src="assets/imgs/no-data-found.png" alt=""/>
+      </ion-col>
+    </ion-row> -->
+
+  </ion-grid>
+</ion-content>

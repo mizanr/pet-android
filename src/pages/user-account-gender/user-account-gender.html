@@ -1,0 +1,71 @@
+<!--
+  Generated template for the UserAccountGenderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'GENDER' | lang}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="wall-img" no-padding>
+    <ion-col col-12 text-center no-padding (click)="getwallimage()">
+        <img src="../../assets/imgs/details-image.jpg" alt="" *ngIf="!current_user?.wall_image">
+        <img [src]="current_user?.wall_image" alt="" *ngIf="current_user?.wall_image">
+      </ion-col>
+
+      <ion-col text-center col-12 (click)="getProfileImage()" text-center class="user-img">
+        <img *ngIf="!current_user?.profile" src="../../assets/imgs/pet-profile.png" alt="" class="user" >
+        <img *ngIf="current_user?.profile" [src]="current_user?.profile" alt="" class="user" >
+    </ion-col>
+  </ion-row>
+
+
+<div class="pet_details">
+
+
+  <div text-center class="login_text">
+
+    <h3 text-capitalize>{{current_user.nic_name}}</h3>
+    <p style="font-size: 14px !important;" *ngIf="current_user.city">{{current_user.city}}</p>
+    <p  *ngIf="!current_user.city">{{'NOLOCTION' | lang}}</p>
+
+  </div>
+  <ion-list radio-group>
+
+
+
+    <ion-item no-lines>
+      <img item-start src="assets/imgs/new/icons8-male-100.png" class="img_left">
+      <ion-label>{{'MALE' | lang}}</ion-label>
+      <ion-radio  [checked]="ismale" (ionSelect)="gendar('m')"></ion-radio>
+    </ion-item>
+    <ion-item no-lines>
+      <img item-start src="assets/imgs/new/icons8-female-100.png" class="img_left">
+      <ion-label>{{'FEMALE' | lang}}</ion-label>
+      <ion-radio [checked]="isfemale" (ionSelect)="gendar('f')"></ion-radio>
+    </ion-item>
+    <ion-item no-lines>
+      <img item-start src="assets/imgs/new/icons8-private-100.png" class="img_left">
+      <ion-label>{{'DONTSAY' | lang}}</ion-label>
+      <ion-radio [checked]="isdont" (ionSelect)="gendar('d')"></ion-radio>
+    </ion-item>
+
+  </ion-list>
+
+</div>
+
+<div>
+  <ion-fab right top>
+    <button ion-fab color="vibrant" (click)="update_account()">
+      <img src="assets/imgs/new/icons8-ok-100.png">
+    </button>
+  </ion-fab>
+</div>
+
+
+</ion-content>

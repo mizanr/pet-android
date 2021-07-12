@@ -1,0 +1,123 @@
+<!--
+  Generated template for the CreatFeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons end (click)="close()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <!-- <ion-buttons end (click)="notification()">
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> -->
+    <ion-title>New Bark</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid style="padding: 5px 25px 0px 25px;" *ngIf="petInfo">
+    <ion-row class="feed_content">
+      <ion-col col-2 text-center>
+        
+        <div class="circle" [ngClass]="active">
+          <img  [src]="petInfo?.profile" width="50">
+        </div>
+
+      </ion-col>
+      <ion-col col-10>
+          <div class="bx">
+            <span>{{petInfo.name}}</span>
+            <!-- <p>Lorem ipsum dolar sit amet....</p> -->
+             </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="block">
+      <ion-col padding>
+        <!-- <ion-textarea placeholder="Bark something  with {{petInfo.name}}" 
+      name="note" autocomplete="on" autocorrect="on" rows="7" 
+      [(ngModel)]="desc"></ion-textarea> -->
+
+      <textarea rows="7" [(ngModel)]="desc" 
+        placeholder="Bark something  with {{petInfo.name}}" >
+       </textarea>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button icon-only clear color="primary" (click)="getImage()">
+          <img src="../../assets/imgs/home/camera.png" style="margin-right: 10px; width: 20px;">
+          <b>Post Photo</b>
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button icon-only clear color="primary" (click)="new_video_thamb()">
+          <img src="../../assets/imgs/home/video.png" style="margin-right: 10px; width: 20px;">
+          <b>Post Video</b>
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="feedImage">
+      <ion-col col-6 style="position: relative;" class="feed-img">
+        <button ion-button clear icon-only color="danger" (click)="deletefile()">
+          <ion-icon name="close-circle"></ion-icon>
+        </button>
+        <img [src]="feedImage" alt="" width="100" height="100">
+      </ion-col>
+    </ion-row>
+
+   <!--  <ion-row *ngIf="blob_feedvideo_name">
+      <ion-col col-6 style="position: relative;" class="feed-vid">        
+        <h4>{{blob_feedvideo_name}}</h4>        
+      </ion-col>
+      <ion-col col-6 >
+        <ion-buttons>
+          <button ion-button clear icon-only color="danger" (click)="deletefile()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row *ngIf="upload_video == 1"(click)="previewVideo(new_video)">
+      <ion-col col-6 style="position: relative;" class="feed-vid">        
+        <!-- <h4>{{blob_feedvideo_name}}</h4>   -->
+        <img [src]="new_video.thumb.preview" alt=""> 
+        <ion-icon ios="ios-play" md="md-play"></ion-icon>
+        
+      </ion-col>
+      <ion-col col-6 align-items-center>
+        <ion-buttons>
+          <button ion-button clear icon-only color="danger" (click)="deletefile()">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button full round (click)="Add_feed()">
+          Create
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button full round color="secondary" (click)="close()">
+          Cancel
+        </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,106 @@
+page-new-share {
+    .content{
+        background: rgba(0,0,0,0.3)!important;
+      }
+          textarea{
+              width: 100%;
+              border:none;
+              background: transparent;
+              color: #fff;
+          }
+          .bx {
+          background: transparent;
+          color: #fff;
+              h2{
+                  text-transform: capitalize;
+              }
+              padding-left: 8px;
+              .item-inner {
+                  border-bottom: none !important;
+                  padding: 0 !important;
+              }
+          }
+      
+          .block {
+              width: 100%;
+              // background-color: white;
+              border-radius: 10px;
+              // box-shadow: 1px 1px 7px #e3e3e3;
+              margin: 0px 0 10px;
+          }
+      
+           .scroller {
+                  .scroller {
+          overflow-x: scroll;
+          -webkit-overflow-scrolling: touch;
+          -ms-overflow-style: none;  // IE 10+
+          scrollbar-width: none;  // Firefox
+          scroll-behavior: smooth;
+      
+          &::-webkit-scrollbar {
+            display: none; // Safari and Chrome
+          }
+      }
+          }
+      
+          .bottom_share {
+            border-top: 1px solid #fff;
+            margin-top: 10px;
+            padding-top: 16px;
+        }
+        button.btn_close {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 30px;
+          color: #fff;
+          z-index: +9999;
+      }
+      
+      .login_form {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            padding: 16px 0;
+            background: #58585a;
+            border-radius: 30px 30px 0px 0;
+            bottom: 0;
+        }
+        textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: #fff;
+          font-weight: 300;
+        }
+        textarea::-moz-placeholder { /* Firefox 19+ */
+          color: #fff;
+          font-weight: 300;
+        }
+        textarea:-ms-input-placeholder { /* IE 10+ */
+          color: #fff;
+          font-weight: 300;
+        }
+        textarea:-moz-placeholder { /* Firefox 18- */
+          color: #fff;
+          font-weight: 300;
+        }
+      
+        .bottom_share{
+          .item{
+            background: transparent;
+            color: #fff;
+            h3{
+              font-family: 'Helvetica' !important;
+              font-weight: 500 !important;
+              padding: 5px 0 0;
+              margin: 0;
+            }
+      
+          }
+        }
+      
+      
+        .bottom_share img {
+          width: 35px;
+          margin-bottom: 0 !important;
+          margin-top: 0 !important;
+      }
+}

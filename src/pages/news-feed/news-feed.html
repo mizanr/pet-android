@@ -1,0 +1,414 @@
+<!--
+  Generated template for the NewsFeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary" hideBackButton>
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end (click)="notification()">
+      <!-- <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button> -->
+
+      <button id="notification-button" ion-button clear>
+        <ion-icon name="notifications">
+          <ion-badge id="notifications-badge" color="danger"
+          *ngIf="noti_count > 0">{{noti_count}}</ion-badge>
+        </ion-icon>
+    </button>
+    </ion-buttons>
+
+    <ion-title> <img src="assets/imgs/Friend-My-Pet.png" style="width: 130px;"> </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding (ionScroll)="scrolling($event)" (ionScrollEnd)="scrollComplete($event)">
+
+  <div class="scroller">
+    <div  class="scrollitem">
+
+        <!-- <div class="circle" [ngClass]="active" (click)="add()">
+          <img  src="../../assets/imgs/add-button.png" width="50">
+        </div> -->
+
+        <div class="circle" [ngClass]="active" (click)="petProfile(p);$event.stopPropagation();"
+        *ngFor="let p of petList">
+          <img  [src]="p?.profile" width="50">
+          <span text-capitalize>{{p.name}}</span>
+        </div>
+    </div>
+</div>
+
+
+
+<ion-grid class="search_grid">
+  <ion-row style="padding: 0 8px;">
+    <ion-col col-12 style="border: 1px solid #e4e4e4;border-radius: 35px;margin: 5px 0 2px;padding: 0;">
+      <button ion-button clear full (click)="newpost()" no-padding style="height: 30px;">
+            {{'WHATWOULDSHARETODAY' | lang}}
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+    <ion-grid no-padding *ngFor="let f of feeds;let i=index" class="post_grid"
+    style="border-bottom: 4px solid #f1f1f1;padding-top: 4px;">
+
+
+
+                                          <!-- for ad's -->
+
+                  <ion-item no-padding class="bx" *ngIf="f.type == 'Ads'" [id]="f.id"
+                  (click)="add_detail(f);$event.stopPropagation();">
+                      <ion-avatar item-start>
+                        <div class="circle" [ngClass]="active">
+                        <img [src]="f?.user?.profile">
+                        </div>
+                      </ion-avatar>
+                      <h2 style=" color: #231f20; font-weight: 600; font-size: 16px;">{{f.user.company_name}}</h2>
+                      <p>{{'SPONSORADVER' | lang}}</p>
+                      <p>{{f.start_date}}</p>
+                    </ion-item>
+                    <ion-row class="block" *ngIf="f.type == 'Ads'" (click)="add_detail(f);$event.stopPropagation();">
+                      <ion-col col-12 text-justify style="padding:10px">{{f.title}}</ion-col>
+
+                      <ion-col col-12  text-left style="padding:10px">{{f.description.substr(0,40)}}..</ion-col>
+
+                      <img class="img" [src]="f.image" alt="" />
+
+                    </ion-row>
+
+                    <ion-row padding align-items-center *ngIf="f.type == 'Ads'">
+
+                      <ion-col col-4 text-left class="add-like" (click)="like_unlike_adds(f);$event.stopPropagation();">
+                          <img src="assets/imgs/pawprint.png" *ngIf="f.is_like == 0"
+                          alt="" width="20"/>
+                          <img src="assets/imgs/pawprint-active.png" *ngIf="f.is_like == 1"
+                          alt="" width="20"/>
+                        <strong>{{'LIKESS' | lang}}: {{f.likes}}</strong>
+                      </ion-col>
+
+                      <ion-col col-4 text-center class="add-like2" (click)="comment_add(f);$event.stopPropagation();">
+                          <img src="assets/imgs/dog.png" alt="" width="20"/>
+                        <strong>{{'COMMENT'| lang}}: {{f.comments}}</strong>
+                      </ion-col>
+                      <ion-col col-4 text-center *ngIf="f.url">
+                        <button ion-button small round (click)="go_url(f)">Visit Now</button>
+                      </ion-col>
+                    </ion-row>
+
+                    <!-- <ion-row class="block" *ngIf="f.type == 'Ads'" style="padding: 10px;">
+                        <ion-col col-6>
+                            Campaign Days
+                        </ion-col>
+                        <ion-col col-6 text-right style="font-weight: bolder;">
+                            {{f.duration}} Day
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="block" *ngIf="f.type == 'Ads'" style="padding: 0px 12px 5px 10px;">
+                        <ion-col col-6>
+                            Projected Total Cost of this Campaign
+                        </ion-col>
+                        <ion-col col-6 text-right style="font-weight: bolder;">
+                            ${{f.projected_cost}}
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="block" *ngIf="f.type == 'Ads'" style="padding: 0px 12px 5px 10px;">
+                        <ion-col col-6>
+                            Campaign Total Projected Exposure
+                        </ion-col>
+                        <ion-col col-6 text-right style="font-weight: bolder;">
+                            {{f.projected_exposure}}
+                        </ion-col>
+                    </ion-row> -->
+
+
+      <ion-item no-padding class="bx" *ngIf="f.type == 1||f.type == 2">
+        <ion-avatar item-start (click)="otherUser(f.user_id);$event.stopPropagation();" *ngIf="f.type == 1">  <!-- otherUser(f.user_id) -->
+          <div class="circle" [ngClass]="active">
+          <img [src]="f?.user_data?.profile">
+          </div>
+        </ion-avatar>
+        <h2  style=" color: #231f20; font-weight: 600; font-size: 16px;" *ngIf="f.type == 1">{{f.user_data.first_name}} {{f.user_data.last_name}}</h2>
+
+        <ion-avatar item-start *ngIf="f.type == 2&&f.is_your_pet==1" (click)="petProfile(f);$event.stopPropagation();">
+          <div class="circle" [ngClass]="active">
+          <img [src]="f?.users?.profile">
+          </div>
+        </ion-avatar>
+        <h2  style=" color: #231f20; font-weight: 600; font-size: 16px;" *ngIf="f.type == 2&&f.is_your_pet==1">{{f.users.name}}</h2>
+
+        <ion-avatar item-start *ngIf="f.type == 2&&f.is_your_pet==0"
+        (click)="petProfile(f);$event.stopPropagation();">
+          <div class="circle" [ngClass]="active">
+          <img [src]="f?.user_data?.profile">
+          </div>
+        </ion-avatar>
+        <h2  style=" color: #231f20; font-weight: 600; font-size: 16px;" *ngIf="f.type == 2&&f.is_your_pet==0">{{f.user_data.first_name}} {{f.user_data.last_name}}</h2>
+
+        <p>{{f.create_date}}</p>
+        <button item-end ion-button clear icon-only color="light" (click)="checkuser(f);$event.stopPropagation();">
+          <ion-icon name="more"></ion-icon>
+        </button>
+
+      </ion-item>
+
+
+
+      <ion-col col-12 text-left style="padding-left: 10px;padding-right: 10px;" *ngIf="f.type != 'Ads'">
+        <!-- <p style="margin: 5px 0;">{{f.description}}</p> -->
+        <p class="description" *ngIf="f?.description?.length < 100" (click)="read_more(f,i)">
+                        {{f.description}}
+                    </p>
+
+                    <p class="description" *ngIf="f?.description?.length > 100 && f?.is_less != 0"
+                      (click)="more_content(f,i)">
+                        {{f.description.substring(0,100)}}
+                        <span class="rd-more">...</span>
+
+                    </p>
+
+                    <p class="description" (click)="read_more(f,i)" *ngIf="f?.is_long && f?.description?.length > 100">
+                    {{f.description}}
+                    </p>
+      </ion-col>
+
+
+
+      <ion-row class="block">
+          <img class="img" [src]="f.image" alt="" (click)="detail(f);$event.stopPropagation();" *ngIf="f.file_type== 'Image'"/>
+
+          <div class="play">
+          <img class="img" [src]="f.thumbnail" alt="" (click)="detail(f);$event.stopPropagation();" *ngIf="f.file_type== 'Video'"/>
+
+          <!-- <ion-icon ios="ios-play" md="md-play" (click)="detail(f);$event.stopPropagation();"
+          *ngIf="f.file_type == 'Video'" class="play-icon"></ion-icon> -->
+
+          <img class="" src="../../assets/imgs/Rectangle-1.png" width="80" 
+          (click)="detail(f);$event.stopPropagation();"
+           class="play-icon" 
+           *ngIf="f.file_type == 'Video'">
+       </div>
+
+
+       <div padding *ngIf="f.is_shared == 1" (click)="detail(f);$event.stopPropagation();"
+       style="border: 1px solid #e8e5e5;margin-bottom: 16px;
+     border-radius: 10px;width: 100%;">
+
+       <ion-item no-padding class="bx" *ngIf="f.is_shared == 1">
+
+         <ion-avatar item-start *ngIf="f.shared_feed_data.type == 1" class="shared"
+         (click)="otherUser(f.shared_feed_data.user_id);$event.stopPropagation();">
+           <div class="circle" [ngClass]="active">
+           <img [src]="f?.shared_feed_data?.user_data?.profile">
+           </div>
+         </ion-avatar>
+         <h2 *ngIf="f.shared_feed_data.type == 1">{{f.shared_feed_data.user_data.first_name}} {{f.shared_feed_data.user_data.last_name}}</h2>
+
+         <ion-avatar item-start *ngIf="f.shared_feed_data.type == 2"
+         (click)="petProfile(f.shared_feed_data);$event.stopPropagation();">
+           <div class="circle" [ngClass]="active">
+           <img [src]="f?.shared_feed_data?.users?.profile">
+           </div>
+         </ion-avatar>
+         <h2 *ngIf="f.shared_feed_data.type == 2">
+           {{f.shared_feed_data.users.name}}
+         </h2>
+
+
+         <p>{{f.shared_feed_data.create_date}}</p>
+       </ion-item>
+
+       <ion-col col-12 text-left *ngIf="f.is_shared == 1"
+       style="padding-left: 10px;padding-right: 10px;">
+         <!-- <p style="margin: 5px 0;">{{f.description}}</p> -->
+         <p *ngIf="f?.shared_feed_data?.description?.length < 100" (click)="read_more(f,i)">
+                         {{f.shared_feed_data.description}}
+                     </p>
+
+                     <p *ngIf="f?.shared_feed_data?.description?.length > 100 && f?.shared_feed_data?.is_less != 0"
+                       (click)="more_content(f,i)">
+                         {{f.shared_feed_data.description.substring(0,100)}}
+                         <span class="rd-more">...</span>
+
+                     </p>
+
+                     <p (click)="read_more(f,i)" *ngIf="f?.shared_feed_data?.is_long && f?.shared_feed_data?.description?.length > 100">
+                     {{f.shared_feed_data.description}}
+                     </p>
+       </ion-col>
+
+
+       <ion-row class="block" *ngIf="f.is_shared == 1" margin-bottom>
+           <img class="img" [src]="f.shared_feed_data.image" alt=""  *ngIf="f.shared_feed_data.file_type== 'Image'"/>
+
+           <div class="play">
+           <img class="img" [src]="f.shared_feed_data.thumbnail" alt=""  *ngIf="f.shared_feed_data.file_type== 'Video'"/>
+
+           <!-- <ion-icon ios="ios-play" md="md-play" (click)="detail(f);$event.stopPropagation();"
+           *ngIf="f.shared_feed_data.file_type == 'Video'" class="play-icon"></ion-icon> -->
+
+           <img class="" src="../../assets/imgs/Rectangle-1.png"  width="80"
+           class="play-icon" (click)="detail(f);$event.stopPropagation();"
+           *ngIf="f.shared_feed_data.file_type == 'Video'">
+           </div>
+         </ion-row>
+
+       </div>
+
+
+
+
+
+
+        <ion-row col-12 class="icons" *ngIf="f.type == 1 || f.type == 2" no-padding>
+          <ion-col col-6 (click)="likes(f.id);$event.stopPropagation();" style="justify-content: left;">
+            <!-- <ion-icon ios="ios-thumbs-up-outline" md="ios-thumbs-up-outline"></ion-icon> -->
+            <span style="margin-right: 20px;margin-left: 5px;"> {{f.likes}} {{'LIKESS' | lang}}</span>
+          </ion-col>
+          <!-- (click)="comment(f.id)" -->
+          <ion-col col-6 style="justify-content: flex-end;padding-right: 13px" >
+           <!--  <ion-icon ios="ios-chatbubbles-outline" md="ios-chatbubbles-outline"></ion-icon>-->
+
+            <span style="margin-right: 5px;margin-left: 5px;">{{f.comments}}</span>
+            <span>{{'COMMENTS' | lang}}</span>
+
+            </ion-col>
+        </ion-row>
+
+         <div class="comment_sec" *ngIf="f.type == 1 || f.type == 2">
+          <ion-row col-12 text-left class="icons icons_2" no-padding>
+          <ion-col col-4 style="justify-content: left;font-weight: bolder;"
+          (click)="like_unlike(f);$event.stopPropagation();" no-padding>
+
+            <!-- <ion-icon ios="ios-thumbs-up-outline"
+            md="ios-thumbs-up-outline"></ion-icon> -->
+
+            <img src="assets/imgs/new/icons8-facebook-like-50.png" *ngIf="f.is_like == 0">
+
+            <img src="assets/imgs/new/icons8-facebook-like-50-active.png" *ngIf="f.is_like == 1">
+
+            <!-- <ion-icon ios="ios-thumbs-up" md="md-thumbs-up" color="primary"
+              *ngIf="f.is_like == 1"></ion-icon> -->
+
+            <span style="margin-right: 20px;margin-left: 5px;">{{'LIKESS' | lang}}</span>
+          </ion-col>
+
+          <ion-col col-4 no-padding (click)="comment(f);$event.stopPropagation();"
+          style="justify-content: flex-end;font-weight: bolder;">
+          <img src="assets/imgs/new/icons8-edit-chat-history-50.png">
+            <span style="margin-right: 5px;margin-left: 5px;">{{'COMMENTS' | lang}}</span>
+           </ion-col>
+
+           <ion-col col-4 no-padding
+           (click)="share_content(f);$event.stopPropagation();"
+          style="justify-content: flex-end;font-weight: bolder;">
+            <!-- <ion-icon ios="ios-chatbubbles-outline" md="ios-chatbubbles-outline"></ion-icon> -->
+            <img src="assets/imgs/new/share.png">
+            <span style="margin-right: 5px;margin-left: 5px;">{{'SHARE' | lang}}</span>
+           </ion-col>
+        </ion-row>
+      </div>
+
+
+                <!-- pet lick and barks comment now -->
+       <ion-row col-12 class="icons" *ngIf="f.type == -2" no-padding>
+          <ion-col col-6 (click)="likes_pet(f.id);$event.stopPropagation();" style="justify-content: left;" no-padding>
+
+            <!-- <img src="assets/imgs/pawprint.png" alt="" width="20"/> -->
+
+            <span style="margin-right: 20px;margin-left: 5px;">{{f.likes}} Lick(s)</span>
+          </ion-col>
+          <!-- (click)="comment_pet(f.id)" -->
+          <ion-col col-6 style="justify-content: flex-end;padding-right: 13px" >
+
+            <!-- <img src="assets/imgs/dog.png" alt="" width="30"/>-->
+
+            <span style="margin-right: 5px;margin-left: 5px;">{{f.comments}}</span>
+            <span>Barks</span>
+            </ion-col>
+        </ion-row>
+          <!-- pet lick and barks comment now -->
+         <div class="comment_sec" *ngIf="f.type == -2">
+          <ion-row col-12 text-left class="icons icons_2" no-padding>
+          <ion-col col-6 style="justify-content: left;font-weight: bolder;" (click)="like_unlike(f)"
+          no-padding>
+
+            <img src="assets/imgs/pawprint.png" *ngIf="f.is_like == 0"
+            alt="" width="20"/>
+
+            <img src="assets/imgs/pawprint-active.png" *ngIf="f.is_like == 1"
+            alt="" width="20"/>
+
+            <span style="margin-right: 20px;margin-left: 5px;">Licks</span>
+          </ion-col>
+
+          <ion-col col-6 no-padding style="justify-content: flex-end;font-weight: bolder;" (click)="comment_pet(f);$event.stopPropagation();">
+            <img src="assets/imgs/dog.png" alt="" width="30"/>
+            <span style="margin-right: 5px;margin-left: 5px;">Barks</span>
+           </ion-col>
+        </ion-row>
+      </div>
+
+       <!--  <ion-item style="padding: 0 16px;" class="bx">
+          <ion-avatar item-start>
+            <div class="circle circle_2" [ngClass]="active">
+            <img src="../../assets/imgs/owner.png">
+            </div>
+          </ion-avatar>
+          <h2>Nick</h2>
+          <p>Posted on 08 Jul 2020, 11:19 PM</p>
+
+        </ion-item>
+
+        <ion-item style="padding: 0 16px;" class="bx">
+          <ion-avatar item-start>
+            <div class="circle circle_2" [ngClass]="active">
+            <img src="../../assets/imgs/pet.png">
+            </div>
+          </ion-avatar>
+          <div class="new_div">
+            <input type="text" placeholder="Bark Something..">
+            <button ion-button clear float-right class="btn-send">
+              <img  src="../../assets/imgs/home/send.png" width="25px;">
+            </button>
+          </div>
+        </ion-item> -->
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid *ngIf="feeds?.length < 1 && is_show">
+      <ion-row>
+        <ion-col text-center col-12>
+          <h6>{{'NOPOSTHASBEENYET' | lang}}</h6>
+        </ion-col>
+
+         <ion-col text-center col-12>
+          <img src="assets/imgs/news-active.png" alt="" />
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-infinite-scroll no-padding (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading..."
+        ></ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+</ion-content>

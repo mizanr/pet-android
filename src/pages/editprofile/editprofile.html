@@ -1,0 +1,174 @@
+<!--
+  Generated template for the EditprofilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Edit Owner Profile</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-row class="user-img">
+    <ion-col text-center col-4 (click)="getProfileImage()">
+      <img  [src]="data.ProfilePicture" alt="" class="user"/>
+      <!-- <img *ngIf="!profile" src="/assets/imgs/dummy_user.png" alt="" class="user"/> -->
+      <img src="../../assets/imgs/profile/edit.png" alt="" class="edit"/>
+    </ion-col>
+    <ion-col col-8>
+      <ion-col col-12 text-justify>
+        <h2 style="font-size: 16px;text-transform: capitalize;margin-bottom: 0px;">Hi, I'm  {{info.first_name1}} {{info.last_name1}}</h2>
+      </ion-col>
+      <ion-col col-12>
+        <h2 style="font-size: 16px;">Edit Profile Image</h2>
+      </ion-col>
+    </ion-col>
+  </ion-row>
+
+  <div class="block block_1">
+  <ion-row class="row_in"> 
+          
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Nick name" [(ngModel)]="data.Nickname"></ion-input>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+          
+        <!-- <ion-input type="text" placeholder="Gender"></ion-input> -->
+        <ion-select placeholder="Gender" [(ngModel)]="data.Genderid" interface="action-sheet">
+            <ion-option  [value]="Male">Male</ion-option>
+            <ion-option  [value]="Female">Female</ion-option>
+          </ion-select>
+      </ion-item>
+    </ion-col>
+    
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <ion-input type="text" [(ngModel)]="data.Address1" placeholder="Address (Optional)"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+        <!-- <ion-input type="text" placeholder="Date of birth(Optional)"></ion-input> -->
+        <ion-datetime [(ngModel)]="data.Dob" placeholder="Date of birth (Optional)" [max]="date_a"></ion-datetime>
+        <button ion-button clear icon-only color="primary" item-end 
+        (click)="remove_dob()" *ngIf="data.Dob">
+            <ion-icon name="close-circle"></ion-icon>
+        </button>
+      </ion-item>
+    </ion-col>
+
+   <!--  <ion-col col-12 no-padding *ngIf="country && country.length>0">
+      <ion-item no-lines>
+        <ion-label>Country</ion-label>
+        <ion-select placeholder="Country" (ionChange)="changeCountry($event)" [(ngModel)]="data.Countryid" submitText="Okay" cancelText="Nah">
+        <ion-option value="lorem" *ngFor="let c of country" [value]="c.id">{{c.CountryName}}</ion-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-col> -->
+
+    <!-- <ion-col col-12 no-padding *ngIf="state && state.length>0">
+      <ion-item no-lines>
+        
+        <ion-select placeholder="State" [(ngModel)]="data.Stateid" submitText="Okay" cancelText="Nah" (ionChange)="stateCountry($event)">
+        <ion-option *ngFor="let s of state" [value]="s.id">{{s.ProvinceName}}</ion-option>
+          
+        </ion-select>
+      </ion-item>
+    </ion-col> -->
+
+    <!-- <ion-col col-12 no-padding  *ngIf="city && city.length>0">
+      <ion-item no-lines>
+        <ion-label>City</ion-label>
+        <ion-select placeholder="City" [(ngModel)]="data.Cityid" submitText="Okay" cancelText="Nah">
+          <ion-option *ngFor="let c of city" [value]="c.id">{{c.city}}</ion-option>
+
+        </ion-select>
+      </ion-item>
+    </ion-col> -->
+
+    <ion-col col-12 no-padding *ngIf="country.length">
+      <ion-item no-lines>
+        <ion-select placeholder="Country" (ionChange)="get_state(0)"
+        [(ngModel)]="data.countryid" 
+        interface="action-sheet">
+            <ion-option  *ngFor="let c of country" [value]="c.id">{{c.country}}</ion-option>
+          </ion-select>
+      </ion-item>
+    </ion-col>
+
+   
+    <!-- <ion-col col-12 no-padding *ngIf="isState">
+      <ion-item no-lines>
+        <ion-select placeholder="State" (ionChange)="get_city(data.stateid)" 
+         interface="action-sheet">
+            <ion-option  *ngFor="let s of states" [value]="s.id">{{s.state}}</ion-option>
+          </ion-select>
+          <ion-spinner item-end></ion-spinner>
+      </ion-item>
+    </ion-col> -->
+
+    <ion-col col-12 no-padding *ngIf="data&&data.countryid&&states.length">
+      <ion-item no-lines>
+        <ion-select placeholder="State" (ionChange)="getcity(0)" 
+        [(ngModel)]="data.stateid" interface="action-sheet">
+            <ion-option  *ngFor="let s of states" [value]="s.id" >{{s.state}}</ion-option>
+          </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <!-- <ion-col col-12 no-padding *ngIf="isCity">
+      <ion-item no-lines>
+        <ion-select placeholder="City" (ionChange)="get_zip(data.cityid)"
+        [(ngModel)]="data.cityid" 
+        interface="action-sheet">
+            <ion-option  *ngFor="let t of cities" [value]="t.id">{{t.city}}</ion-option>
+          </ion-select>
+          <ion-spinner item-end></ion-spinner>
+      </ion-item>
+    </ion-col> -->
+
+    <ion-col col-12 no-padding *ngIf="data&&data.countryid&&cities.length&&data.stateid">
+      <ion-item no-lines>
+        <ion-select placeholder="City" (ionChange)="zip_null($event)" 
+        [(ngModel)]="data.cityid" 
+        interface="action-sheet">
+            <ion-option  *ngFor="let t of cities" [value]="t.id">{{t.city}}</ion-option>
+          </ion-select>
+      </ion-item>
+    </ion-col>
+
+    <ion-col col-12 no-padding>
+      <ion-item no-lines>
+          
+        <ion-input type="text" placeholder="ZipCode" [(ngModel)]="data.Zipcode"></ion-input>
+        <!-- <ion-select placeholder="ZipCode" [(ngModel)]="data.Zipcode" interface="action-sheet">
+            <ion-option  *ngFor="let z of pincodearray" [value]="z.id">{{z.pincode}}</ion-option>
+          </ion-select> -->
+      </ion-item>
+    </ion-col>
+
+   <!--  <ion-col col-12 no-padding>
+      <ion-item no-lines>
+          <ion-input type="text" [(ngModel)]="data.Zipcode" placeholder="Zipcode"></ion-input>
+      </ion-item>
+    </ion-col> -->
+
+
+    
+    <ion-col col-12 no-padding>
+      <button ion-button full round (click)="updateProfile()">
+       Update
+      </button>
+    </ion-col>
+  </ion-row>
+  </div>
+
+</ion-content>

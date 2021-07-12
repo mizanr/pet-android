@@ -1,0 +1,47 @@
+<!--
+  Generated template for the ProductsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Products List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+
+    <ion-item no-lines no-padding>
+      <h2 style="font-size: 16px;font-weight: 500;">Product List</h2>
+      <button ion-button round small item-end color="light" class="btn_add" (click)="addproduct()">+ Add Product</button>
+    </ion-item>
+
+    <ion-row margin-top class="listing" *ngFor="let l of lists">
+      <!-- <ion-list> -->
+        <ion-item>
+          <ion-thumbnail item-start class="avtar_item" (click)="detail(l)">
+            <img [src]="l.image">
+          </ion-thumbnail>
+          <h2 style="" (click)="detail(l)">{{l.name}}</h2>
+          <p style="font-size: 13px;">{{l.category.name}}</p>
+          <!-- <button ion-button   item-end ion-only (click)="edit(l)">
+            Edit
+          </button>
+          <button ion-button   item-end ion-only  color="danger" (click)="remove(l)">
+            Remove
+          </button> -->
+          <button ion-button icon-only clear   color="dark" class="btn-list" item-end
+          (click)="action(l)"><ion-icon name="md-more"></ion-icon></button>
+        </ion-item>
+      <!-- </ion-list> -->
+    </ion-row>
+
+    <ion-row *ngIf="lists.length == 0" margin-top>
+      <ion-col col-12 text-center>
+        No product here..
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

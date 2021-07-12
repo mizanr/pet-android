@@ -1,0 +1,58 @@
+<!--
+  Generated template for the VendorAccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+
+  <ion-grid class="block block_1">
+    <ion-row>
+
+      <ion-col col-12 text-center>
+        <img src="../../assets/imgs/logo.png" alt="" >
+      </ion-col>
+
+      <div text-center class="login_text">
+
+        <h3>{{'YOURAREVENDOR' | lang}}</h3>
+        <p>{{'WEAREDONE' | lang}}</p>
+      
+      </div>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="{{'YOURCOMNAME' | lang}}" [(ngModel)]="formData.cname"></ion-input>
+         </ion-item>
+      </ion-col>
+
+      <ion-col col-12 text-center>
+        <ion-item no-lines>
+          <ion-input type="text" placeholder="{{'CONTANTFULLNAME' | lang}}" [(ngModel)]="formData.fname"></ion-input>
+         </ion-item>
+      </ion-col>
+
+      
+      <ion-col col-12 text-center (click)="signup()">
+        <button ion-button full round >
+        {{'CREATEACCT' | lang}}
+        </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+  
+
+  <ion-fab left bottom *ngIf="!keyboard.isVisible">
+    <button ion-fab color="primary" (click)="back()">
+      <img src="assets/imgs/new/icons8-backt-page-50.png">
+    </button>
+  </ion-fab>
+
+  <!-- <ion-fab right bottom>
+    <button ion-fab color="vibrant">
+      <img src="assets/imgs/new/icons8-ok-100.png">
+    </button>
+  </ion-fab> -->
+
+</ion-content>

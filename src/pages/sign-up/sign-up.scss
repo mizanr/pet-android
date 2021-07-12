@@ -1,0 +1,46 @@
+page-sign-up {
+    .toolbar-ios-primary .toolbar-background-ios {
+        background: #81007f;
+        border-radius: 0px 0px 12px 12px;
+    }
+    ion-content {
+        background-image: url(../../assets/imgs/footer_image.png);
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: contain;
+    }
+    .item-ios {
+        border-radius: 20px;
+        border: 1px solid #f3ebeb;
+        box-shadow: 1px 1px 15px #ebebeb;
+    }
+
+    .item-md {
+        border-radius: 20px;
+        border: 1px solid #f3ebeb;
+        box-shadow: 1px 1px 15px #ebebeb;    
+    }
+
+    .block.block_1 {
+        position: relative;
+        //padding: 35px 35px 0px 35px;
+        text-align: center;
+
+       img {
+        width: 230px;
+        margin-bottom: 10px;
+        }
+    }
+    .text-input {
+        padding-left: 10px;
+    }
+    .block.block_1{
+        .item-ios {
+            border-radius: 30px;
+            -webkit-box-shadow: 1px 1px 15px #ebebeb;
+            box-shadow: 1px 1px 15px #ebebeb;
+            margin: 0 0 5px;
+        }
+    } 
+
+}

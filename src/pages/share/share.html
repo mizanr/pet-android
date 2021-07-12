@@ -1,0 +1,184 @@
+
+  <ion-content padding>
+
+
+    <div class="login_form">
+    <ion-grid *ngIf="ownerinfo">
+      <ion-row>
+        <ion-col>
+          <ion-item no-padding class="bx">
+        <ion-avatar item-start>
+          <div class="circle" [ngClass]="active">
+          <img [src]="ownerinfo?.profile" alt="">
+          </div>
+        </ion-avatar>
+        <h2>{{ownerinfo.first_name}} {{ownerinfo.last_name}}</h2>
+        <p *ngIf="ownerinfo.city != ''" class="city-name">{{ownerinfo.city}}</p>
+  
+        <button ion-button icon-only item-end (click)="viewCtrl.dismiss()" color="light" clear>
+          <ion-icon name="close"></ion-icon>
+        </button>
+  
+      </ion-item>
+    </ion-col>
+      </ion-row>
+  
+      <ion-row class="block">
+        <ion-col padding>  
+          <textarea rows="5" [(ngModel)]="desc"
+          placeholder="What do you want to say?" >
+         </textarea>  
+        </ion-col>  
+      </ion-row>
+  
+      <ion-row *ngIf="is_button">
+
+        <ion-col col-8 text-left>
+          <button ion-button small color="vibrant" round>
+            {{sel_friend.first_name}}
+            <!-- <ion-icon name="md-close"></ion-icon> -->
+          </button>
+        </ion-col>
+
+        <ion-col col-4  text-right>
+          <button small ion-button color="primary" (click)="share2()">{{'SHARE' | lang}}</button>
+        </ion-col>
+      </ion-row>
+
+      <div class="div1"></div>
+
+      <!-- <ion-row>
+        <ion-col *ngIf="buddies.length > 0">
+          <ion-row>
+            <ion-col col-12><strong class="friends_head">Friend's</strong></ion-col>
+              <ion-col col-12 *ngFor="let b of buddies;let i = index" text-capitalize>
+              <ion-item no-lines no-padding>
+  
+                <ion-label>Share on {{b.first_name}} {{b.last_name}} wall</ion-label>
+                <ion-checkbox [(ngModel)]="b.is_check"
+                (click)="friend_wall(b.is_check,i)"></ion-checkbox>
+  
+              </ion-item>
+            </ion-col>  
+          </ion-row>
+        </ion-col>
+      </ion-row> -->
+
+      
+
+      <div class="bottom_share" *ngIf="!auth.isKeyboardshow">
+        <ion-item no-lines (click)="share_friend()" *ngIf="buddies.length > 0">
+          <ion-icon ios="ios-people" md="md-people" item-start></ion-icon>
+          <h3>{{'SHAREWITHFREIEND' | lang}}</h3>
+        </ion-item>
+        <ion-item no-lines (click)="message_share()">
+          <img src="assets/imgs/new/test.png" item-start>
+          <h3>{{'SENDTESTMSG' | lang}}</h3>
+        </ion-item>
+        <ion-item no-lines (click)="facebook_share()">
+          <img src="assets/imgs/new/fb.png" item-start>
+          <h3>{{'SHAREWITHFB' | lang}}</h3>
+        </ion-item>
+        <ion-item no-lines (click)="twitter_share()">
+          <img src="assets/imgs/new/twitter.png" item-start>
+          <h3>{{'SHAREWITHTWITER' | lang}}</h3>
+        </ion-item>
+        <ion-item no-lines (click)="instagram_share()">
+          <img src="assets/imgs/new/insta.png" item-start>
+          <h3>{{'SHAREWITHINTA' | lang}}</h3>
+        </ion-item>
+      </div>
+  
+    </ion-grid>
+  
+  </div>
+  </ion-content>
+
+              <!-- old code -->
+
+
+<!-- <ion-content padding>
+
+
+  <div class="login_form">
+	<ion-grid *ngIf="ownerinfo">
+		<ion-row>
+			<ion-col>
+				<ion-item no-padding class="bx">
+      <ion-avatar item-start>
+        <div class="circle" [ngClass]="active">
+        <img [src]="ownerinfo?.profile" alt="">
+        </div>
+      </ion-avatar>
+      <h2>{{ownerinfo.first_name}} {{ownerinfo.last_name}}</h2>
+      <p *ngIf="ownerinfo.city != ''" class="city-name">{{ownerinfo.city}}</p>
+
+      <button ion-button icon-only item-end (click)="viewCtrl.dismiss()" color="light" clear>
+        <ion-icon name="close"></ion-icon>
+      </button>
+
+    </ion-item>
+	</ion-col>
+		</ion-row>
+
+		<ion-row class="block">
+      <ion-col padding>
+
+        <textarea rows="5" [(ngModel)]="desc"
+        placeholder="What do you want to say?" >
+       </textarea>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row *ngIf="is_wall||is_friend||is_pet">
+      <ion-col col-12  text-right>
+        <button small ion-button color="primary" (click)="share()">Share</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="row_nw">
+    	<ion-col>
+    		<ion-item no-lines no-padding>
+			  <ion-label>Share on, Own wall</ion-label>
+			  <ion-checkbox [(ngModel)]="is_wall" (click)="wall_change(is_wall)"></ion-checkbox>
+			</ion-item>
+    	</ion-col>
+
+      <ion-col *ngIf="buddies.length > 0">
+        <ion-row>
+          <ion-col col-12><strong class="friends_head">Friend's</strong></ion-col>
+            <ion-col col-12 *ngFor="let b of buddies;let i = index" text-capitalize>
+            <ion-item no-lines no-padding>
+
+              <ion-label>Share on {{b.first_name}} {{b.last_name}} wall</ion-label>
+              <ion-checkbox [(ngModel)]="b.is_check"
+              (click)="friend_wall(b.is_check,i)"></ion-checkbox>
+
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </ion-col>
+
+    	<ion-col *ngIf="petList.length > 0">
+          <ion-col col-12><strong class="friends_head">Pet's</strong></ion-col>
+
+        <ion-row>
+      <ion-col *ngFor="let p of petList;let i=index">
+        <ion-item no-lines no-padding>
+        <ion-label>Share on {{p.name}} wall</ion-label>
+        <ion-checkbox [(ngModel)]="p.is_pet"
+        (click)="change(p.is_pet,i)"></ion-checkbox>
+      </ion-item>
+      </ion-col>
+        </ion-row>
+
+    	</ion-col>
+    </ion-row>
+
+	</ion-grid>
+
+</div>
+</ion-content> -->

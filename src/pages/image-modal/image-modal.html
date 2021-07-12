@@ -1,0 +1,14 @@
+<div class="box">
+  <div class="title">Choose</div>
+   <ion-row>
+     <ion-col col-6 text-center (click)="viewCtrl.dismiss('camera')">
+        <div><ion-icon name="md-camera"></ion-icon></div>
+        <div>Camera</div>
+     </ion-col>
+     <ion-col col-6 text-center (click)="viewCtrl.dismiss('gallery')">
+      <div><ion-icon name="md-image"></ion-icon></div>
+      <div>Gallery</div>
+    </ion-col>
+   </ion-row>
+   <div text-right><button ion-button clear (click)="viewCtrl.dismiss('cancel')">Cancel</button></div>
+</div>

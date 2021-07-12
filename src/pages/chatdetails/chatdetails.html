@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-buttons end>
+      <button ion-button clear icon-only color="light">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+    </ion-buttons> 
+*ngIf="other_user"  {{other_user.first_name}} {{other_user.last_name}}
+-->
+    <!-- <img [src]="other_user.profile" alt="" class="user_img" *ngIf="other_user"> -->
+    <ion-title (click)="otherUser()" *ngIf="other_user">
+		{{other_user.first_name}} {{'CHAT2' | lang}}
+	</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding  [ngClass]="keyboard.isVisible?'setmargin':''">
+
+	<div *ngFor="let c of chats">
+
+		<div class="user" *ngIf="c?.sender?.id == auth?.getCurrentUserId()">
+			<ion-row no-padding>
+				<ion-col col-2 no-padding>
+					<div class="user_img">
+						<img src="">
+					</div>
+				</ion-col>
+	
+				<ion-col col-10 no-padding text-left>
+					<ion-item  class="after_1" no-lines>
+						<h3>{{'ME' | lang}}</h3>
+						<p class="dat">{{c.message}}</p>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+		</div>
+	
+		<div class="user" *ngIf="c?.sender?.id != auth?.getCurrentUserId()">
+			<ion-row>	
+				<ion-col col-10 no-padding text-right>
+					<ion-item  class="after_2" no-lines>
+						<h3>({{other_user.first_name}})</h3>
+						<p class="dat">{{c.message}}</p>
+					</ion-item>
+				</ion-col>	
+				<ion-col col-2 no-padding>
+					<div class="user_img">
+						<img src="">
+					</div>
+				</ion-col>	
+			</ion-row>
+		</div>
+	
+	</div>
+
+	<div class="noDatadiv" *ngIf="chats.length==0">
+		<ion-icon name="ios-search-outline"></ion-icon>
+		<p>{{'NOMSGYET' | lang}}</p>
+	  </div>
+
+<!-- <div *ngFor="let c of chats">
+	<div class="user" *ngIf="c?.sender?.id == auth?.getCurrentUserId()">
+		<ion-row no-padding>
+			<ion-col col-2 no-padding>
+				<div class="user_img">
+					<img src="">
+				</div>
+			</ion-col>
+
+			<ion-col col-10 no-padding text-left>
+				<ion-item  class="after_1" no-lines>
+					<p class="dat">{{c.message}}</p>
+					<div class="rate">
+						<p class="">{{c.create_date}}</p>
+					</div>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+	</div>
+
+	<div class="user" *ngIf="c?.sender?.id != auth?.getCurrentUserId()">
+		<ion-row>
+			
+
+			<ion-col col-10 no-padding text-right>
+				<ion-item  class="after_2" no-lines>
+					<p class="dat">{{c.message}}</p>
+					<div class="rate">
+						<p class="">{{c.create_date}}</p>
+					</div>
+				</ion-item>
+			</ion-col>
+
+			<ion-col col-2 no-padding>
+				<div class="user_img">
+					<img src="">
+				</div>
+			</ion-col>
+
+		</ion-row>
+	</div>
+
+</div> -->
+	
+	<!-- <ion-row *ngIf="chats.length == 0">
+		<ion-col text-center>
+			<h6>No chat start yet..</h6>
+		</ion-col>
+	</ion-row> -->
+
+	
+
+</ion-content>
+
+
+
+<ion-footer [ngClass]="keyboard.isVisible?'fotr-btn':''">
+	<div class="message"padding>
+		<ion-item no-lines no-padding>
+	      <!-- <ion-input type="text" [(ngModel)]="msg" placeholder="Type message..."></ion-input> -->
+		  		<textarea 
+				  msd-elastic
+					[(ngModel)]="msg"
+					placeholder="Type message..."
+					rows='1' 
+					cols='50'>
+				</textarea>
+				<!-- <ion-textarea auto-grow="true" rows="1"></ion-textarea> -->
+		  	<button item-start clear ion-button style="margin: 0;height: 40px;" class="btn_plus">
+				<!-- <img src="assets/imgs/chat/plus.png"> -->
+			</button>  
+
+	  		<button item-end clear no-padding no-margin (click)="send_msg()"
+			  [disabled]="!msg.trim()"
+			   style="background: transparent;margin: 0;">
+	  		<img src="assets/imgs/new/icons8-send-letter-100.png">
+	  		</button> 
+	  	</ion-item>	  
+	</div>
+</ion-footer>

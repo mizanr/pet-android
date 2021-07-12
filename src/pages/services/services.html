@@ -1,0 +1,45 @@
+<!--
+  Generated template for the ServicesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Services List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+
+    <ion-item no-lines no-padding>
+      <h2 style="font-size: 16px;font-weight: 500;">Service List</h2>
+      <button ion-button round small item-end color="light" class="btn_add" (click)="addService()">+ Add Service</button>
+    </ion-item>
+
+    <ion-row margin-top class="listing" *ngFor="let s of services">
+      <!-- <ion-list> -->
+        <ion-item>
+          <ion-thumbnail item-start class="avtar_item" (click)="detail(s.data2)">
+            <img [src]="s.data1.image">
+          </ion-thumbnail>
+          <h2 (click)="detail(s.data2)">{{s.data1.name}}</h2>
+          <p style="font-size: 9px;white-space: initial;">{{s.data1.category.name}}</p>
+          <!-- <button ion-button round small item-end>View</button> -->
+          <!-- <button ion-button   item-end ion-only (click)="edit(s.data1)">Edit</button>
+          <button ion-button   item-end ion-only color="danger" (click)="delete(s.data1)">Remove</button> -->
+
+          <button ion-button icon-only clear   color="dark" class="btn-list" item-end
+          (click)="action(s.data1)"><ion-icon name="md-more"></ion-icon></button>
+        </ion-item>
+      <!-- </ion-list> -->
+    </ion-row>
+
+    <ion-row *ngIf="services.length == 0" margin-top>
+      <ion-col col-12 text-center>
+        No service here..
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
